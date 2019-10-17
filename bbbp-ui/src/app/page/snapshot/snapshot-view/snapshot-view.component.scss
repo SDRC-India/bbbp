@@ -1,0 +1,193 @@
+.snapshot-selection {
+    border-bottom: 1px solid #999;
+}
+.snapshot-selectbox {
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 0px;
+}
+.snapshot-selectbox label {
+    display: block;
+    margin-bottom: 0;
+}
+.snap-shot-sec{
+    margin-top: 50px;
+}
+.snap-shot-sec .sector {
+    font-weight: bold;
+    padding: 10px;
+    background-color: #1f4a7c;
+    color: #FFF;
+    text-align: center;
+    margin-top: 50px;
+}
+.snapshot-subsector {
+    padding: 10px 15px;
+}
+.snap-shot-sec .subsector{
+    font-weight: 800;
+    margin-top: 25px;
+}
+.cards {
+    height: 120px;
+    background: #fbfbfb;
+    color: #1f4a7c;
+}
+.download-chart{
+    position: absolute;
+    right: 0px;
+    top: 0;
+    color: #234a7c !important;
+    cursor: pointer;
+}
+
+.download-chart i{
+    margin-right: 5px;
+}
+.card-up{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.card-down{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.charts{
+    margin-top: 10px;
+    margin-bottom: 0;
+    height: 250px;
+    background: #fbfbfb;
+}
+
+.cards .value-sec {
+    width: 95px;
+    float: left;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+    text-align: center;
+    line-height: 1;
+    font-size: 26px;
+    color: #1f4a7c;
+    font-weight: bold;
+}
+.cards .kpi-sec {
+    float: left;
+    width: calc(100% - 95px);
+    height: 100%;
+    display: flex;
+    justify-content: left; /* align horizontal */
+    align-items: center;
+    padding-right: 5px;
+}
+.cards .india-sec {
+    float: left;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+.chart-head {
+    text-align: center;
+    padding-top: 3px;
+    position: relative;
+}
+.chart-selection-btn {
+    width: 70px;
+    float: left;
+    padding: 0 5px;
+    text-align: right;
+}
+.chart-selection-btn i{
+    cursor: pointer;
+    margin: 3px;
+}
+.ind-group{
+    float: left;
+    width: calc(100% - 70px);
+    font-size: 13px;
+    height: 38px;
+    padding: 0 10px;
+}
+.download-section {
+    float: right;
+    margin-top: 38px;
+    color: #234a7c;
+}
+.download-section i{
+    font-size: 22px !important;
+    cursor: pointer;
+}
+.snapshot-sector {
+    background-color: #104fa052;
+}
+.legends{
+    margin-bottom: -15px;
+    text-align: left;
+}
+.legends ul{
+    padding-left: 5px;
+}
+.legends ul li {
+    list-style-type: none;
+    display: inline-flex;
+}
+.legends .legnedblock {
+    height: 18px;
+    width: 18px;
+}
+.legends .legend_key {
+    padding-left: 5px;
+    padding-right: 15px;
+    font-size: 12px;
+}
+.firstslices{
+    background-color: #234a7c;
+    fill: #234a7c;
+}
+.secondslices{
+    background-color: #006ece;
+    fill: #006ece;
+}
+.thirdslices{
+    background-color: #6ab7f9;
+    fill: #6ab7f9;
+}
+.time-period{
+    position: absolute;
+    top: -25px;
+    right: 15px;
+    font-weight: 600
+}
+
+@media(max-width: 767px){
+    .download-section{
+        float: none;
+        margin-top: 0;
+        text-align: right;
+    }
+    .snapshot-selectbox{
+        width: 100%;
+        margin-right: 0;
+    }
+    .snapshot-selectbox .input-holder, .snapshot-selectbox .input-holder .btn-group{
+        width: 100%;
+    }
+}
+ @media(max-width: 575px) { 
+    .snap-shot-sec, .selection-sec {
+        padding: 0;
+    }
+
+    .cards .value-sec {
+        width: 65px;
+        font-size: 25px;
+    }
+    .cards .kpi-sec {
+        font-size: 13px;
+        width: calc(100% - 65px)
+    }
+
+ }

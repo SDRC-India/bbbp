@@ -1,0 +1,21 @@
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+    <div class="row left-containr">
+      <h2 class="title-main">User Guide</h2>
+    </div>
+    <div class="short-description">{{staticService.contentData.viewType}}</div>
+    <div class="row table-margin">     
+      <div class="col-md-12 col-sm-12 col-xs-12 help-section padding-left-zero">  
+       <div class="pdfDiv" *ngFor="let data of staticService.contentList">         
+          <a (click)="downloadFiles(data.fileName)">
+            <i class="fa fa-file-pdf-o icons" aria-hidden="true" [hidden]="data.fileName.split('.').pop() == 'mp4'"> </i>
+            <i class="fa fa-file-video-o icons video-icon" aria-hidden="true" [hidden]="data.fileName.split('.').pop() == 'pdf'"></i>
+             <p [hidden]="data.fileName.split('.').pop() == 'mp4'" title="Download PDF">{{data.title}}</p>
+             <p class="video-icon" [hidden]="data.fileName.split('.').pop() == 'pdf'" title="Download Video">{{data.title}}</p>
+             <i class="fa fa-download downloaded-icon" aria-hidden="true"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>

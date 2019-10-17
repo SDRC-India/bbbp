@@ -1,0 +1,40 @@
+
+.terms_use_text{
+    margin-top: 50px;  
+    //margin-bottom: 50px; 
+}
+.pdfDiv p{
+    font-size: 15px;
+    padding: 5px 0 0 10px;
+    display: inline-block;
+    color: #000
+}
+.pdfDiv a{   
+    padding-right: 10px;
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.icons {
+    font-size: 21px;
+    color: #000;
+}
+.video-icon {
+    margin-left: 5px;
+}
+.downloaded-icon {
+    color: #000;
+}
+.downloaded-icon:hover {
+    color: #1f4a7c;
+}
+@media (max-width: 768px) {
+    .icons {
+        font-size: 15px !important;
+    }
+    .pdfDiv p {
+        font-size: 14px !important;
+        padding: 5px 0 0 0px;
+    }
+}

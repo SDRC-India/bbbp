@@ -1,0 +1,47 @@
+
+  <form>
+    <div *ngFor="let field of formFields; let i = index;" [ngClass]="{'form-group':field.controlType == 'textbox'}" class="row">
+      <label [attr.for]="field.key" class="col-md-5 text-right">{{field.label}}</label>
+      <div [ngSwitch]="field.controlType" class="col-md-6 input-holder">
+        <!-- input text box -->
+        <input *ngSwitchCase="'textbox'" name="{{field.key}}"
+                [id]="field.key" [type]="field.type" [(ngModel)]="field.value" class="form-control">
+     
+        <!-- <select [id]="field.key" *ngSwitchCase="'dropdown'" [formControlName]="field.key">
+          <option *ngFor="let opt of field.options" [value]="opt.key">{{opt.value}}</option>
+        </select> -->
+
+        <!-- Input dropdown-->
+        <div class="btn-group" style="padding-left: 3px;
+        width: 100%;margin-bottom: 1rem" dropdown *ngSwitchCase="'dropdown'">
+          <input type="text" class="dropdown-input" [id]="field.key" style="padding: 10px;" readonly
+          placeholder="select one" [(ngModel)]="field.value" name="{{field.key}}" >
+          <button type="button" dropdownToggle style="padding: 0"
+          class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown" 
+           mdbRippleRadius></button>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" style="font-size: 13px;"
+               *ngFor="let opt of field.options" [value]="opt.key" (click)="selectDropdown(opt, formFields, i)">{{opt.value}}</a>
+          </div>
+        </div>
+
+        <!-- Input type radio -->
+        <div *ngSwitchCase="'radio'">
+          <div class="radio-btn-group" *ngFor="let opt of field.options">
+            <input name="{{field.key}}" type="radio" id="{{opt.key}}">
+            <label for="{{opt.key}}">{{opt.value}}</label>
+          </div>
+        </div>
+
+        <!-- text area -->
+        <textarea *ngSwitchCase="'textarea'" class="form-control" id="exampleFormControlTextarea2" rows="5"></textarea>
+      </div> 
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6 offset-md-5">
+        <button class="btn btn-default" type="submit" (click)="submitForm()">Submmit</button>
+      </div>
+    </div>
+  </form>
+

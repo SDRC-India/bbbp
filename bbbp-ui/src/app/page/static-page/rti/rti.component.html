@@ -1,0 +1,150 @@
+
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination> 
+<div class="container">
+  <div class="row"  *ngIf="staticService.contentData" >
+    <div class="col-md-12">
+      <h2 class="title-main">{{staticService.contentData.viewName}}</h2>
+    </div>
+    <div class="col-md-12 short-description margin-left-description ">{{staticService.contentData.viewType}}</div>
+    <div class="col-md-12">
+      <div class="col-md-3 searchData search-texts inner-addon right-addon">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+      </div>
+    </div>
+    <div class="col-md-12 table-responsive"  *ngIf="!staticService.noDataFound"
+     [hidden]="(staticService.contentList | searchText : searchTexts).length == 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="th-header width-col-one">Sl No.</th>
+            <th class="th-header width-col-one">Text Of RTI Application</th>
+            <th class="th-header width-col-two">View Request Doc</th>
+            <th class="th-header width-col-three">Reply Of RTI Application</th>
+            <th class="th-header width-col-two">View Request Reply Doc	</th>
+            <th class="th-header width-col-two">Text Of First Appeal Application (If Any)</th>
+            <th class="th-header width-col-two">View Appeal Doc</th>
+            <th class="th-header width-col-two">Reply Of Appeal Application</th>
+            <th class="th-header width-col-two">View Appeal Reply Doc</th>
+          </tr>
+        </thead>
+       <tbody>
+          <tr *ngFor="let items of staticService.contentList.slice().reverse() | searchText : searchTexts | paginate: { itemsPerPage: 4, currentPage: p } | orderBy: {property: column, direction: direction}; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{items.a221}}</td>
+            <td class="pdf-left">
+                <div>
+                    <img [hidden]="items.a222 == ''" class="preview-icon preview-icon-table"
+                     title="Preview file before download" src="./assets/icons/eye-solid.svg" 
+                     (click)=openPDF(items.a222,items.a221)>
+                    <a [hidden]="items.a222 == ''" title="Preview file before download"
+                     (click)=openPDF(items.a222,items.a221)>
+                      Preview
+                    </a>
+                  </div>
+                <div class="file-in-table">
+                  <span [hidden]="items.a222 == ''" class="pdf-icon-border pdf-download-block">
+                    <a (click)="downloadFiles(items.a222)" title="Download PDF">
+                    <i class="fa fa-download downloaded-icon downloaded-icon-table"  aria-hidden="true"></i>
+                  </a></span>
+                  <span [hidden]="items.a222 != ''">File not available</span>
+                  <span class="file-size-text" [hidden]="items.a222 == ''">File Size: {{items.a222_size}}</span>
+                </div>
+            </td>
+            <td>{{items.a223}}</td>
+            <td class="pdf-left">
+                <div>
+                    <img [hidden]="items.a224 == ''" class="preview-icon preview-icon-table" 
+                    title="Preview file before download" src="./assets/icons/eye-solid.svg"
+                     (click)=openPDF(items.a224,items.a223)>
+                    <a [hidden]="items.a224 == ''" title="Preview file before download" 
+                    (click)=openPDF(items.a224,items.a223)>
+                      Preview
+                    </a>
+                  </div>
+                <div class="file-in-table">
+                  <span [hidden]="items.a224 == ''" class="pdf-icon-border pdf-download-block">
+                    <a (click)="downloadFiles(items.a224)" title="Download PDF">
+                    <i class="fa fa-download downloaded-icon downloaded-icon-table"  aria-hidden="true"></i>
+                  </a></span>
+                  <span [hidden]="items.a224 != ''">File not available</span>
+                  <span class="file-size-text" [hidden]="items.a224 == ''">File Size: {{items.a224_size}}</span>
+                </div>
+            </td>
+            <td>{{items.a225}}</td>
+            <td class="pdf-left">
+                <div>
+                    <img [hidden]="items.a226 == ''" class="preview-icon preview-icon-table" 
+                    title="Preview file before download" src="./assets/icons/eye-solid.svg"
+                     (click)=openPDF(items.a226,items.a225)>
+                    <a [hidden]="items.a226 == ''" title="Preview file before download" 
+                    (click)=openPDF(items.a226,items.a225)>
+                      Preview
+                    </a>
+                  </div>
+                <div class="file-in-table">
+                  <span [hidden]="items.a226 == ''" class="pdf-icon-border pdf-download-block">
+                    <a (click)="downloadFiles(items.a226)" title="Download PDF">
+                    <i class="fa fa-download downloaded-icon downloaded-icon-table"  aria-hidden="true"></i>
+                  </a></span>
+                  <span [hidden]="items.a226 != ''">File not available</span>
+                  <span class="file-size-text" [hidden]="items.a226 == ''">File Size: {{items.a226_size}}</span>
+                </div>
+            </td>
+            <td>{{items.a227}}</td>
+            <td class="pdf-left">
+                <div>
+                    <img [hidden]="items.a228 == ''" class="preview-icon preview-icon-table" 
+                    title="Preview file before download" src="./assets/icons/eye-solid.svg"
+                     (click)=openPDF(items.a228,items.a227)>
+                    <a [hidden]="items.a228 == ''" title="Preview file before download" 
+                    (click)=openPDF(items.a228,items.a227)>
+                      Preview
+                    </a>
+                  </div>
+                <div class="file-in-table">
+                  <span [hidden]="items.a228 == ''" class="pdf-icon-border pdf-download-block">
+                    <a (click)="downloadFiles(items.a228)" title="Download PDF">
+                    <i class="fa fa-download downloaded-icon downloaded-icon-table"  aria-hidden="true"></i>
+                  </a></span>
+                  <span [hidden]="items.a228 != ''">File not available</span>
+                  <span class="file-size-text" [hidden]="items.a228 == ''">File Size: {{items.a228_size}}</span>
+                </div>
+            </td>
+        </tbody> 
+        <!-- <tbody>
+            <tr *ngFor="let key of staticService.keys | searchText : searchTexts | paginate: { itemsPerPage: 4, currentPage: p } | orderBy: {property: column, direction: direction}; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{staticService.contentList[key]}}</td>
+          </tbody> -->
+      </table>
+      <pagination-controls class="pagination" (pageChange)="p = $event" *ngIf="staticService.contentList.length > 4"></pagination-controls>
+    </div>
+    <div class="blank-height">
+    </div>
+  </div>
+  <div class="col-md-12"  *ngIf="!staticService.noDataFound" [hidden]="(staticService.contentList | searchText : searchTexts).length != 0">
+    <h4 class="text-center no-data-found">No Applications Found</h4>
+  </div>
+  <div class="col-md-12" *ngIf="staticService.noDataFound" >
+    <h4 class="text-center no-data-found">No Applications Found</h4>
+  </div> 
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-width modal-width-preview">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="myModalLabel">{{staticService.fileTitle}}</h4>
+        </div>
+        <div class="modal-body preview-file-body">
+          <embed [src]="url" frameborder="0" width="100%" height="530px">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default preview-btn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

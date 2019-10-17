@@ -1,0 +1,64 @@
+<!-- @swarna -->
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+
+<div class="container" *ngIf="staticService.contentDetails.length">
+  <div class="row">
+    <h2 class="title-main">About Scheme</h2>
+  </div>
+
+  <div class="short-description"></div>
+  <div class="row">
+    <p class="about-us-content">
+      <img [hidden]="this.staticService.contentDetails[0].data[0].imageName == ''" class="about-us-image" 
+      [src]= "gateway +'downloadCmsDoc?fileName='+staticService.contentDetails[0].data[0].imageName+'&inline='+true"  align="left">
+      <span [innerHTML]="staticService.contentDetails[0].data[0].content"></span>
+    </p>
+  </div>
+  <div class="row" *ngIf="staticService.contentDetails[0].data[0].fileName !=undefined && staticService.contentDetails[0].data[0].title !=undefined && staticService.contentDetails[0].data[0].title != '' && staticService.contentDetails[0].data[0].fileName != ''">
+    <h3 class="download-pdf-text">
+      <i class="fa fa-file-pdf-o"></i>
+      <a class="title-pdf-info">
+        {{staticService.contentDetails[0].data[0].title}}
+      </a>
+      <img [hidden]="staticService.contentDetails[0].data[0].fileName == ''"
+       class="preview-icon" title="Preview file before download" src="./assets/icons/eye-solid.svg"
+        (click)=openPDF(staticService.contentDetails[0].data[0].fileName)>
+      <a class="preview-hover" [hidden]="staticService.contentDetails[0].data[0].fileName == ''"
+       title="Preview file before download" 
+       (click)=openPDF(staticService.contentDetails[0].data[0].fileName)>
+        Preview
+      </a>
+      <a>
+        <span [hidden]="staticService.contentDetails[0].data[0].fileName == ''" class="pdf-icon-border">
+          <a (click)="downloadFiles(staticService.contentDetails[0].data[0].fileName)" title="Download PDF">
+            <i class="fa fa-download downloaded-icon" aria-hidden="true"></i> &nbsp; 
+          </a>
+        </span><span (click)="downloadFiles(staticService.contentDetails[0].data[0].fileName)"
+          class="download-file">Download</span>
+        <span class="file-size-text" 
+        [hidden]="staticService.contentDetails[0].data[0].fileName == ''">File Size: {{staticService.contentDetails[0].data[0].size}}</span>
+      </a>
+    </h3>
+  </div>
+  
+</div>
+
+
+
+<div *ngIf="staticService.contentDetails.length" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-width modal-width-preview">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">{{staticService.contentDetails[0].data[0].title}}</h4>
+      </div>
+      <div class="modal-body preview-file-body">
+        <embed [src]="url" frameborder="0"  width="100%" height="530px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default preview-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

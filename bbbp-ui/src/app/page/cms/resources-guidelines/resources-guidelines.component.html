@@ -1,0 +1,47 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 side-menu">
+            <app-left-side-bar></app-left-side-bar>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form class="cmsform">
+                    <div *ngFor="let field of questions; let i = index;" [ngClass]="{'form-group':field.controlType == 'textbox'}" class="row">
+                     <!-- <div class="col-md-12"style="color: #31859c; font-size: 18px; margin-bottom: 20px;">{{field.keyHeading}}</div>  -->
+                     <label [attr.for]="field.columnName" class="col-md-3">{{field.label}}</label>
+                      <div [ngSwitch]="field.controlType" class="col-md-8 input-holder">
+                        <!-- input text box -->
+                        <input *ngSwitchCase="'textbox'" name="{{field.columnName}}"
+                                [id]="field.columnName" [type]="field.type" [(ngModel)]="field.value" class="form-control" [ngClass]="{'no-spinners':field.type == 'number'}">
+                     
+                        <!-- Input dropdown-->
+                        <div class="btn-group" style="padding-left: 3px;
+                        width: 100%;margin-bottom: 1rem" dropdown *ngSwitchCase="'dropdown'">
+                          <input type="text" class="dropdown-input" [id]="field.columnName" style="padding: 10px;" readonly
+                          [placeholder]="''" [(ngModel)]="field.value" name="{{field.columnName}}" >
+                          <button type="button" dropdownToggle style="padding: 0"
+                          class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown" 
+                           mdbRippleRadius></button>
+                          <div class="dropdown-menu drp-list">
+                              <a class="dropdown-item" style="font-size: 13px;"
+                               *ngFor="let opt of field.options" (click)="selectDropdown(opt, field)">{{opt.value}}</a>
+                          </div>
+                        </div>    
+                        <div class="" [ngClass]="[!field.errorFound ? 'd-none':'']" style="color: red;    margin-top: -12PX; padding-left: 5px;">{{field.errorMessage}}</div> 
+                      </div> 
+                      
+                    </div>
+                
+                    <div class="form-group row">
+                      <div class="col-md-12 text-center">
+                        <button class="btn btn-default proceed-btn" type="submit" style="margin-top: 25px;" (click)="submitForm()">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+
+
+
+@media(max-width: 1024px) {
+    .label-right {
+        padding: 0;
+    }
+    .contact-submit {
+        width: 45%;
+        }
+}
+
+@media(max-width: 768px) {
+    .drp-list {
+        left: -132px !important;
+        width: 100% !important;
+    }
+}
+
+@media(max-width: 608px) {
+    .input-tab {
+        width: 430px;
+    }
+    .drp-list {
+        left: -79px !important;
+    }
+    .key-contacts-tab, .hidden-sm-up, .mobile-display {
+        padding: 0;
+    }
+    .mobile-display {
+        width: 100%;
+    }
+    .table-top {
+        padding: 0;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 560px) {
+    .key-contacts-tab, .hidden-sm-up, .tab-view, .table-responsive {
+        padding: 0 15px 0 15px !important;
+    }
+    .label-right {
+        padding-left: 15px;
+    }
+    .table-top {
+        width: 97%;
+    }
+    .drp-list {
+        left: -58px !important;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 480px) {
+@viewport {
+width: device-width;
+}
+}
+
+@media  (max-width : 480px) {
+
+.mobile-display {
+    border: 1px solid #dddd;
+    margin: 0;
+    padding: 0 !important;
+}
+.sanction-head-list {
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    position: relative;
+    background-color: #80a7e0;
+    width: 287px;
+}
+.btn-color {
+    /* margin-top: 7px; */
+    background: #1f4a7c;
+    padding: 8px 127px 9px 17px;
+    text-transform: lowercase;
+    width: 290px;
+}
+.label-right {
+    padding-left: 15px;
+}
+.dropdown-menu-btn {
+    margin-left: -2px;
+    width: 95%;
+}
+.drp-list {
+    left: -20px !important;
+}
+.mobile-view {
+    margin: 0 20px 0 11px;
+    width: 92%;
+}
+
+}   
+
+    @media (max-width: 480px) and (min-width: 320px) {
+
+      @viewport {
+        width: device-width;
+      }
+      .btn-color {
+     
+        background: #1f4a7c;
+        padding: 8px 127px 9px 17px;
+         text-transform: lowercase;
+         width: 290px;
+    }
+    
+   
+.btn-color {
+     
+    background: #1f4a7c;
+    padding: 8px 127px 9px 17px;
+     text-transform: lowercase;
+     width: 290px;
+}
+
+    }   
+
+    .report-submit {
+        width: 13%;
+        margin: 25px 0 0;
+        padding: 5px 2px;
+        background-color: #1f4a7c !important;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 1px;
+        border: hidden;
+    }

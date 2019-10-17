@@ -1,0 +1,138 @@
+{
+  "dataCollection": [
+    [
+      {
+        "axis": "A. Total score for CHC",
+        "value": "50.5",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "B. Basic Services",
+        "value": "49.1",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "D. Infrastructure of CHC",
+        "value": "65.4",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "E. Ideal Labour room gap analysis checklist",
+        "value": "56.9",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "F. New Born Care Corner",
+        "value": "54.8",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "G. Post natal ward (PNC)",
+        "value": "60.1",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "H. Operation Theatre",
+        "value": "38.3",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "I. Blood Storage",
+        "value": "7.9",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "J. New born Care Stabilization Unit",
+        "value": "32.2",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "K. Laboratory Services",
+        "value": "63.6",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "L. Supplies and Commodities",
+        "value": "63.5",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "M. Availability of Vaccine and Equipment at cold chain point",
+        "value": "86.6",
+        "timePeriod": "Phase 1"
+      },
+      {
+        "axis": "N. Services related to National Health Programme",
+        "value": "52.4",
+        "timePeriod": "Phase 1"
+      }
+    ],
+    [
+      {
+        "axis": "A. Total score for CHC",
+        "value": "56.5",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "B. Basic Services",
+        "value": "51.7",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "D. Infrastructure of CHC",
+        "value": "69.5",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "E. Ideal Labour room gap analysis checklist",
+        "value": "64.8",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "F. New Born Care Corner",
+        "value": "65.6",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "G. Post natal ward (PNC)",
+        "value": "65.2",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "H. Operation Theatre",
+        "value": "50.9",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "I. Blood Storage",
+        "value": "15.2",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "J. New born Care Stabilization Unit",
+        "value": "39.1",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "K. Laboratory Services",
+        "value": "63.8",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "L. Supplies and Commodities",
+        "value": "70.3",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "M. Availability of Vaccine and Equipment at cold chain point",
+        "value": "89.8",
+        "timePeriod": "Phase 2"
+      },
+      {
+        "axis": "N. Services related to National Health Programme",
+        "value": "56.0",
+        "timePeriod": "Phase 2"
+      }
+    ]
+  ]
+}

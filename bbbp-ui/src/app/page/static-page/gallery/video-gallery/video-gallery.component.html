@@ -1,0 +1,105 @@
+<!-- @Swarna -->
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+    <div class="row">
+        <h2 class="title-main">Videos
+            <div class="col-md-3 searchData searchBoxInHeader inner-addon right-addon">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+            </div>
+        </h2>
+    </div>
+    <div class="row short-description">{{staticService.shortDescription}}</div>
+    <div id="wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="tab-content">
+                    <div class="row">
+                        <form class="col-md-11 gallery-selection padding-zero">
+                            <div *ngFor="let field of selectionFields; let i = index;"
+                                [ngClass]="{'form-group':field.controlType == 'textbox'}" class="col-md-6 padding-zero">
+                                <div style="color: #31859c; font-size: 18px; margin-bottom: 20px;">
+                                    {{field.keyHeading}}</div>
+                                <label [attr.for]="field.columnName"
+                                    class="col-md-4 time-label">{{field.label}}&nbsp;:</label>
+                                <div [ngSwitch]="field.controlType" class="col-md-7 input-holder padding-zero">
+                                    <!-- input text box -->
+                                    <input *ngSwitchCase="'textbox'" name="{{field.columnName}}" [id]="field.columnName"
+                                        [type]="field.type" [(ngModel)]="field.value" class="form-control"
+                                        [ngClass]="{'no-spinners':field.type == 'number'}">
+                                    <!-- Input dropdown-->
+                                    <div class="btn-group" style="padding-left: 3px;
+                                               width: 100%;margin-bottom: 1rem" dropdown *ngSwitchCase="'dropdown'">
+                                        <input type="text" class="dropdown-input" [id]="field.columnName"
+                                            style="padding: 10px;" readonly [placeholder]="''" [(ngModel)]="field.value"
+                                            name="{{field.columnName}}">
+                                        <button type="button" style="padding: 0" dropdownToggle data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false"
+                                            class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list cms-dropdown-lists">
+                                            <a class="dropdown-item" style="font-size: 13px;"
+                                                *ngFor="let opt of field.options"
+                                                (click)="selectDropdown(opt, selectionFields, i)">{{opt.value}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="" [ngClass]="[!field.errorFound ? 'd-none':'']"
+                                        style="color: red;    margin-top: -12PX; padding-left: 5px;">
+                                        {{field.errorMessage}}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-md-1 reset-section">
+                                <button class="btn reset-btn" title="reset" (click)="resetVal(selectionFields)" type="button">
+                                    <i class="fa fa-undo" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                    </div>
+                    <div id="photos" class="tab-pane in active photos_display">
+                        <div class="row row_first">
+                            <div *ngFor="let category of filteredGalleryDetails | searchText : searchTexts | paginate: { itemsPerPage: 8, currentPage: p }; let i = index"
+                                class="col-md-3 catagory animated" id="kp_day8">
+                                <div style="width: 100%;margin: 10px 0px;float: none;" (click)=openVideo(category)>
+                                    <img src="{{'http://img.youtube.com/vi/' + getId(category.link) + '/0.jpg'}}"
+                                        class="photo-categories zoom" alt="Catagory-4">
+                                </div>
+                                <div class="gal_txt">
+                                    <p class="max-height" title="{{category.title}}">{{category.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <pagination-controls class="pagination" (pageChange)="p = $event"
+                            *ngIf="filteredGalleryDetails.length > 8"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" [hidden]="(filteredGalleryDetails | searchText : searchTexts).length != 0">
+                <h4 class="text-center no-data-found">No Video Found</h4>
+            </div>
+        </div>
+    </div>
+    <div class="blank-height">
+    </div>
+</div>
+
+<div class="modal" id="openVideo" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-width">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button style="color: black;"type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <iframe id="videoIframe" width="660" height="315" [src]="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                {{title}}
+            </div>
+
+        </div>
+    </div>
+</div>

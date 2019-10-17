@@ -1,0 +1,243 @@
+<div>
+    <div class="row question-row">
+        <div class="col-md-3 col-6 left-list display-cont hidden-xs-down">
+            <app-data-entry-head></app-data-entry-head>
+        </div>
+        <div class="col-12 hidden-sm-up">
+            <div class="btn-group">
+                <button class="btn btn-width" type="button" data-toggle="dropdown">
+                    <!-- <span>Dat Entry Section</span> -->
+                    <i class="fa fa-caret-down fa-caret fa-lg icon-drop"></i>
+                </button>
+                <div class="dropdown-menu data-head">
+                    <li class="mobile-anchor">
+                        <a routerLink="/data-entry">1.Inter-sectoral convergence/initiatives</a>
+                    </li>
+                    <li class="mobile-anchor">
+                        <a routerLink="/data-entry-survival">2.Inter-sectoral initiatives for equal value of girl child</a>
+                    </li>
+                    <li class="mobile-anchor">
+                        <a routerLink="/data-entry-training">3.Training and capacity-building </a>
+                    </li>
+                    <li class="mobile-anchor">
+                        <a routerLink="/data-entry-awareness">4.Awareness/outreach activities </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 content-sec">
+            <div class="col-md-10 tab-margin offset-md-1">
+                <div class="row timeperiodHeading report-data-info">
+                    <div class="col-md-12">
+                        <h3 class="blink-text">Report Data only for the Selected Quarter: {{selectedQuarter}}, {{selectedYear}}</h3>
+                    </div>
+                </div>
+                <h2 class="list-heading">Awareness/outreach activities</h2>
+                <form>
+                    <div *ngFor="let subsections of formSubSections; let k=index;">
+                        <div *ngFor="let subsectionKeys of subsections | objIterate; let j=index">
+                            <div class="row">
+                                <div class="col-md-12 sub-headings" style="color: #1f4a7c; font-size: 16px; margin-bottom: 20px;">{{subsectionKeys.key}}</div>
+                            </div>
+
+                            <div *ngFor="let field of subsections[subsectionKeys.key]; let i = index;" [ngClass]="[field.controlType == 'textbox'?'form-group':'', field.dependentCondition[0] == 'isDependencyYes' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'No'?'d-none':'']"
+                                class="row">
+                                <div class="col-md-12" style="color: #31859c; font-size: 18px; margin-bottom: 20px;">{{field.keyHeading}}</div>
+                                <label [attr.for]="field.key" class="col-md-5">{{field.label}}</label>
+                                <div [ngSwitch]="field.controlType" class="col-md-6 input-holder">
+                                    <!-- input text box -->
+                                    <input *ngSwitchCase="'textbox'" (keydown)="preventNegative($event)" [disabled]="field.dependentCondition[0] == 'prefetchValueAndDisabled'"
+                                        name="{{field.type == 'file' ? field.key: field.key+'files[]'}}" (change)="field.type == 'file' ? onFileChange($event, field.key, i, j, k): ''"
+                                        multiple #fileInput (keypress)="field.type == 'number' ? formDataSave.limitNumbers($event,field.value) :''"
+                                        accept="{{field.type != 'file' ? null: !subsections[subsectionKeys.key][field.parentIndex[2]].value ? null: subsections[subsectionKeys.key][field.parentIndex[2]].value == 'Reports' ? 'application/pdf,application/msword,application/vnd.ms-excel': subsections[subsectionKeys.key][field.parentIndex[2]].value == 'Video Clippings ' ? 'video/mp4,video/x-m4v,video/*' : subsections[subsectionKeys.key][field.parentIndex[2]].value == 'Photographs' ? 'image/x-png,image/gif,image/jpeg':'application/pdf,application/msword'}}"
+                                        [id]="field.key" [type]="field.type" [(ngModel)]="field.value" class="form-control"
+                                        [ngClass]="[field.type == 'number' ? 'no-spinners':'', (field.key == 95 && !subsections[subsectionKeys.key][field.parentIndex[2]].value)? 'd-none': '']">
+
+                                    <!-- Input dropdown-->
+                                    <div class="btn-group" style="padding-left: 3px;
+         width: 100%;margin-bottom: 1rem"
+                                        dropdown *ngSwitchCase="'dropdown'">
+                                        <input type="text" class="dropdown-input" [id]="field.key" style="padding: 10px;"
+                                            readonly [placeholder]="" [(ngModel)]="field.value" name="{{field.key}}">
+                                        <button type="button" dropdownToggle style="padding: 0" class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item" style="font-size: 13px;" *ngFor="let opt of field.options"
+                                                [value]="opt.key" (click)="selectDropdown(opt, k, subsectionKeys.key , i)">{{opt.value}}</a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6 offset-md-5">
+                                    <p *ngIf="field.key == 95 && field.fileSizeExceeds" style="color: red; margin-bottom: 2px;padding-left: 5px;">Total
+                                        file size can not exceed 30MB</p>
+                                    <p *ngIf="field.key == 95 && field.wrongFileExtensions" style="color: red; padding-left: 5px;">Files
+                                        with wrong extensions are not included</p>
+                                    <p *ngIf="field.key == 95 && field.duplicateFilesDetected" style="color: red; padding-left: 5px;">Duplicate
+                                        files selected. Please verify and try again</p>
+                                    <small *ngIf="field.key == 95 && field.type=='file' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'Reports'"
+                                        class="file-suggest">* Accepts only pdf, word or excel files</small>
+                                    <small *ngIf="field.key == 95 && field.type=='file' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'Photographs'"
+                                        class="file-suggest">* Accepts only jpg, png, gif files</small>
+                                    <small *ngIf="field.key == 95 && field.type=='file' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'Video Clippings '"
+                                        class="file-suggest">* Accepts only video files(mp4, mkv, mpeg)</small>
+                                    <small *ngIf="field.key == 95 && field.type=='file' && subsections[subsectionKeys.key][field.parentIndex[2]].value"
+                                        class="file-suggest">* Total file size should not exceed 30MB</small>
+                                    <div *ngIf="field.key == 95 && field.type=='file'" style="list-style: square;padding-left: 21px;">
+                                        <div *ngFor="let key of subsections[subsectionKeys.key][field.parentIndex[2]].options; let keyIndex=index"
+                                            class="file-list">
+                                            <p class="filetype" *ngIf="field.fileValue[key.value] && field.fileValue[key.value].length">{{key.value}}</p>
+                                            <li style="list-style-type: none" *ngFor="let value of field.fileValue[key.value]; let valueIndex=index;"><a
+                                                    *ngIf="!value.isDeleted" [attr.href]="value.attachmentId ? baseUrl + 'downloadAttached?attachmentId='+ value.attachmentId: null"
+                                                    target="_blank"><i class="fa fa-square  fa-xs" aria-hidden="true"></i>
+                                                    {{value.fileName}}</a>
+                                                <button *ngIf="!value.isDeleted" class="btn btn-default proceed-btn removeFileselection"
+                                                    type="btn" (click)="clearSelections(valueIndex, k, subsectionKeys.key , i, $event, key.value) ">Remove</button>
+                                            </li>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Default unchecked -->
+<!-- <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input checked" id="defaultUnchecked" [checked]="false">
+    <label class="custom-control-label" for="defaultUnchecked">I confirm all the informations provided are correct.</label>
+</div> -->
+<div class="checkbox-group" (click)="SelectAgreeCorrectInformation()" style="font-size: 15px;margin-top: 20px;">
+                        <!-- <input mdbDeepDirective  type="checkbox" class="filled-in" id="{{field.key+ '_' + opt.value}}"> -->
+                        <label  [ngClass]="[formDataSave.agreeCorrectInformation ? 'checked':'']">Has the DC/DM reviewed and approved the data being submitted?</label>
+                      </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-10 offset-md-1 text-right" [ngClass]="{'d-none': !formSubSections}">
+                            <button class="btn btn-default back-btn" type="submit" (click)="previousSection()">Previous</button>
+                            <button class="btn btn-default back-btn" type="submit" (click)="saveFormData()">Save</button>
+                            <button class="btn btn-default proceed-btn button-save" [disabled]='!formDataSave.agreeCorrectInformation' type="submit" (click)="demoBasic.show()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-notify modal-success" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">Submit Success</p>
+
+                <button type="button" class="close" aria-label="Close" (click)="clearFormAndRedirect()">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa fa-check fa-4x animated rotateIn"></i>
+                    <p>Data submitted successfully.</p>
+                </div>
+                <button type="button" class="btn success-modal-btn" (click)='clearFormAndRedirect()'>Ok</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<div class="modal fade" id="centralModalFailed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">Submit Failed</p>
+
+                <button type="button" class="close" aria-label="Close" (click)="clearFormAndRedirect()">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa fa-close fa-4x animated rotateIn"></i>
+                    <p>Data submission failed because of some server error. Please try after some time.</p>
+                </div>
+                <button type="button" class="btn btn-danger mx-auto d-block" (click)='clearFormAndRedirect()'>Ok</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+
+<div mdbModal #demoBasic="mdb-modal" class="modal fade" id="data_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-fluid" role="document">
+        <div class="modal-content ">
+            <div class="modal-header container">
+                <h4 class="modal-title w-100" id="myModalLabel">Report Preview</h4>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="demoBasic.hide()">
+                        <span aria-hidden="true">×</span>
+                    </button> -->
+            </div>
+            <div class="modal-body container">
+                <div *ngFor="let sections of formSections  | objIterate; let m=index;">
+                    <!-- <div *ngFor="let sectionKeys of sections | objIterate; let l=index"> -->
+                    <h2 class="list-heading" style="margin-top: 30px;">{{sections.key}}</h2>
+                    <div *ngFor="let subsections of formSections[sections.key]; let k=index;">
+                        <div *ngFor="let subsectionKeys of subsections | objIterate; let j=index">
+                            <div class="row">
+                                <div class="col-md-12 sub-headings" style="color: #1f4a7c;    margin-top: 25px; font-size: 16px; margin-bottom: 20px;">{{subsectionKeys.key}}</div>
+                            </div>
+
+                            <div *ngFor="let field of subsections[subsectionKeys.key]; let i = index;" class="row">
+                                <div class="col-md-10" *ngIf="field.type != 'file'" [ngClass]="[field.dependentCondition[0] == 'isDependencyYes' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'No'
+                                || (field.dependentCondition[0] == 'isDependencyGreaterthanzero' && subsections[subsectionKeys.key][field.parentIndex[2]].value != 'undefined' && subsections[subsectionKeys.key][field.parentIndex[2]].value != ''  && subsections[subsectionKeys.key][field.parentIndex[2]].value<=0)?'d-none':'']">
+                                    {{field.label}} : <b *ngIf="field.key != 94">{{field.value}}</b>
+                                    <p *ngIf="field.key == 9 && field.othersValue">Others: {{field.othersValue}}</p>
+                                </div>
+                                <div class="col-md-10" *ngIf="field.type == 'file' && field.key != 95 " [ngClass]="[field.dependentCondition[0] == 'isDependencyYes' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'No'
+                                || (field.dependentCondition[0] == 'isDependencyGreaterthanzero' && subsections[subsectionKeys.key][field.parentIndex[2]].value != 'undefined' && subsections[subsectionKeys.key][field.parentIndex[2]].value != ''  && subsections[subsectionKeys.key][field.parentIndex[2]].value<=0)?'d-none':'']">
+                                    <ul style="list-style: square;">
+                                        <li *ngFor="let fileValue of field.fileValue"><b>{{fileValue.fileName}}</b></li>
+                                    </ul>
+
+                                </div>
+                                <div class="col-md-10" *ngIf="field.key == 95 && field.type=='file'" style="list-style: square;"
+                                    [ngClass]="[field.dependentCondition[0] == 'isDependencyYes' && subsections[subsectionKeys.key][field.parentIndex[2]].value == 'No'
+                                || (field.dependentCondition[0] == 'isDependencyGreaterthanzero' && subsections[subsectionKeys.key][field.parentIndex[2]].value != 'undefined' && subsections[subsectionKeys.key][field.parentIndex[2]].value != ''  && subsections[subsectionKeys.key][field.parentIndex[2]].value<=0)?'d-none':'']">
+                                    <!-- {{(field.dependentCondition[0] == 'isDependencyGreaterthanzero' && subsections[subsectionKeys.key][field.parentIndex[2]].value != 'undefined' && subsections[subsectionKeys.key][field.parentIndex[2]].value != ''  && subsections[subsectionKeys.key][field.parentIndex[2]].value<=0)}}     -->
+                                    <div *ngFor="let key of subsections[subsectionKeys.key][field.parentIndex[2]].options; let keyIndex=index">
+                                        <p class="filetype" *ngIf="field.fileValue[key.value] && field.fileValue[key.value].length">{{key.value}}</p>
+                                        <li *ngFor="let value of field.fileValue[key.value]; let valueIndex=index;"
+                                            style="padding-left: 22px;"><b>{{value.fileName}}</b>
+
+                                        </li>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="modal-footer container">
+                <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="demoBasic.hide()"
+                    mdbRippleRadius>Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm waves-light" mdbRippleRadius (click)="demoBasic.hide(); submitFormData()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="toastsuccess"><i class="fa fa-check" aria-hidden="true"></i> Saved successfully</div>
+<app-uploading-modal></app-uploading-modal>

@@ -1,0 +1,81 @@
+
+
+.side-bar-container{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 35px;
+}
+ul.menu-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+.submenu-list{
+    display: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style-type: none;
+    margin-top: 10px;
+}
+.submenu-list li{
+    padding: 2px 5px;
+    border: 1px solid #BBB;
+    margin-bottom: 5px;
+    background-color: #79a1c3;
+}
+.submenu-list li:hover {
+    background: #1f4a7c;
+    color: #fff !important;
+}
+.menu-list a{
+    cursor: pointer;
+}
+li.menu {
+    margin-bottom: 10px;
+    background-color: #CCC;
+    padding: 5px 10px;
+}
+.menu span.icons .fa-minus{
+    display: none;
+}
+.menu span.icons .fa-plus{
+    display: inline-block;
+}
+.menu.active span.icons .fa-plus{
+    display: none;
+}
+.menu.active span.icons .fa-minus{
+    display: inline-block;
+}
+li.menu > a {
+    font-size: 18px;
+}
+ul.submenu-list li a {
+    font-size: 13px;
+}
+.menu span.icons{
+    float: right;
+}
+.menu span.icons i{
+    cursor: pointer;
+}
+.menu-list li.menu a input, li.menu.gu-mirror a input {
+    display: inline-block;
+    max-width: max-content;
+}
+.menu-list li.menu a input[type=text]{
+    background-color: #fff;
+    border-bottom: none;
+    color: black;
+}
+.menu-list li.menu a input[type=text]:disabled{
+    background-color: #cccccc;
+    border-bottom: none;
+    color: black;
+}
+li.menu.gu-mirror{
+    list-style-type: none;
+    border-bottom: none;
+}
+li.menu.gu-mirror a input{
+    border-bottom: none;
+}

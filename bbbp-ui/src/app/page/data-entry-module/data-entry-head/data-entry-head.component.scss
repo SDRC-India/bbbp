@@ -1,0 +1,22 @@
+// .data-heads{
+//     list-style: none;
+// }
+// .data-head-list{
+//     padding: 15px;
+//     border-bottom: 1px solid #ddd;   
+//     cursor: pointer;   
+//     font-size: 19px;
+// }
+// .data-head-list > a{    
+//     color:#fff;   
+// }
+// .data-head-list > a.active{    
+//     background-color: #fff;
+//     color: #000;
+// }
+li.data-head-list.active {
+    background-color: #1f4a7c;
+}
+li.data-head-list.active::before{
+    background-color: #80a7e0;
+}

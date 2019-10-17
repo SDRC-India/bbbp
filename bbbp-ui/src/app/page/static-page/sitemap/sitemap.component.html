@@ -1,0 +1,54 @@
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container terms_use_text" style="margin-bottom: 50px;"> <!-- margin bottom given to resolve bug 3373-->
+    <div class="cont_header_container"> 
+      <h3 class="cont_header">Sitemap</h3>  
+    </div>    
+    <div class="row">      
+         <div class="col-md-12 col-sm-12 col-xs-12">
+             <ul>
+             <li class="main-menu-list" id="{{'list' + i}}" 
+             *ngFor="let menu of staticService.siteMenus; let i=index;">
+                <a *ngIf="!menu.data.length" routerLink="/{{menu.url}}">{{menu.section}}</a>
+                <a *ngIf="menu.data.length">{{menu.section}}</a>
+                <ul class="submenus" *ngIf="menu.data.length">
+                    <li [hidden]="!(submenu.title=='User Guide' ? app.checkLoggedIn() ? submenu.title : '': submenu.title)" class="submenu-item" *ngFor="let submenu of menu.data">
+                    <a routerLink="/{{submenu.url}}" >{{submenu.title}} </a></li>
+                </ul>
+            </li>
+            <li>
+                <a>Dashboard</a>
+                <ul class="submenus">
+                    <li class="submenu-item">
+                        <a routerLink="/dashboard/index-view" >Thematic View </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a routerLink="/raw-report">Report</a>
+                        </li>
+                    <li class="submenu-item">
+                        <a routerLink="/snapshot-view">Snapshot View</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a routerLink="/data-entry-selection">Data Entry</a></li>
+            <li><a routerLink="/drafts">Drafts</a></li>
+            <li>
+                <a >Management</a>
+                <ul class="submenus">
+                        <li class="submenu-item">
+                            <a routerLink="/user-management" >User Management </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a routerLink="/cms">CMS</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a routerLink="/upload-csr">Upload CSR</a>
+                        </li>
+                    </ul>
+             </li>
+        </ul>
+           </div>
+     </div>
+ </div>
+ <div class="blank-height">
+  </div>

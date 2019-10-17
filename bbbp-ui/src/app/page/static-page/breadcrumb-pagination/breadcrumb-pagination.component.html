@@ -1,0 +1,16 @@
+
+
+<div class="container breadcrumbs-top">
+    <div class="row">
+          <ol class="breadcrumb">You are here :&nbsp;&nbsp;
+              <li><a routerLink="/"><i class="fa fa-home">&nbsp;Home</i></a></li>
+              <li *ngFor="let bc of newBreadcrumbs" class="breadcrumb-item mainMenulink">
+                    <ul class="breadcrumbMenu">
+                        <li class="breadcrumb-item active">
+                                <a class="active-route" routerLinkActive="active">{{ bc.label }}</a>
+                        </li>
+                    </ul>
+              </li>
+            </ol>
+	  </div>
+</div> 

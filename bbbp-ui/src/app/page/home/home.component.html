@@ -1,0 +1,303 @@
+<style>
+    #infocus-area:before {
+        width: 88px;
+        height: 85px;
+        position: absolute;
+        overflow: hidden;
+        background: url(./assets/icons/bbbp_in-focus_icon_design-3.png) no-repeat;
+        left: 50%;
+        background-size: 100%;
+        content: '';
+        margin: -53px 0 0 -54px;
+    }
+</style>
+
+
+<div *ngIf="appService.logoutSuccess" style="border: 1px solid #549054; background: #ddd; text-align: center;">
+    Successfully logged out.
+</div>
+<app-slider></app-slider>
+
+<div class="container margin-top-infocus background-highlight">
+    <!-- <div class="row" id="infocus-area">
+        <h3 class="head-info-infocus text-center">IN FOCUS</h3>
+    </div> -->
+    <div class="row" *ngIf="staticService.contentDetails.length">
+        <div class="col-md-12 display-inline-infocus">
+            <div class="col-md-3 infocus-each-block">
+                    <h4 class="infocus-block-title">{{staticService.contentSection['Innovative initiatives'].section}}</h4>
+                <div class="col-md-12 image-border padding-zero">
+                       
+                    <img class="infocus-image-size" 
+                    src="assets/images/gallery/innovative.jpg"
+                    
+                    >
+                </div>
+                <div class="col-md-12 initial-contents-of-innerpage">
+                    <p class="infocus-block-initial-contents-block block-with-text">{{staticService.contentSection['Innovative initiatives'].data[0].content}}</p>
+                </div>
+                <div class="col-md-12" routerLink="pages/Innovative initiatives">
+                    <button type="button" class="btn read-more-btn">READ MORE
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 infocus-each-block">
+                    <h4 class="infocus-block-title"> {{staticService.contentSection['Activities'].section}}</h4>
+                <div class="col-md-12 image-border padding-zero">
+                       
+                    <img class="infocus-image-size"
+                    src="assets/images/gallery/activity.jpg">
+                </div>
+                <div class="col-md-12 initial-contents-of-innerpage">
+                  
+                    <p class="infocus-block-initial-contents-block block-with-text">{{staticService.contentSection['Activities'].data[0].content}}</p>
+                </div>
+                <div class="col-md-12" routerLink="pages/activities">
+                    <button type="button" class="btn read-more-btn">READ MORE
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 infocus-each-block">
+                    <h4 class="infocus-block-title"> {{staticService.contentSection['Guidelines'].section}}</h4>
+                <div class="col-md-12 image-border padding-zero">
+                       
+                    <img class="infocus-image-size"
+                    src="assets/images/gallery/guideline.jpg">
+                </div>
+                <div class="col-md-12 initial-contents-of-innerpage">
+                 
+                    <p class="infocus-block-initial-contents-block block-with-text">{{staticService.contentSection['Guidelines'].data[0].content}}</p>
+                </div>
+                <div class="col-md-12" routerLink="pages/guidelines">
+                    <button type="button" class="btn read-more-btn">READ MORE
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+
+            </div>
+            <div class="col-md-3 infocus-each-block">
+                <div class="col-md-12">
+                    <h4 class="infocus-block-title">{{staticService.contentSection[whatnew].section}} </h4>
+                </div>
+                <div class="col-md-12 padding-zero">
+                    <ul class="notification-block">
+                        <marquee class="notification-block-lst"  direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+                           
+                            <li [hidden]="!whatnew.isPriority" *ngFor="let whatnew of staticService.contentSection[whatnew].data">
+                                <a (click)="getNewsContent(whatnew)" class="notice-anchr">{{whatnew.title}}
+                                    <img *ngIf="whatnew.isNew" src="assets/images/new.gif" width="70px;" height="20px;">
+                                </a>
+                            </li>
+                            <li [hidden]="whatnew.isPriority"  *ngFor="let whatnew of staticService.contentSection[whatnew].data">
+                                <a (click)="getNewsContent(whatnew)" class="notice-anchr">{{whatnew.title}}
+                                    <img *ngIf="whatnew.isNew" src="assets/images/new.gif" width="70px;" height="20px;">
+                                </a>
+                            </li>
+                        </marquee>
+                        <div class="col-md-12" routerLink="pages/whatsnew">
+                            <button type="button" class="btn read-more-btn">READ MORE
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="staticService.contentDetails.length">
+        <div class="col-md-12 margin-top-infocus-block-2 display-inline-infocus">
+            <div class="col-md-6 infocus-each-block-dist">
+                <div class="col-md-12 dist-block">
+                    <div class="dist-info-head">{{staticService.contentSection['Achievement and Progress'].section}}</div>
+                    <div class="views-row views-row-3 views-row-odd dist-block-height">
+
+                        <div class="">
+                            <div class="do_image" style="position: relative;">
+                                <div id="demo" class="carousel slide" data-ride="carousel">
+
+                                    <!-- Indicators -->
+                                    <!-- <ul class="carousel-indicators">
+                                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                        <li data-target="#demo" data-slide-to="1"></li>
+                                        <li data-target="#demo" data-slide-to="2"></li>
+                                    </ul> -->
+
+                                    <!-- The slideshow -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div>
+                                                <p class="dist-innovation-block">
+                                                    <img class="slider-img"
+                                                    src="assets/images/gallery/achievement.jpg"
+                                                      height="167"
+                                                        alt="" title="" align="left"> {{staticService.contentSection['Achievement and Progress'].data[0].content}}
+                                                </p>
+                                                <div class="col-md-12" routerLink="pages/achievements">
+                                                    <button type="button" class="btn read-more-btn dist-block-read-more-btn">READ MORE
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="carousel-item">
+                                            <div>
+                                                <p class="dist-innovation-block">
+                                                    <img class=" slider-img"
+                                                    src="assets/images/gallery/achievement2.jpg"
+                                                      height="167"
+                                                        alt="" title="" align="left"> {{staticService.contentSection['Achievement and Progress'].data[1].content}}
+                                                </p>
+                                                <div class="col-md-12" routerLink="pages/achievements">
+                                                    <button type="button" class="btn read-more-btn dist-block-read-more-btn">READ MORE
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Left and right controls -->
+                                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 infocus-each-block">
+                    <h4 class="infocus-block-title">{{staticService.contentSection['Photo Gallery'].section}}</h4>
+                <div class="col-md-12 image-border padding-zero">
+                      
+                    <img class="infocus-image-size"
+                    src="assets/images/gallery/homephotogallery.jpg">
+                </div>
+                <div class="col-md-12 initial-contents-of-innerpage">
+                 
+                    <p class="infocus-block-initial-contents-block block-with-text">{{staticService.contentSection['Photo Gallery'].data[0].content}}</p>
+                </div>
+                <div class="col-md-12" routerLink="pages/photo-gallery">
+                    <button type="button" class="btn read-more-btn">READ MORE
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3 infocus-each-block">
+                    <h4 class="infocus-block-title">{{staticService.contentSection['Video Gallery'].section}}</h4>
+                <div class="col-md-12 image-border padding-zero">
+                     
+                    <img class="infocus-image-size" 
+                    
+                    src="assets/images/gallery/homevideogallery.jpg">
+                </div>
+                <div class="col-md-12 initial-contents-of-innerpage">
+                   
+                    <p class="infocus-block-initial-contents-block block-with-text">{{staticService.contentSection['Video Gallery'].data[0].content}}</p>
+                </div>
+                <div class="col-md-12" routerLink="pages/video-gallery">
+                    <button type="button" class="btn read-more-btn">READ MORE
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="footer-wrapper">
+    <div class="container">
+        <div class="col-md-12 responsive-slider-blog">
+            <div class="row">
+                <div class="col-md-4 wrapper-image">
+                    <!-- <a> -->
+                    <img src="./assets/images/logos/fb.jpg" class="img-responsive" width="78%">
+                    <!-- </a> -->
+                </div>
+                <div class="col-md-4 wrapper-image">
+                    <!-- <a> -->
+                    <img src="./assets/images/logos/gov.jpg" class="img-responsive" width="78%">
+                    <!-- </a> -->
+                </div>
+                <div class="col-md-4 wrapper-image">
+                    <a href="https://www.youtube.com/user/BetiBachaoBetiPadhao" target="_blank">
+                        <img src="./assets/images/logos/youtube.jpg" class="img-responsive" width="78%">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-footer-logo">
+            <div class="ad_footer_block">
+                <div class="region region-footer">
+                    <div id="block-block-61" class="block block-block">
+                        <div class="content">
+                            <script type="text/javascript" src="https://www.mygov.in/footer_service/footerservice.js"></script>
+                            <div class="service-footer-wrapper">
+                                <div class="service-footer-wrapper">
+                                    <div class="footer-logo">
+                                        <ul>
+                                                <li>
+                                                    <a title="Swachh Bharat" alt="Swachh Bharat" href="https://swachhbharat.mygov.in/" target="_blank">
+                                                            <img title="Swachh Bharat (External Site that opens in a new window)" alt="Swachh Bharat" class="img-responsive" src="https://www.mygov.in/footer_service/images/swachh-bharat.png">
+                                                        </a>
+                                                    </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.wcd.nic.in/">
+                                                    <img title="MWCD (External Site that opens in a new window)" alt="MWCD" class="img-responsive" src="./assets/images/BBBP_WCD_logo.png" width="50px">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://www.digitalindia.gov.in">
+                                                    <img title="Digital India (External Site that opens in a new window)" alt="Digital India" class="img-responsive" src="https://www.mygov.in/footer_service/images/digital-india-logo.png">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://data.gov.in">
+                                                    <img title="Data Portal (External Site that opens in a new window)" alt="Data Portal" class="img-responsive" src="https://www.mygov.in/footer_service/images/data-gov-logo.png">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="https://india.gov.in">
+                                                    <img title="National Portal of India (External Site that opens in a new window)" alt="National Portal of India" class="img-responsive" src="https://www.mygov.in/footer_service/images/india-gov-logo.png">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="https://www.mygov.in">
+                                                    <img title="MyGov (External Site that opens in a new window)" alt="MyGov" class="img-responsive" src="https://www.mygov.in/footer_service/images/mygov-footer-logo.png">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a title="MeitY (External Site that opens in a new window)" alt="MeitY" target="_blank" href="http://meity.gov.in/">
+                                                    <img title="Meity (External Site that opens in a new window)" alt="Meity" class="img-responsive" src="https://www.mygov.in/footer_service/images/Meity_logo.png">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="http://pmindia.gov.in">
+                                                    <img title="PMINDIA (External Site that opens in a new window)" alt="PMINDIA" class="img-responsive" src="https://www.mygov.in/footer_service/images/pm-india-logo.png">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

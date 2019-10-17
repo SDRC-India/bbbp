@@ -1,0 +1,21 @@
+
+{ "sectors": [
+     
+        {
+            "sectorId": 1,
+            "sectorName": "Child Sex Ratio",           
+            "controlType": "dropdown",
+            "type":"option",
+            "indicators":[     
+                {
+                    "indicatorId": 12,
+                    "indicatorName": "some thing",
+                    "controlType":"dropdown",
+                    "type":"option"
+                }           
+            ]
+        }
+]
+
+
+}

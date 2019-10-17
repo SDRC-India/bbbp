@@ -1,0 +1,93 @@
+
+.contact-us-head
+{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 23px;
+    padding: 6px 0 6px 10px;
+    color: #1f497b;
+    border-bottom: 1px solid;
+    width: 100%;
+}
+.drp-list {
+    left: -202px !important;
+    width: 100% !important;
+}
+.address-header {
+    font-size: 18px !important;
+    margin-top: 10px;
+    font-weight: 400;
+    color: #1f497b;
+    font-style: normal;
+    margin-bottom: 15px;
+}
+.input-field-border {
+    padding: 6px ;
+}
+.contact-textarea {
+    width: 94% !important;
+    border: 1px solid #cccccc;
+    padding: 0 15px;
+    color: #797979;
+    margin-bottom: 0;
+    border-radius: 3px;
+    height: 100px;
+    resize: none;
+}
+
+.btn-org
+{
+    margin: 21px 0px 5px -41px !important;
+   
+}
+.btn-org:hover{
+    background-color: #1f4a7c !important;
+}
+.mandatory-star
+{
+    color:red;
+}
+
+// @swarna
+
+.input-holder {
+    padding-left: 0;
+}
+.dropdown-menu-btn {
+   width: 100%;
+}
+
+.display-flex {
+    display: inline-flex;
+}
+.feedback-block {
+    width: 100%;
+}
+.address-block {
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 2px 2px #dddddd94;
+}
+.blank-height {
+    height: 50px;
+}
+.btn-default.dropdown-toggle {
+    background-color: #1f4a7c !important;
+    padding: 0 12px 0 12px !important;
+}
+.address {
+    padding: 20px;
+}
+.feedback-div {
+    padding: 20px 0 0 40px;
+}
+.contact-block {
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+@media(max-width: 991px) {
+    .drp-list {
+        left: -97px !important;
+        min-width: 130px !important;
+    }
+}
+

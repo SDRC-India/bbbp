@@ -1,0 +1,141 @@
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+  <div class="row" *ngIf="staticService.contentData">
+    <div class="col-md-12">
+      <h2 class="title-main">Revalidation Letters
+        <div class="col-md-3 searchData searchBoxInHeader inner-addon right-addon">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+        </div>
+      </h2>
+    </div>
+    <div class="col-md-12 short-description margin-left-description">{{staticService.contentData.viewType}}</div> 
+    <div class="col-12 hidden-sm-up">
+      <div class="btn-group" *ngIf="selectedItem">
+        <button class="btn btn-color" type="button" data-toggle="dropdown">
+          <span>{{selectedItem.section}}</span>
+          <i class="fa fa-caret-down fa-caret fa-lg"></i>
+        </button>
+        <div class="dropdown-menu mobile-display">
+          <li class="sanction-head-list" *ngFor="let items of staticService.contentDetails  let i = index" [ngClass]="{'active': selectedItem == items}">
+            <a (click)="getYearData(i,$event, items)">{{items.section}}</a>
+          </li>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 hidden-xs-down  table-margin">
+      <div class="vertical-menu">
+        <li class="sanction-head-list first-list" *ngFor="let items of staticService.contentDetails  let i = index" [ngClass]="{'active': selectedItem == items}" >
+          <a (click)="getYearData(i,$event, items)" class="active">{{items.section}}</a>
+        </li>
+      </div>
+    </div>
+    
+    <div class="col-md-9" *ngIf="(dataSection | searchText : searchTexts).length != 0 || showOrderData">
+        <div class="container state-district-selection-block padding-zero">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="state" class="control-label user-label" style="width:27%">Select State :</label>
+                <div class="input-holder">
+                  <div class="btn-group" style="width:100%;" dropdown>
+                    <input type="text" class="dropdown-input" style="padding: 10px;" readonly placeholder="Select state"
+                      name="" [(ngModel)]="selectedState">
+                    <button type="button" style="padding: 0" dropdownToggle data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false"
+                      class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                      mdbRippleRadius></button>
+                    <div class="dropdown-menu drp-list cms-dropdown-lists">
+                      <a class="dropdown-item" style="font-size: 13px;"
+                        *ngFor="let state of areaDetails | cmsAreaFilter:2:1"
+                        (click)="selectState(state)">{{state.areaName}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="district" class="control-label user-label" style="width:31%">Select District :</label>
+                  <div class="input-holder">
+                    <div class="btn-group" style="width:100%;" dropdown>
+                      <input type="text" class="dropdown-input" style="padding: 10px;" readonly placeholder="Select district"
+                        name="" [(ngModel)]="selectedDistrict">
+                      <button type="button" style="padding: 0" dropdownToggle data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"
+                        class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                        mdbRippleRadius></button>
+                      <div class="dropdown-menu drp-list cms-dropdown-lists">
+                        <a class="dropdown-item" style="font-size: 13px;"
+                          *ngFor="let district of areaDetails | cmsAreaFilter:3:stateParentAreaId"
+                          (click)="selectDistrict(district)">{{district.areaName}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-9" *ngIf="(dataSection | searchText : searchTexts).length == 0 || showOrderData == false">
+              <h4 class="text-center no-data-found">No Data Found</h4>
+            </div>
+             <div  [hidden]="(dataSection | searchText : searchTexts).length == 0" *ngIf="showOrderData">
+      <table class="table table-striped  table-margin" id="mytable">
+        <thead>
+          <tr>
+            <th class="th-header width-col-one" (click)="sort('publishedDate')">Date
+              <i class="fa fa-caret-up fa-lg fa-sorting" [ngClass]="{'fa-sort': column != 'publishedDate', 
+              'fa-sort-asc': (column == 'publishedDate' && !isDesc), 
+              'fa-sort-desc': (column == 'publishedDate' && isDesc) }" aria-hidden="true"></i>
+            </th>
+            <th class="th-header width-col-two">State</th>
+            <th class="th-header width-col-two">District</th>
+            <th class="th-header width-col-two">Title</th>
+            <th class="th-header width-col-three">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let items of dataSection | searchText : searchTexts | paginate: { itemsPerPage: 5, currentPage: p } | orderBy: {property: column, direction: direction} let i = index;">
+            <td> <span [hidden]="items.publishedDate != ''">Date not available</span>{{items.publishedDate}}</td>
+            <td class="title-td">{{items.areaLevel =='district' ? items.parentAreaName : items.areaName}}</td>
+            <td class="title-td">{{items.areaLevel =='district' ?  items.areaName : '-'}}</td>
+            <td class="title-td">{{items.title}}</td>
+            <td class="pdf-left">
+                <div>
+                    <img [hidden]="items.fileName == ''" class="preview-icon preview-icon-table" title="Preview file before download" src="./assets/icons/eye-solid.svg" (click)=openPDF(items.fileName)>
+                    <a [hidden]="items.fileName == ''" title="Preview file before download" (click)=openPDF(items.fileName)>
+                      Preview
+                    </a>
+                  </div>
+                <div class="file-in-table">
+                  <span [hidden]="items.fileName == ''" class="pdf-icon-border pdf-download-block">
+                    <a (click)="downloadFiles(items.fileName)" title="Download PDF">
+                    <i class="fa fa-download downloaded-icon downloaded-icon-table"  aria-hidden="true"></i>
+                  </a></span>
+                  <span [hidden]="items.fileName != ''">File not available</span>
+                  <span class="file-size-text" [hidden]="items.fileName == ''">File Size: {{items.size}}</span>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <pagination-controls class="pagination" (pageChange)="p = $event" *ngIf="dataSection.length > 5"></pagination-controls>
+    </div>
+   
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-width modal-width-preview">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">{{staticService.fileTitle}}</h4>
+      </div>
+      <div class="modal-body preview-file-body">
+        <embed [src]="url" frameborder="0" width="100%" height="530px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default preview-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

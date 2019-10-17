@@ -1,0 +1,150 @@
+
+<div class="container">
+    <div class="row">
+        <h2 class="title-main">Report</h2>
+    
+    
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class="row">
+                <!-- <div class="col-md-2"></div> -->
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <label class="col-md-5 label-right">Report Type :</label>
+                        <div class="col-md-7 input-holder">
+                            <div class="form-group">
+                                <div class="input-holder">
+                                    <div class="btn-group dropdown-menu-btn" dropdown>
+                                        <input type="text" class="dropdown-input input-tab" readonly placeholder="Select">
+                                        <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Report 1</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Report 1</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Report 1</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="errorRole" class="error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <label class="col-md-5 label-right">Select State :</label>
+                        <div class="col-md-7 input-holder">
+                            <div class="form-group">
+                                <div class="input-holder">
+                                    <div class="btn-group dropdown-menu-btn" dropdown>
+                                        <input type="text" class="dropdown-input input-tab" readonly placeholder="Select">
+                                        <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Andhra pradesh</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Arunachal Pradesh</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Assam</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Bihar</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Chhattisgarh</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Goa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="errorRole" class="error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="row">
+                      <label class="col-md-5 label-right">Select District :</label>
+                      <div class="col-md-7 input-holder">
+                          <div class="form-group">
+                              <div class="input-holder">
+                                  <div class="btn-group dropdown-menu-btn" dropdown>
+                                      <input type="text" class="dropdown-input input-tab" readonly placeholder="Select">
+                                      <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                          mdbRippleRadius></button>
+                                      <div class="dropdown-menu drp-list">
+                                        <a class="dropdown-item lists" style="font-size: 13px;">Anantapur</a>
+                                        <a class="dropdown-item lists" style="font-size: 13px;">Chittoor</a>
+                                        <a class="dropdown-item lists" style="font-size: 13px;">East Godavari</a>
+                                        <a class="dropdown-item lists" style="font-size: 13px;">Guntur</a>
+                                        <a class="dropdown-item lists" style="font-size: 13px;">Sri Potti Sri Ramulu Nellore</a>
+                                        <a class="dropdown-item lists" style="font-size: 13px;">Prakasam</a>   
+                                        <a class="dropdown-item lists" style="font-size: 13px;">West Godavari</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <span id="errorRole" class="error"></span>
+                      </div>
+                  </div>
+              </div>
+            
+               <div class="col-md-4">
+                    <div class="row">
+                      
+                        <label class="col-md-5 label-right">From:</label>
+                        <div class="col-md-7 input-holder">
+                            <div class="form-group">
+                                <!-- <div class="input-holder">
+                                    <div class="btn-group dropdown-menu-btn" dropdown>
+                                        <input type="text" class="dropdown-input input-tab" readonly placeholder="Select">
+                                        <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Andhra p</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Andhra pradesh</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Andhra pradesh</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Andhra pradesh</a>
+                                            <a class="dropdown-item lists" style="font-size: 13px;">Andhra pradesh</a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <my-date-picker name="toDate" [options]="myToDatePickerOptions" [(ngModel)]="fromModel" required placeholder="Select from Date" class="rawReportCalnder"></my-date-picker>
+                            </div>
+                            <span id="errorRole" class="error"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      
+                        <label class="col-md-5 label-right">To:</label>
+                        <div class="col-md-7 input-holder">
+                            <div class="form-group">
+                                <!-- <div class="input-holder">
+                                    <div class="btn-group dropdown-menu-btn" dropdown>
+                                        <input type="text" class="dropdown-input input-tab" readonly placeholder="Select">
+                                        <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item lists" style="font-size: 13px;"></a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <my-date-picker name="toDate" [options]="myToDatePickerOptions" [(ngModel)]="toModel" required placeholder="Select To Date" class="rawReportCalnder"></my-date-picker>
+                            </div>
+                         
+                        </div>
+                    </div>
+                </div>
+                
+              
+            </div>
+          </div>
+         
+          </div>
+          </div>
+          <div class="col-md-12">
+          <div class="text-center">
+              <input class="report-submit" type="submit" value="Download">
+          </div>
+        </div>
+          </div>
+            

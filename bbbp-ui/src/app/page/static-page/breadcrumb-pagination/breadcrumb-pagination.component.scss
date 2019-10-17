@@ -1,0 +1,23 @@
+
+.breadcrumbs-top {
+    margin-top: 10px;
+}
+
+.breadcrumb {
+    padding-left: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 12px;
+    background: none;
+}
+.breadcrumbMenu {
+    list-style: none;
+    display: inline-flex;
+    padding-left: 0;
+    margin-left: -5px;
+}
+.active-route {
+    cursor: default;
+}
+
+  

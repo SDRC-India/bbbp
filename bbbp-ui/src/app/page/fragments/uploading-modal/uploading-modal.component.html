@@ -1,0 +1,26 @@
+<div id="uploadingFiles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+      <!--Content-->
+      <div class="modal-content">
+          <!--Header-->
+          <div class="modal-header">
+              <p class="heading lead">Uploading Files</p>
+  
+              <!-- <button type="button" class="close" aria-label="Close" (click)="clearFormAndRedirect()">
+                  <span aria-hidden="true" class="white-text">&times;</span>
+              </button> -->
+          </div>
+  
+          <!--Body-->
+          <div class="modal-body">
+              <div class="text-center">
+                  <img src="assets/images/uploading.gif" width="100px">
+                  <p>Please wait..</p>
+                  <h5><b>{{((formData.totalNumberFilesUploaded+1) * 100 / formData.selectedFilesToUpload.length).toFixed() }}%</b> completed</h5>
+              </div>
+              <!-- <button type="button" class="btn btn-danger mx-auto d-block" (click)='clearFormAndRedirect()'>Ok</button> -->
+          </div>
+      </div>
+      <!--/.Content-->
+  </div>
+  </div>

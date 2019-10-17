@@ -1,0 +1,148 @@
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 contact-block">
+            <h3 class="contact-us-head">Contact Us</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 address-block">
+            <div class="address">
+                <h4 class="address-header">Address</h4>
+                <p>
+                    <strong>Ministry of Women and Child Development, Government of India</strong>
+                    <br> Shastri Bhawan, New Delhi
+                    <br> 011-23386423
+                    <br> nic-mwcd@gov.in
+                    <br>
+                </p>
+                <br>
+                <p>Web Information Manager</p>
+                <p>
+                    <strong>Shri B. B. Baseshankar</strong>
+                    <br> Under Secretary
+                    <br> Shastri Bhawan, New Delhi
+                    <br> 011-23386423
+                    <br> bbb.shankar60@gov.in
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 address-block feedback-div">
+            <h4 class="address-header">Feedback Form</h4>
+            <div class="row form-group display-flex width-full">
+                <div class="col-md-6">
+                    <label class="col-md-12 padding-zero">Name :
+                        <span class="mandatory-star">*</span>
+                    </label>
+                    <div class="col-md-12 padding-zero">
+                        <input maxlength="30" onpaste="return false" class="input-field-border" type="text" (keyup)="testName()" [(ngModel)]="name" name="name" value="" size="40" aria-required="true"
+                            aria-invalid="false">
+                    </div>
+                    <span id="errorName" class="error">{{errorName}}</span>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12 padding-zero">Designation :</label>
+                    <div class="col-md-12 padding-zero">
+                        <input maxlength="30" class="input-field-border" type="text" [(ngModel)]="designation" name="designation" value="" size="40" aria-required="true"
+                            aria-invalid="false">
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group display-flex width-full">
+                <div class="col-md-6">
+                    <label class="col-md-12 padding-zero">Type of organization :</label>
+                    <div class="col-md-12 padding-zero">
+                        <div class="btn-group dropdown-menu-btn" dropdown>
+                            <input type="text" [(ngModel)]="organisationType" [ngModelOptions]="{standalone: true}" class="dropdown-input" readonly placeholder="Select Type">
+                            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                mdbRippleRadius></button>
+                            <div class="dropdown-menu drp-list">
+                                <a class="dropdown-item lists" style="font-size: 13px;" *ngFor="let type of organizationType" (click)="selectType(type)">{{type.value}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12 padding-zero">Name of Organization :</label>
+                    <div class="col-md-12 padding-zero">
+                        <input maxlength="50" class="input-field-border" type="text" [(ngModel)]="organisation" name="organisation" value="" size="40" aria-required="true"
+                            aria-invalid="false">
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group display-flex width-full">
+                <div class="col-md-6">
+                    <label class="col-md-12 padding-zero">Phone Number :</label>
+                    <div class="col-md-12 padding-zero">
+                        <input autocomplete="off" onpaste="return false" class="input-field-border" (keyup)="validatePhoneNo()" (keypress)="numberError($event)" id="phnNo" type="text" [(ngModel)]="contactNumber"
+                            name="contactNumber" maxlength="10" value="" size="40" aria-required="true" aria-invalid="false">
+                    </div>
+                    <span id="errorPhn" class="error">{{errorPhn}}</span>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-12 padding-zero">Email Id :
+                        <span class="mandatory-star">*</span>
+                    </label>
+                    <div class="col-md-12 padding-zero">
+                        <input onpaste="return false" maxlength="30" class="input-field-border" type="text" (keyup)="testEmail()" [(ngModel)]="email" name="email" value="" size="40" aria-invalid="false">
+                    </div>
+                    <span id="errorEmail" class="error">{{errorEmail}}</span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label class="col-md-10 padding-zero">Feedback :
+                        <span class="mandatory-star">*</span>
+                    </label>
+                    <div class="col-md-12 padding-zero feedback-block">
+                        <textarea maxlength="250" class="input-field-border" (keyup)="testFeedback()" [(ngModel)]="feedback" name="feedback"
+                           class="contact-textarea" aria-invalid="false"></textarea>
+                    </div>
+                    <div>
+                        <b>{{ feedbackLimit - feedback.length }}</b>
+                        characters left</div>
+                    <span id="errorComment" class="error">{{errorComment}}</span>
+                </div>
+            </div>
+            <!-- <re-captcha [(ngModel)]="captcha" (keyup)="testCaptcha()" (resolved)="resolved($event)" siteKey="6LfdQWoUAAAAAGfW03NYBaDOcaN--7NJo4L1723e"></re-captcha> -->
+          <!-- production site key: 6LdgzLUUAAAAANezwaYi_TQnulcgb2CgEQzwVAeJ-->
+          <!-- uat site key: 6LdZA28UAAAAABZtBI05TlKpVpI1GReL3pp8sIGn -->
+            <re-captcha [(ngModel)]="captcha" (keyup)="testCaptcha()" (resolved)="resolved($event)" siteKey="6LdgzLUUAAAAANezwaYi_TQnulcgb2CgEQzwVAeJ"></re-captcha>
+            <span id="errorCaptcha" class="error">{{errorCaptcha}}</span>
+            <div class="text-center">
+                <input type="submit" (click)="submitFeedback()" value="Submit" class="contact-submit">
+            </div>
+            <p id="submitted"></p>
+        </div>
+    </div>
+    <div class="row blank-height">
+    </div>
+</div>
+
+<div id="pop" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="successhead">
+                    <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp; SUCCESS</div>
+                <div class="successbody">Feedback submitted successfully !</div>
+                <button type="button" class="btn" data-dismiss="modal" (click)="reloadPage()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="error" class="error-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="errorhead">
+                    <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp; ERROR</div>
+                <div class="successbody">Some error found !</div>
+                <button type="button" class="btn" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

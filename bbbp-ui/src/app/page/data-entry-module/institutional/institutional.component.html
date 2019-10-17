@@ -1,0 +1,139 @@
+<div>
+  <div class="row question-row">
+    <div class="col-md-3 col-6 left-list display-cont hidden-xs-down">
+      <app-data-entry-head></app-data-entry-head>
+    </div>
+    <div class="col-12 hidden-sm-up">
+      <div class="btn-group">
+        <button class="btn btn-width" type="button" data-toggle="dropdown">
+          <!-- <span>Dat Entry Section</span> -->
+          <i class="fa fa-caret-down fa-caret fa-lg icon-drop"></i>
+        </button>
+        <div class="dropdown-menu data-head">
+          <li class="mobile-anchor">
+            <a routerLink="/data-entry">1.Inter-sectoral convergence/initiatives</a>
+          </li>
+          <li class="mobile-anchor">
+            <a routerLink="/data-entry-survival">2.Inter-sectoral initiatives for equal value of girl child</a>
+          </li>
+          <li class="mobile-anchor">
+            <a routerLink="/data-entry-training">3.Training and capacity-building </a>
+          </li>
+          <li class="mobile-anchor">
+            <a routerLink="/data-entry-awareness">4.Awareness/outreach activities </a>
+          </li>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9 content-sec">
+      <div class="col-md-10 offset-md-1 tab-margin">
+        <!-- <div class="row timeperiodHeading report-data-info-convergence">
+          <div class="col-md-12">
+            <h3 class="blink-text">Report Data only for the Selected Quarter: {{selectedQuarter}}, {{selectedYear}}</h3>
+          </div>
+        </div> -->
+        <div class="row timeperiodHeading report-data-info">
+          <div class="col-md-12">
+              <h3 class="blink-text">Report Data only for the Selected Quarter: {{selectedQuarter}}, {{selectedYear}}</h3>
+          </div>
+      </div>
+        <h2 class="list-heading">Inter-sectoral convergence/initiatives</h2>
+        <form>
+          <div *ngFor="let subsections of formSubSections; let k=index">
+            <div *ngFor="let subsectionKeys of subsections | objIterate; let j=index">
+              <div class="row">
+                <div class="col-md-12 sub-headings" style="color: #1f4a7c; font-size: 16px; margin-bottom: 20px;">{{subsectionKeys.key}}</div>
+              </div>
+
+              <div *ngFor="let field of subsections[subsectionKeys.key]; let i = index;" [ngClass]="[field.controlType == 'textbox'?'form-group':'', (field.dependentCondition[0] == 'isDependencyYes' && (subsections[subsectionKeys.key][field.parentIndex[2]].value == 'No' || !subsections[subsectionKeys.key][field.parentIndex[2]].value)) || 
+           (field.dependentCondition[0] == 'isDependencyGreaterthanzero' && (subsections[subsectionKeys.key][field.parentIndex[2]].value == undefined || subsections[subsectionKeys.key][field.parentIndex[2]].value == ''  || subsections[subsectionKeys.key][field.parentIndex[2]].value<=0))?'d-none':'']"
+                class="row">
+
+                <label [attr.for]="field.key" class="col-md-5" tabindex="0">{{field.label}}</label>
+                <div [ngSwitch]="field.controlType" class="col-md-6 input-holder">
+                  <!-- input text box -->
+                  <input *ngSwitchCase="'textbox'"
+                    name="{{field.type == 'file' ? field.key: field.key+'files[]'}}" 
+                    (change)="field.key==7?clearAllChildFields(field.columnName, 'isDependencyGreaterthanzero', k, subsectionKeys.key , i):'';
+                    preventNegative($event);
+                    formDataSave.limitNumbers($event,field.value);
+                    field.type == 'file' ? onFileChange($event, field.key, i, j, k): ''"
+                    multiple #fileInput accept="application/pdf,application/vnd.ms-excel,application/msword" [id]="field.key"
+                    [type]="field.type" [(ngModel)]="field.value" class="form-control" [ngClass]="[field.type == 'number'? 'no-spinners': '']">
+
+                  <!-- Input dropdown-->
+                  <div class="btn-group" style="padding-left: 3px;
+               width: 100%;margin-bottom: 1rem"
+                    dropdown *ngSwitchCase="'dropdown'">
+                    <input type="text" class="dropdown-input" [id]="field.key" style="padding: 10px;" readonly
+                      [placeholder]="" [(ngModel)]="field.value" name="{{field.key}}">
+                    <button type="button" dropdownToggle style="padding: 0" class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                      mdbRippleRadius></button>
+                    <div class="dropdown-menu drp-list">
+                      <a class="dropdown-item" style="font-size: 13px;" *ngFor="let opt of field.options" [value]="opt.key"
+                        (click)="selectDropdown(opt, k, subsectionKeys.key , i)">{{opt.value}}</a>
+                    </div>
+                  </div>
+                  <!-- Input Checkbox -->
+                  <div class="btn-group check-btn-group" style="padding-left: 3px;
+               width: 100%;margin-bottom: 1rem"
+                    dropdown *ngSwitchCase="'checkbox'">
+                    <input type="text" class="dropdown-input" [id]="field.key" style="padding: 10px;" readonly
+                      [placeholder]="" [(ngModel)]="field.value" name="{{field.key}}">
+
+                    <button type="button" style="padding: 0" class="btn btn-default dropdown-toggle-split px-3 waves-light select-dropdown select-checkbox"
+                      mdbRippleRadius><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                    <div class=" drp-list checkbox-list">
+                      <!-- <a class="dropdown-item" style="font-size: 13px;"
+                      *ngFor="let opt of field.options" [value]="opt.key" (click)="selectCheckBox(opt, k, subsectionKeys.key , i)"><input type="checkbox">{{opt.value}}</a> -->
+                      <div class="checkbox-group dropdown-item" *ngFor="let opt of field.options; let optionIndex=index"
+                        (click)="selectCheckBox(optionIndex, k, subsectionKeys.key , i, $event)" style="font-size: 13px;">
+                        <!-- <input mdbDeepDirective  type="checkbox" class="filled-in" id="{{field.key+ '_' + opt.value}}"> -->
+                        <label for="{{field.key+ '_' + opt.value}}" [ngClass]="[opt.isSelected? 'checked': '']">{{opt.value}}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 offset-md-5">
+                  <p *ngIf="field.key == 6 && field.fileSizeExceeds" style="color: red; padding-left: 5px;">Total file
+                    size can not exceed 10MB</p>
+                  <p *ngIf="field.key == 6 && field.wrongFileExtensions" style="color: red; padding-left: 5px;">Files
+                    with wrong extensions are not included</p>
+                  <p *ngIf="field.key == 6 && field.duplicateFilesDetected" style="color: red; padding-left: 5px;">Duplicate
+                    files selected. Please verify and try again</p>
+                  <small *ngIf="field.key == 6 && field.type=='file'" class="file-suggest">* Accepts only pdf, word or
+                    excel files</small>
+                  <small *ngIf="field.key == 6 && field.type=='file'" class="file-suggest">* Total file size should not
+                    exceed 10MB</small>
+                  <ul *ngIf="field.key == 6 && field.type=='file' && field.fileValue.length" class="file-list">
+                    <li *ngFor="let value of field.fileValue; let valueIndex=index;"><a class="file-attachment" *ngIf="!value.isDeleted"
+                        [attr.href]="value.attachmentId ? baseUrl + 'downloadAttached?attachmentId='+ value.attachmentId: null"
+                        target="_blank"><i class="fa fa-square  fa-xs" aria-hidden="true"></i>{{value.fileName}}</a>
+                      <button *ngIf="field.key == 6 && field.type=='file' && field.fileValue && !value.isDeleted" class="btn btn-default proceed-btn removeFileselection"
+                        type="btn" (click)="clearSelections(valueIndex, k, subsectionKeys.key , i, $event) ">Remove</button></li>
+                  </ul>
+                  <input type="text" id="{{field.key + '_' + 'others'}}" name="{{field.key + '_' + 'others'}}"
+                    placeholder="specify other departments" [(ngModel)]="field.othersValue" *ngIf="field.isOthersSelected && field.key == 9"
+                    class="dependent-other-input">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group row">
+            <div class="col-md-10 col-4 offset-col-4 offset-md-1 text-right" [ngClass]="{'d-none': !formSubSections}">
+              <!-- <button class="btn btn-default proceed-btn" type="submit" (click)="submitForm()"><a routerLink="/data-entry/survival">Proceed</a></button> -->
+              <button class="btn btn-default proceed-btn" type="submit" (click)="saveDataProceed()">Next</button>
+              <button class="btn btn-default back-btn save-button" type="submit" (click)="saveFormData()">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toastsuccess"><i class="fa fa-check" aria-hidden="true"></i> Saved successfully</div>
+<app-uploading-modal></app-uploading-modal>

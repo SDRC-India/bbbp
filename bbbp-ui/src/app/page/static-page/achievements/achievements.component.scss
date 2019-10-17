@@ -1,0 +1,41 @@
+
+.achievement-head-line
+{
+    font-size: 24px;
+    font-weight: bold;
+    color: orange;
+    border-bottom: 1px solid;
+    width: 100%;
+}
+.preview-text {
+    color: #1f4a7c !important;
+    text-transform: capitalize;
+  }
+.download-pdf-text {
+  margin-bottom: 20px !important;
+}
+
+.fa-file-pdf-o{
+font-size: 20px;
+    margin-left: 5px;
+}
+.pdf-btn {
+    background-color: #f0f0f0;
+    padding: 9px !important;
+    box-shadow: none;
+    color: #1f497b !important;
+}
+.pdf-btn:hover {
+    background-color: #f0f0f0 !important;
+    color: #0771f3 !important;
+}
+.btn {
+    text-transform: capitalize !important;
+}
+.download-txt{
+    font-size: 13px !important;
+    text-transform: capitalize;
+}
+.backBtn {
+    margin-bottom: -15px;
+}

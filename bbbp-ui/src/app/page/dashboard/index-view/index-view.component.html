@@ -1,0 +1,203 @@
+<div class="container-fluid" style="margin-top: 25px;margin-bottom: 20px;">
+ 
+  <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+
+            <div *ngFor="let field of thematicDropDownList; let i = index;" [ngClass]="{'form-group':field.controlType == 'textbox'}" class="row">
+       
+              <div [ngSwitch]="field.controlType" class="col-md-10 offset-md-2 input-holder">
+                
+
+                <div class="btn-group" style="width: 100%;margin-bottom: 1rem" dropdown *ngSwitchCase="'dropdown'">
+                <input type="text" class="dropdown-input" [id]="field.key" style="padding: 10px" readonly
+                  [placeholder]="''" [(ngModel)]="field.value" name="{{field.columnName}}" >
+                  <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" 
+                   mdbRippleRadius></button>
+                  <div class="dropdown-menu drp-list">
+                      <a class="dropdown-item" style="font-size: 13px;"
+                       *ngFor="let opt of field.options" [value]="opt.key" (click)="selectDropdown(opt, thematicDropDownList, i)">{{opt.value}}</a>
+                  </div>
+                </div>                                         
+              </div> 
+            </div>                      
+    </div>
+  </div>
+  </div> -->
+  <div class="row" *ngIf="dashboardService.thematicData">  
+    <div class="col-md-12">
+          
+          <h2 class="title-main">Dashboard</h2>
+          <div class="action-btns">
+            <i class="fa fa-file-excel-o" aria-hidden="true"  title="Download Excel" (click)="downloadPdfExcel('excel')"></i>
+            <i class="fa fa-file-pdf-o" aria-hidden="true" title="Download PDF" (click)="downloadPdfExcel('pdf')"></i>
+            <!-- <i class="fa fa-picture-o" aria-hidden="true"></i> -->
+            <i class="fa fa-info-circle" aria-hidden="true" title="Info" data-toggle="modal" data-target="#helpModal" data-backdrop="static" data-keyboard="false" ></i>
+            <i class="fa fa-question-circle" aria-hidden="true" title="Help" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" ></i>
+          </div>
+          <p>{{dashboardService.submittedSector.sectorId == null ? dashboardService.submittedSector.sectorName: ''}} {{dashboardService.submittedIndicator.indicatorName ? dashboardService.submittedIndicator.indicatorName : ''}} {{dashboardService.submittedTimeperiod.timeperiod ? '(' + dashboardService.submittedTimeperiod.timeperiod + ')': ''}}</p>
+    </div>        
+    <div class="col-md-3 selection-section" *ngIf="thematicDropdownDataFetched" style="padding-top: 100px; padding-left: 25px; float: left; font-size:12px;">
+      <div class="btn-group" style="width: 100%;margin-bottom: 1rem">
+          <input type="text" class="dropdown-input" id="sector" style="padding: 10px" readonly
+            [placeholder]="'select sector *'" 
+
+            tooltip="{{dashboardService.selectedSector ? dashboardService.selectedSector.sectorName : ''}}"
+            [(ngModel)]="dashboardService.selectedSector.sectorName">
+            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" 
+             mdbRippleRadius></button>
+          <div class="dropdown-menu drp-list">
+                <a class="dropdown-item" style="font-size: 13px;"
+                 *ngFor="let opt of dashboardService.thematicDropDownList" [value]="opt.sectorName" (click)="selectSector(opt)">{{opt.sectorName}}</a>
+          </div>
+      </div> 
+      <div class="btn-group" style="width: 100%;margin-bottom: 1rem" *ngIf="dashboardService.selectedSector.sectorId != null" >
+              <input type="text" class="dropdown-input" id="indicator" style="padding: 10px" readonly
+                [placeholder]="'Select sub sector *'"  
+                tooltip="{{dashboardService.selectedSubSector.subSectorName? dashboardService.selectedSubSector.subSectorName : ''}}"
+                [(ngModel)]="dashboardService.selectedSubSector.subSectorName" >
+                <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"  [disabled]="!dashboardService.selectedSector.subSectors"
+                 ></button>
+                <div class="dropdown-menu drp-list" *ngIf="dashboardService.selectedSector.subSectors">
+                    <a class="dropdown-item" style="font-size: 13px;"
+                     *ngFor="let opt of dashboardService.selectedSector.subSectors" [value]="opt.subSectorName" (click)="selectSubSector(opt)">{{opt.subSectorName}}</a>
+                </div>
+        </div> 
+       <div class="btn-group" style="width: 100%;margin-bottom: 1rem" *ngIf="dashboardService.selectedSector.sectorId != null">
+              <input type="text" class="dropdown-input" id="indicator" style="padding: 10px" readonly
+                [placeholder]="'Select indicator *'"  
+                tooltip="{{dashboardService.selectedIndicator.indicatorName ? dashboardService.selectedIndicator.indicatorName : ''}}"
+                [(ngModel)]="dashboardService.selectedIndicator.indicatorName" >
+                <button type="button" style="padding: 0" [disabled]="!(dashboardService.selectedSubSector && dashboardService.selectedSubSector.indicators)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" 
+                 ></button>
+                <div class="dropdown-menu drp-list" *ngIf="dashboardService.selectedSector.subSectors">
+                    <a class="dropdown-item" style="font-size: 13px;"
+                     *ngFor="let opt of dashboardService.selectedSubSector.indicators" [value]="opt.indicatorId" (click)="selectIndicator(opt)">{{opt.indicatorName}}</a>
+                </div>
+        </div> 
+       <div class="btn-group" style="width: 100%;margin-bottom: 1rem" *ngIf="dashboardService.thematicData">
+                  <input type="text" class="dropdown-input" id="timeperiod" style="padding: 10px" readonly
+                    [placeholder]="'Select time period *'" 
+                    tooltip="{{dashboardService.selectedTimeperiod.timeperiod ? dashboardService.selectedTimeperiod.timeperiod : ''}}"
+                    [(ngModel)]="dashboardService.selectedTimeperiod.timeperiod">
+                    <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" 
+                     mdbRippleRadius></button>
+                    <div class="dropdown-menu drp-list">
+                        <a class="dropdown-item" style="font-size: 13px;"
+                         *ngFor="let opt of dashboardService.thematicData" [value]="opt.timeperiodId" (click)="selectTimeperiod(opt);setMapData(dashboardService.selectedTimeperiod) ">{{opt.timeperiod}}</a>
+                    </div>
+        </div> 
+        
+            
+      </div>
+      <div class="col-md-7 chart-container unselectable" *ngIf="(dashboardService.submittedSector.sectorId == null || dashboardService.submittedIndicator.unitName == 'PERCENT')" [ngClass]="dashboardService.isMapLoading ? 'map-loading': ''">
+        <!-- <img   src="assets/images/loader.gif" class="loader-gif"> -->
+        <div class="no-data-pop" *ngIf="!dashboardService.mapData && !dashboardService.isMapLoading"><div class="no-data-text">No Data Available</div></div>
+        <app-thematic-map  *ngIf="(dashboardService.submittedSector.sectorId == null || dashboardService.submittedIndicator.unitName == 'PERCENT')" [mapData]="mapData"></app-thematic-map>
+      </div>
+     
+      <div class="col-md-2 legend-container" style="padding-left: 0;" *ngIf="dashboardService.selectedMapDataPeriod&& (dashboardService.submittedSector.sectorId == null || dashboardService.submittedIndicator.unitName == 'PERCENT')">        
+          <h6 *ngIf="dashboardService.submittedSector.sectorId == null && dashboardService.selectedMapDataPeriod.indiaData"><b>Source: SRS {{dashboardService.submittedTimeperiod.timeperiod ? '(' + dashboardService.submittedTimeperiod.timeperiod + ')': ''}}</b></h6>  
+          <!-- <i *ngIf="dashboardService.submittedSector.sectorId != null" class="fa fa-lg fa-info-circle" style="cursor: pointer" data-toggle="tooltip" title="info" aria-hidden="true"></i><span *ngIf="dashboardService.submittedSector.sectorId != null">&nbsp;Based on sample data</span> -->
+          <h6  *ngIf="dashboardService.submittedSector.sectorId == null && dashboardService.selectedMapDataPeriod.indiaData"><b>Unit: Girls per 1000 Boys </b></h6>
+          <section class="india-data-container" *ngIf="dashboardService.submittedSector.sectorId == null && dashboardService.selectedMapDataPeriod.indiaData" (click)="getTrendChart(1)" style="cursor: pointer;">
+            
+            <label >{{dashboardService.submittedSector.sectorName}} ({{dashboardService.selectedMapDataPeriod.indiaData ? dashboardService.selectedMapDataPeriod.indiaData.areaName:''}}) : </label><h3>{{dashboardService.selectedMapDataPeriod.indiaData ? dashboardService.selectedMapDataPeriod.indiaData.value:''}} / 1000</h3>
+          </section>
+          <section class="india-data-container" *ngIf="dashboardService.submittedSector.sectorId != null && dashboardService.selectedMapDataPeriod.indiaData" (click)="getTrendChart(1)" style="cursor: pointer;">
+            
+            <label class="notcsr-india-label">India: </label><h3 class="notcsr-india-val"> {{dashboardService.selectedMapDataPeriod.indiaData ? dashboardService.selectedMapDataPeriod.indiaData.value:''}}</h3>
+          </section>
+          <section id="legendsection" class="legends" *ngIf="!dashboardService.isMapLoading">
+                  <!-- <div class="direction">
+                      <img class="img-responsive" src="assets/images/north_arrow_new.png">
+                  </div> -->
+                  <!-- <h4 class="legend-heading">LEGEND</h4> -->
+                  <ul>
+                   <li *ngFor ="let legend of dashboardService.selectedMapDataPeriod.ligends" class="legend_list">
+                      <div class="{{legend.key}} legnedblock" [style.backgroundColor]="legend.description"> </div>    
+                      <span	class="legend_key">{{legend.value}} ({{legend.count}})</span>                                          
+                   </li> 
+                  </ul>
+          </section>
+      </div>
+      <!-- <div class="col-md-8" *ngIf="(dashboardService.submittedIndicator.unitName == 'NUMBER')">
+        <app-horizontal-bar-chart [data]="dashboardService.mapData"></app-horizontal-bar-chart>
+      </div>
+      <div class="col-md-1" *ngIf="dashboardService.submittedIndicator.unitName == 'NUMBER'">
+        <i *ngIf="dashboardService.submittedSector.sectorId != null" class="fa fa-lg fa-info-circle" style="cursor: pointer" data-toggle="tooltip" title="info" aria-hidden="true"></i><span *ngIf="dashboardService.submittedSector.sectorId != null">&nbsp;Based on sample data</span>
+      </div> -->
+   </div>
+   <div id="dist-data">
+   <div class="district-data-view row"  *ngIf="dashboardService?.districtData?.thematicView && dashboardService.selectedMapState">
+     <div class="col-md-7 offset-md-3 no-padding">
+        <div class="statename">
+          {{dashboardService.selectedMapState}}
+        </div>
+        <app-horizontal-bar [data]="dashboardService?.districtData?.thematicView" *ngIf="dashboardService?.districtData?.chartType == 'barChart'"></app-horizontal-bar>
+        <sdrc-table *ngIf="dashboardService?.districtData?.thematicView?.length && dashboardService?.districtData?.chartType == 'table'"
+    [id]="'tab1'"
+    [rowData]="dashboardService?.districtData?.thematicView | convertToTableFormat: dashboardService.selectedIndicator.indicatorName" 
+    [columnData]="['District', dashboardService.selectedIndicator.indicatorName]" 
+    [sorting]="true" 
+    [sortExcludeColumn]="['slNO.']"
+    [isPaginate]="true"
+    [itemsPerPage]="15" ></sdrc-table>
+     </div>
+    
+   </div>
+  </div>
+  <div class="trend-chart-container" id="trend-chart-container" *ngIf="dashboardService.trendChartData.length">
+    <div class="text-center indicator-detail" id="trend-chart-containerhead">{{dashboardService.trendChartData? dashboardService.trendChartData[0].key:''}} </div>
+    <a (click)="clearTrendChartData()" class="trend-close"><i class="fa fa-close" aria-hidden="true"></i></a>
+    <app-trend-chart [data]="dashboardService.trendChartData"></app-trend-chart>
+  </div>
+</div>
+<!-- <div id="helpModal" class="modal fade" role="dialog" aria-hidden="false" style="display: block;">
+		<div class="modal-dialog helpModaldialog">
+
+
+			<div class="modal-content helpModalContent">
+				<div class="modal-body">
+					<i style="float: right;" class="fa fa-2x fa-times-circle helpCloseBtn" data-dismiss="modal"></i>
+					<img id="helpImg" alt="" src="assets/bbbp_info_pg1_r1.jpg" style="width: 100%; height: auto;">
+				</div>
+			</div>
+
+		</div>
+  </div> -->
+  <div id="helpModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+              <i  class="fa fa-times-circle helpCloseBtn" data-dismiss="modal"></i>
+              <img id="helpImg" alt="" src="assets/bbbp_info_pg1_r1.jpg" style="width: 100%; height: auto;">
+          </div>
+        </div>
+    
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div  class="modal-dialog" style="max-width: 850px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">Indicator Meta Data</h4>
+          </div>
+          <div class="modal-body preview-file-body">
+            <embed src="assets/pdfs/BBBP-Indicator Meta Data.pdf" frameborder="0" width="100%" height="530px">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default preview-btn" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

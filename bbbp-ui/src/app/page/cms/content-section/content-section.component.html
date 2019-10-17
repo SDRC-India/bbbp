@@ -1,0 +1,1132 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 side-menu">
+      <app-left-side-bar></app-left-side-bar>
+    </div>
+
+    <div class="col-md-9" *ngIf="dataService.showNoCmsData">
+      <h2 class="title-main">Content Management System</h2>
+      <div class="row cms-landing-border">
+        <div class="col-md-6 cms-land-page activities-area" *ngIf="dataService.landingPageLeftBlockData">
+          <div class="col-md-12 cms-short-description">{{dataService.landingPageLeftBlockData.content}}
+          </div>
+          <div class="col-md-12 short-description-block">
+            <h3 class="recent-activity-block last-updated-blog">{{dataService.landingPageLeftBlockData.lastUpdateViweName}}</h3>
+            <p class="last-updated-time time-stamp">{{dataService.landingPageLeftBlockData.lastUpdateOn}}</p>
+            <div class="row last-updated-section">
+              <h3 class="download-pdf-text">
+                <i class="fa fa-file-pdf-o time-stamp"></i>
+                <a class="title-pdf-info">
+                  {{dataService.landingPageLeftBlockData.fileName}}
+                </a>
+              </h3>
+              <p class="time-stamp">
+                <img class="preview-icon" title="Preview file before download" src="./assets/icons/eye-solid.svg"
+                  (click)=openPDF(dataService.landingPageLeftBlockData.filePath)>
+                <a class="preview-hover" title="Preview file before download" (click)=openPDF(dataService.landingPageLeftBlockData.filePath)>
+                  Preview
+                </a>
+                <a>
+                  <span class="pdf-icon-border">
+                    <a title="Download PDF">
+                      <i title="Download File" (click)="downloadFetchedFileCms(dataService.landingPageLeftBlockData.filePath)"
+                        class="fa fa-download downloaded-icon" aria-hidden="true"></i> &nbsp;
+                    </a>
+                  </span>
+                  <span title="Download File" (click)="downloadFetchedFileCms(dataService.landingPageLeftBlockData.filePath)"
+                    class="download-file">Download</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 cms-land-page" *ngIf="dataService.landingPagedata">
+          <h3 class="recent-activity-block landing-page-block-border">{{dataService.landingPagedata.cMSRecentActivity.recentActivities}}</h3>
+          <ul class="last-updated-page">
+            <li *ngFor="let latestActivities of dataService.landingPagedata.cMSRecentActivity.cmsObject">{{latestActivities.viewName}}
+              <p class="last-updated-time">{{latestActivities.lastUpdateOn}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div div class="col-md-9" *ngIf="dataService.selectedTabMenuUrl == 'underconstruction'">
+      <div class="row">
+        <h2 class="under-construction">Under Construction...</h2>
+      </div>
+    </div>
+    <div class="col-md-9" *ngIf="dataService.showList && dataService.selectedTabMenuUrl != 'key-contacts'" [hidden]="dataService.selectedTabMenuUrl == 'underconstruction'">
+      <div class="row" *ngIf="dataService.selectedTabMenu">
+        <h2 class="title-main">{{dataService.selectedTabMenu.title}}</h2>
+      </div>
+      <div class="row cms-section">
+        <div class="col-md-12">
+
+          <form class="cmsform">
+
+            <!-- <input  *ngIf=dataService.cmsType == 'news'  [maxLength]="100" [placeholder]='input news validity' name="newsValidity"
+                           id="modelValue"  [id]="newsValidity"
+                           [type]="textbox"
+                           [(ngModel)]="dataService.newNewsValidity" (keydown)="preventNegative($event)"> -->
+            <div [hidden]="field.dependentCondition[0] == 'isChecked'? getObjectByColumnName(field.dependentColumn, dataService.selectedMenuLists.listOfQuestionModel).value == null : false"
+              id="div{{field.columnName}}" *ngFor="let field of dataService.selectedMenuLists.listOfQuestionModel; let i = index;"
+              [ngClass]="{'form-group':field.controlType == 'textbox','margin-top': (field.label == 'Timeperiod' || field.label == 'Album Name' || field.label == 'Document Type') && dataService.showEditCallOption == true && dataService.showEditOption == false}"
+              class="row">
+              <!-- <div class="col-md-12"style="color: #31859c; font-size: 18px; margin-bottom: 20px;">{{field.keyHeading}}</div>  -->
+              <label id="label{{field.columnName}}" [attr.for]="field.columnName" class="col-md-2 label-bold label-top"
+               [ngClass]="{'asterik-label':(field.validation && field.validation.mandatory) || field.label == 'Page Description'}"
+                *ngIf="field.controlType != 'table' && field.controlType != 'button' && field.type != 'radio' && field.type != 'checkbox'">
+                {{field.displayLabel}}&nbsp;</label>
+              <div [ngSwitch]="field.controlType" class="input-holder" 
+              [ngClass]="{'col-md-9': field.controlType != 'table',
+              'col-md-11': field.controlType == 'table',
+              'dropdown-type-left' : field.controlType == 'dropdown',
+              'type-center' : field.controlType != 'dropdown'}">
+                <!-- input textbox -->
+                <input [maxLength]="field.validation.maxLength" *ngSwitchCase="'textbox'" [placeholder]="field.section"
+                  name="{{field.columnName}}" [ngClass]="{
+                  'col-md-10': dataService.showAddOption || dataService.showEditOption || dataService.showEditCallOption,
+                'upload-block': dataService.uploadedFile != ''}"
+                  id="modelValue" (ngModelPaste)="pastedVal(dataService.selectedMenuLists.listOfQuestionModel)" (keyup)="newValue(dataService.selectedMenuLists.listOfQuestionModel,$event)"
+                  (change)="field.type == 'file' ? onFileChange($event, field.validation.fileType, field.validation.fileSize, field): ''"
+                  [id]="field.columnName" (input)="field.validation && field.validation.maxLength ? showCharRemaining(field) : ''"
+                  (blur)="hideCharRemaining(field);" [type]="field.type" accept="{{field.validation.fileType}}"
+                  [(ngModel)]="field.value" class="form-control" [ngClass]="{'no-spinners':field.type == 'number'}">
+                <!-- end textbox -->
+                <p name="{{field.columnName}" *ngIf="field.label == 'Upload File'"
+                 [hidden]="!dataService.editClicked && dataService.viewName != 'Applications and Appeals'" 
+                 class="fetched-file-rti" title="Download File"
+                (click)="downloadFetchedFileCms(field.value)">{{field.value}}</p>
+               
+
+                <span id="text-blank-error-msg" *ngIf="field.label == 'File Name' || field.label == 'Upload File'">{{dataService.textBlankErrorMessage}}</span>
+                <span id="selectedRowDataInField"></span>
+                <!-- <img *ngIf="field.label == 'Upload File'" [src]="dataService.imageUploadedFilepath"> -->
+                <!-- input type text area -->
+                <span *ngSwitchCase="'textarea'">
+                  <textarea id="contentVal" *ngIf="field.label == 'Content'" class="textarea-field" name="{{field.columnName}}"
+                    rows="4" cols="50">{{dataService.fetchedDropdownDetails[0].content}}</textarea>
+                </span>
+                
+                <span *ngIf="field.label == 'Content' && dataService.selectedTabMenuUrl == 'aboutus'" id="textarea-blank-error-msg">{{dataService.blankErrorMessage}}</span>
+
+                <p *ngSwitchCase="'textarea'" class="cms-page-description-block" [hidden]="field.label == 'Content'">
+                  <textarea *ngIf="field.label == 'Page Description'" class="description-text-input" type="text"
+                    (input)="field.validation && field.validation.maxLength ? showCharRemaining(field) : ''" (blur)="editingPageDescription(dataService.selectedMenuLists.listOfQuestionModel); hideCharRemaining(field);"
+                    name="{{field.value}}" [maxLength]="field.validation.maxLength" id="editCmsPageDescription"
+                    [(ngModel)]="field.value" [attr.style]="" [attr.disabled]="dataService.ifEditingDescription"> </textarea>
+                  <span *ngIf="field.label == 'Page Description'" class="short-description-field">
+                    <i class="fa fa-pencil" aria-hidden="true" (click)="editPageDescription()"></i>
+                  </span>
+                </p>
+              <!-- characters remaning block -->
+              <span style="display: none" [ngClass]="field.label == 'Page Description' 
+              || dataService.cmsType != 'nested tabular' ? 'charleft' : 'charleft-nested'"
+                id='remainingC{{field.columnName}}'></span>
+              <!-- end -->
+                <!-- calender -->
+                <div class="bottom-file" *ngSwitchCase="'calendar'">
+                  <my-date-picker [selDate]="selDate" name="{{field.columnName}}" [options]="myDatePickerOptions"
+                    [(ngModel)]="field.value" required [placeholder]="field.section" class="myDatePicker" (dateChanged)="onDateChanged($event)"></my-date-picker>
+                </div>
+
+                <!-- check box and radio buttons start-->
+                <div class="col-md-12 checkbox-field" [hidden]="dataService.selectedTabMenu.title != dataService.whatsnew">
+                  <div [ngClass]="{'col-md-4': field.type =='checkbox'}" class="checkBox-block">
+                    <label *ngSwitchCase="'checkbox'" class="checkbox-inline">
+                      <input [type]="field.controlType" [id]="field.columnName" (change)="setType(field,dataService.selectedMenuLists.listOfQuestionModel)"
+                        name="{{field.columnName}}" [(ngModel)]="field.value">{{field.label}}
+                    </label>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'radio'" class="col-md-12 checkbox-field" [hidden]="dataService.selectedTabMenu.title != dataService.whatsnew">
+                  <div [ngClass]="{'col-md-2': field.type =='option', 'radio-block': field.type == 'option'}" class="checkBox-block"
+                    *ngFor="let options of dataService.radioOptions; let idx= index">
+                    <label class="checkbox-inline">
+                      <input id="{{field.columnName}}_{{options.value}}" [type]="field.controlType" [checked]="options.value == 'Yes' ? false : true"
+                        (change)="setPriority(field, options,$event)" name="{{field.columnName}}" [value]="options.value">{{options.value}}
+                    </label>
+                  </div>
+                </div>
+
+                  <div class="btn-group" style="padding-left: 3px;
+              width: 100%;margin-bottom: 1rem" [ngClass]="{
+                  'col-md-10': dataService.showAddOption || dataService.showEditOption || dataService.showEditCallOption}"
+                    dropdown *ngSwitchCase="'dropdown'">
+                    <input type="text" class="dropdown-input" [id]="field.columnName" style="padding: 10px;" readonly
+                      [placeholder]="field.section" [(ngModel)]="field.value" name="{{field.columnName}}" value="{{field.key}}"
+                      >
+                    <button type="button" style="padding: 0" dropdownToggle data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                      mdbRippleRadius></button>
+                    <div class="dropdown-menu drp-list cms-dropdown-lists">
+                      <a class="dropdown-item" style="font-size: 13px;" 
+                      *ngFor="let opt of (field.dependecy ? 
+                       (field.options | dropDownFilterPipe:3:getObjectByColumnName(field.dependentColumn, dataService.selectedMenuLists.listOfQuestionModel).key) : field.options ) " 
+                      (click)="selectDropdownState(opt,field, i);">{{field.dependecy ?  opt.value : opt.value}}</a>
+                    </div>
+                  </div>
+                <!-- end -->
+
+
+                <!-- Submit button for type order -->
+                <!-- add btn -->
+                <div *ngIf="field.label == 'Add' && dataService.showAddOption" [ngClass]="{
+                  'add-btn': 'field.label == Timeperiod || field.label == Document Type'
+                }">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                    'add-order-btn': 'field.label == Timeperiod || field.label == Document Type',
+                    'add-btn-charleft': dataService.charLeft
+                  }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="field.label" [type]="field.type"
+                    (click)="addNewSections(dataService.selectedMenuLists.listOfQuestionModel)">{{field.label}}</button>
+                </div>
+                <!-- add call for edit btn -->
+                <div *ngIf="dataService.showEditCallOption &&  field.label != 'Reset' && field.label !='Preview' && field.label !='Publish' && field.label !='Edit'"
+                  [ngClass]="{
+                  'add-btn': 'field.label == Timeperiod || field.label == Document Type'
+                }">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                    'add-order-btn': 'field.label == Timeperiod || field.label == Document Type'
+                  }"
+                    class="btn btn-default proceed-btn cms-submit-btn" value="Add" type="buttone" (click)="editNewSections(dataService.selectedMenuLists.listOfQuestionModel)">Save</button>
+                </div>
+
+                <!-- edit button -->
+                <div *ngIf="field.label == 'Edit' && dataService.showEditOption" [ngClass]="{
+                  'add-btn': 'field.label == Timeperiod || field.label == Document Type'
+                }">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                    'add-order-btn': 'field.label == Timeperiod || field.label == Document Type'
+                  }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="field.label" [type]="field.type"
+                    (click)="editSection(dataService.selectedMenuLists.listOfQuestionModel)">{{field.label}} </button>
+                </div>
+
+
+                <!-- publish button -->
+                <div *ngIf="field.label != 'Add' && field.label != 'Edit' && field.label != 'Reset' && field.label !='Preview'">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                    'cms-submit-btn-in-row' : 'field.label == Publish'
+                  }"
+                    [disabled]="!dataService.showEditOption && dataService.cmsType == 'nested tabular'" id="publish-button"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="field.label" type="field.type" 
+                    (click)="submitForm(dataService.selectedMenuLists.listOfQuestionModel)">{{field.label}}</button>
+                </div>
+
+                <!-- preview button -->
+                <div *ngIf="field.label != 'Add' && field.label != 'Edit' && field.label != 'Reset' && field.label !='Publish'">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                      'cms-submit-btn-in-row' : 'field.label == Preview'
+                    }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="field.label" [type]="field.type"
+                    (click)="previewData(dataService.selectedMenuLists.listOfQuestionModel)">{{field.label}}</button>
+                </div>
+
+                <!-- cancel button -->
+                <div *ngIf="field.label != 'Add' && field.label != 'Edit' && field.label == 'Reset'">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                    'cms-cancel-btn-in-row' : 'field.label == Reset'
+                  }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="field.label" [type]="field.type"
+                    (click)="cancelOrders(dataService.selectedMenuLists.listOfQuestionModel)">{{field.label}}</button>
+                </div>
+
+
+                <!-- 1st table for all ...tabular view -->
+                <!-- search box -->
+                <div class="col-md-12" *ngIf="field.controlType == 'table' && field.dependecy == false">
+                  <div class="col-md-4 searchData inner-addon right-addon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" [(ngModel)]="dataService.searchTexts" class="form-control" placeholder="Search"
+                      [ngModelOptions]="{standalone: true}" />
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'table'"  class="table-container table-responsive"  [ngClass]="{'table-top': field.controlType == 'table' && dataService.showEditCallOption == true}">
+                  <table class="cms-table-fetched" *ngIf="(field.dependentCondition[0] == 'hasChildren' && dataService.fetchedDropdown.length!=0) || (field.dependentCondition[0] == '' && dataService.noDataFound == false)">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <th class="cms-table-column">Sl No.</th>
+                        <th [hidden]="dataService.cmsType == 'home' || field.dependentCondition[0] == 'hasChildren' || 
+                        dataService.viewName == 'Applications and Appeals'" 
+                        class="cms-table-column" *ngFor="let col of dataService.getKeys(dataService.selectedMenuLists.listOfCmsDataDto[0].viewContent[staticHomeService.selectedLang][0].data[0]) | 
+                        removeTableColum: dataService.removeColumnList ; let i=index">{{col}}</th>
+                      <th [hidden]="dataService.cmsType == 'home' || field.dependentCondition[0] == '' || dataService.viewName == 'Applications and Appeals'" class="cms-table-column">{{dataService.tableHeaderData}}</th>
+                      <th [hidden]="dataService.cmsType != 'home'" class="cms-table-column" *ngFor="let col of dataService.getKeys(dataService.dataOfHomePage[0]) | 
+                        removeTableColum: dataService.removeColumnList ; let i=index">{{col}}</th>
+                      <th [hidden]="dataService.viewName != 'Applications and Appeals'" class="cms-table-column" *ngFor="let col of dataService.rtiHeaderList; let i=index">{{col}}</th>
+                      <th class="cms-table-column">Action</th> 
+                    </tr>
+                    </thead>
+                    <!-- // table of type orders,letters,documents & gallery -->
+                    <tbody *ngIf="field.dependentCondition[0] == 'hasChildren' && dataService.cmsType != 'home'"
+                      [hidden]="dataService.withChildren">
+                      <tr *ngFor="let row of dataService.fetchedDropdown | searchText : dataService.searchTexts | removeTableColum: dataService.removeColumnList | paginate: { itemsPerPage: 6, currentPage: dataService.q, id: 'first' } ; let j=index;">
+                       <td>{{((dataService.q-1)*6)+j+1}}</td>
+                        <td class="overflow-ellipsis"> {{row.section}}
+                        </td>
+                        <td>
+                          <button (click)="editRowOfTimeperiod(row.section,((dataService.q-1)*6)+j,dataService.selectedMenuLists.listOfQuestionModel)"
+                            class="edit-btn" title="Edit">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfTimePeriod(((dataService.q-1)*6)+j, row.section)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <!-- end table of type orders,letters,documents & gallery  -->
+                    <!-- table of type other -->
+                    <tbody *ngIf="field.dependentCondition[0] != 'hasChildren' && dataService.selectedTabMenuUrl != undefined"
+                      [hidden]="dataService.noChildren">
+                      <tr *ngFor="let row of dataService.selectedMenuLists.listOfCmsDataDto[0].viewContent[staticHomeService.selectedLang][0].data | searchText : dataService.searchTexts | removeTableColum: dataService.removeColumnList | paginate: { itemsPerPage: 6, currentPage: dataService.m, id: 'second' }; let a = index;">
+                       <td>{{((dataService.m-1)*6)+a+1}}</td>
+                        <td class="overflow-ellipsis" *ngFor="let col of dataService.getKeys(dataService.selectedMenuLists.listOfCmsDataDto[0].viewContent[staticHomeService.selectedLang][0].data[0]) |
+                         removeTableColum: dataService.removeColumnList; let k=index"
+                          title="{{row[col]}}" [innerHTML]="row[col] | safeHtml">
+                        </td>
+                        <td>
+                          <button (click)="editRowTableData(row,((dataService.m-1)*6)+a)" class="edit-btn" title="Edit">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowTableData(row,((dataService.m-1)*6)+a)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <!-- for home page cms (whatsnew and other) -->
+                    <tbody *ngIf="field.dependentCondition[0] != 'hasChildren' && dataService.selectedTabMenuUrl == undefined"
+                      [hidden]="dataService.noChildren">
+                      <tr *ngFor="let row of dataService.dataOfHomePage | searchText : dataService.searchTexts | removeTableColum: dataService.removeColumnList | paginate: { itemsPerPage: 6, currentPage: dataService.k, id: 'four' }; let b = index;">
+                       <td>{{((dataService.k-1)*6)+b+1}}</td>
+                        <td class="overflow-ellipsis" [ngClass]="{'whatsnew-table': dataService.selectedTabMenu.title == dataService.whatsnew}"
+                          [hidden]="dataService.selectedTabMenu.title == 'Banners'" *ngFor="let col of dataService.getKeys(dataService.dataOfHomePage[0]) |
+                          removeTableColum: dataService.removeColumnList; let k=index"
+                          title="{{row[col]}}">
+                          {{row[col]}}
+                        </td>
+                        <td class="overflow-ellipsis" [hidden]="dataService.selectedTabMenu.title != 'Banners'" *ngFor="let col of dataService.getKeys(dataService.dataOfHomePage[0]) |
+                          removeTableColum: dataService.removeColumnList; let k=index"
+                          title="{{row[col]}}">
+                          <img class="cms-photo-categories" src="{{row[col]}}" />
+                        </td>
+                        <td>
+                          <button (click)="editRowTableData(row,((dataService.k-1)*6)+b)" class="edit-btn" title="Edit">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowTableData(row,((dataService.k-1)*6)+b)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <!-- end of table other type -->
+                  </table>
+                  <pagination-controls class="pagination" id="first" (pageChange)="dataService.q = $event" *ngIf="dataService.fetchedDropdown.length > 6 && dataService.selectedTabMenuUrl != undefined && !field.dependecy && field.dependentCondition[0] == 'hasChildren'"></pagination-controls>
+                  <pagination-controls class="pagination first-pagination" id="second" (pageChange)="dataService.m = $event"
+                    *ngIf="dataService.selectedMenuLists.listOfCmsDataDto[0].viewContent[staticHomeService.selectedLang][0].data.length > 6 && dataService.selectedTabMenuUrl != undefined && !field.dependecy && field.dependentCondition[0] != 'hasChildren'"></pagination-controls>
+                  <pagination-controls class="pagination first-pagination" id="four" (pageChange)="dataService.k = $event"
+                    *ngIf="dataService.dataOfHomePage.length > 6 && dataService.selectedTabMenuUrl == undefined && !field.dependecy && field.dependentCondition[0] != 'hasChildren'"></pagination-controls>
+                </div>
+
+                
+               
+                
+
+                <!-- 2nd table for sanction order, letters, documents, photo gallery type -->
+                <!-- search box for sanction order, letters, documents, photo gallery type -->
+                <div class="col-md-12" *ngIf="field.controlType == 'table' && field.dependentCondition[0] == 'isDataAvailable'
+                && dataService.tableData.length > 0 && dataService.getKeys(dataService.tableData[0]).length != 0">
+                  <div class="col-md-4 searchData inner-addon right-addon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" [(ngModel)]="dataService.searchTextsOfDependentTable" class="form-control"
+                      placeholder="Search" [ngModelOptions]="{standalone: true}" />
+                  </div>
+                </div>
+                <div *ngSwitchCase="'table'" class="table-responsive selectedrowData" [hidden]="(dataService.tableData | searchText : dataService.searchTextsOfDependentTable).length == 0">
+                  <!-- <div class="separator" *ngIf="!field.dependecy"></div> -->
+
+                  <p class="text-center selectedTableInfo" *ngIf="!field.dependecy">{{dataService.selectedRow}}</p>
+                  <span id="selectedRowDataInTable"></span>
+                  <table class="cms-table-fetched" id="hideTableIfNoData" *ngIf="field.dependecy && dataService.tableData.length > 0 && dataService.getKeys(dataService.tableData[0]).length != 0">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <!-- <th class="cms-table-column" *ngFor="let col of dataService.getKeys(dataService.tableData[0])"  [hidden]="col != 'url'">
+                         Thumbnail
+                         </th> -->
+                        <th class="cms-table-column">Sl No.</th>
+                        <th class="cms-table-column" *ngFor="let col of dataService.getKeys(dataService.tableData[0]) | 
+                        removeTableColum: dataService.removeColumnList ; let i=index">{{col}}</th>
+                        <th class="cms-table-column">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let row of dataService.tableData | searchText: dataService.searchTextsOfDependentTable | paginate: { itemsPerPage: 6, currentPage: dataService.a, id: 'third' } ; let j=index">
+                        <td>{{((dataService.a-1)*6)+j+1}}</td>
+                        <td class="overflow-ellipsis" [hidden]="colz != 'url'" *ngFor="let colz of dataService.getKeys(dataService.tableData[0]) |
+                         removeTableColum: dataService.removeColumnList">
+                          <img id="myImg" (click)="showImage(row['url'])"
+                           [src]= "gateway +'downloadCmsDoc?fileName='+row['url']+'&inline='+true"  class="cms-photo-categories"  />
+                        </td>
+                        <td class="overflow-ellipsis" [hidden]="coll == 'url'" *ngFor="let coll of dataService.getKeys(dataService.tableData[0]) |
+                        removeTableColum: dataService.removeColumnList; let k=index"
+                          title="{{row[coll]}}" [innerHTML]="row[coll] | safeHtml">
+                        </td>
+                        <td>
+                          <button class="edit-btn" title="Edit" (click)="editRowOfFetchedData(row,((dataService.a-1)*6)+j)">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfFetchedData(((dataService.a-1)*6)+j)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls id="third" class="pagination" (pageChange)="dataService.a = $event" *ngIf="field.dependecy && dataService.tableData.length > 0 && dataService.getKeys(dataService.tableData[0]).length != 0 && dataService.tableData.length > 6"></pagination-controls>
+                </div>
+                <!-- <div class="" [ngClass]="[!field.errorFound ? 'd-none':'']" style="color: red;
+                    margin-top: -12PX; padding-left: 5px;">{{field.errorMessage}}</div> -->
+              </div>
+              <p *ngIf="field.label ==  'Upload File'" [hidden]="field.dependecy" class="fetched-file" title="Download File"
+                (click)="downloadFetchedFileCms(dataService.uploadedFilepath)">{{dataService.uploadedFile}}</p>
+              <p *ngIf="field.label ==  'Upload File'" [hidden]="!field.dependecy" class="fetched-file" title="Download File"
+                (click)="downloadFetchedFileCms(dataService.uploadedFilepath)">{{dataService.uploadedFile}}</p>
+              <p *ngIf="field.label ==  'Upload Image'" class="fetched-file" title="Download File" (click)="downloadFetchedFileCms(dataService.imageFileName)">{{dataService.imageUploadedFile}}</p>
+              <p *ngIf="field.label ==  'Upload Audio'" class="fetched-file" title="Download File" (click)="downloadFetchedFileCms(dataService.uploadedAudiopath)">{{dataService.uploadedAudio}}</p>
+            </div>
+            <!-- <div class="form-group row">
+              <div class="col-md-12 text-center">
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <pagination-controls id="third" class="pagination" (pageChange)="dataService.a = $event" *ngIf="dataService.tableData.length > 6 && !dataService.selectedMenuLists.listOfQuestionModel.dependecy"></pagination-controls>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-12" *ngIf="dataService.noDataFound">
+              <h4 class="text-center no-data-found">No Data Found</h4>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key contacts details starts -->
+
+    <div class="col-md-9" *ngIf="dataService.showList && dataService.selectedTabMenuUrl == 'key-contacts'" [hidden]="dataService.selectedTabMenuUrl == 'underconstruction'">
+      <div class="row" *ngIf="dataService.selectedTabMenu">
+        <h2 class="title-main">{{dataService.selectedTabMenu.title}}</h2>
+      </div>
+      <div class="row cms-section">
+        <div class="col-md-12">
+          <form class="cmsform">
+            <div id="div{{kcData.columnName}}" *ngFor="let kcData of dataService.selectedMenuLists.listOfQuestionModel; let i = index;"
+              [ngClass]="{'form-group':kcData.controlType == 'textbox','top-css-ifsavebtn': dataService.showEditCallOptionOfKc == true && (kcData.label == 'Select Level' || kcData.label == 'Select State' ) }"
+              class="row" [hidden]="(dataService.selectLevelDropdownVal == 'National Level' && (kcData.dependentCondition[0] == 'isState' || kcData.dependentCondition[0] == 'isDistrict' ))
+          || (dataService.selectLevelDropdownVal == 'State Level' && kcData.dependentCondition[0] == 'isDistrict')
+          || (dataService.selectLevelDropdownVal == 'District Level' && kcData.dependentCondition[0] == 'isState')">
+              <!-- <div class="col-md-12"style="color: #31859c; font-size: 18px; margin-bottom: 20px;">{{field.keyHeading}}</div>  -->
+              <label id="label{{kcData.columnName}}" [attr.for]="kcData.columnName" class="col-md-2 label-bold"
+                [ngClass]="{'asterik-label':kcData.validation && kcData.validation.mandatory}" *ngIf="kcData.controlType != 'table' && kcData.controlType != 'button'">{{kcData.label}}&nbsp;</label>
+
+              <div [ngSwitch]="kcData.controlType" class="input-holder type-center" [ngClass]="kcData.controlType != 'table'? 'col-md-9': 'col-md-11'"
+                [ngClass]="{'top-css-ifsavebtn': dataService.showEditCallOptionOfKc == true}">
+                <!--  key contact input textbox -->
+                <input [disabled]="dataService.selectLevelDropdownVal == '' || dataService.selectLevelDropdownVal == undefined"
+                  *ngSwitchCase="'textbox'" [maxLength]="kcData.validation.maxLength" [placeholder]="kcData.section"
+                  name="{{kcData.columnName}}" [ngClass]="{
+              'col-md-10': dataService.showAddOptionOfKc || dataService.showEditOptionOfKc || dataService.showEditCallOptionOfKc}"
+                  id="modelValue" (ngModelPaste)="pastedVal(dataService.selectedMenuLists.listOfQuestionModel)" (keyup)="newValue(dataService.selectedMenuLists.listOfQuestionModel,$event)"
+                  [id]="kcData.columnName" [type]="kcData.type" (input)="kcData.validation && kcData.validation.maxLength ? showCharRemaining(kcData) : ''"
+                  (blur)="hideCharRemaining(kcData);" [(ngModel)]="kcData.value" class="form-control" (keydown)="kcData.label == 'Phone No. ' ? preventNegative($event):''"
+                  [ngClass]="{'no-spinners':field.type == 'number'}">
+                <!-- end textbox -->
+                <!-- characters remaining block -->
+                <span style="display: none" [ngClass]="dataService.selectLevelDropdownVal == 'National Level' ? 'charleft' : 'charleft-nested'"
+                  id='remainingC{{kcData.columnName}}'></span>
+                <!-- end -->
+
+                <span id="selectedRowDataInFieldOfKC"></span>
+                <!-- <img *ngIf="field.label == 'Upload File'" [src]="dataService.imageUploadedFilepath"> -->
+                <!--key contact input type text area -->
+
+                <p *ngSwitchCase="'textarea'" class="cms-page-description-block" [hidden]="kcData.label == 'Content'">
+                  <textarea *ngIf="kcData.label == 'Page Description'" class="description-text-input" type="text"
+                    (blur)="editingPageDescription()" name="{{kcData.value}}" [maxLength]="kcData.validation.maxLength"
+                    id="editCmsPageDescription" [(ngModel)]="kcData.value" [attr.style]="" [attr.disabled]="dataService.ifEditingDescription"> </textarea>
+                  <span *ngIf="kcData.label == 'Page Description'" class="short-description-field">
+                    <i class="fa fa-pencil" aria-hidden="true" (click)="editPageDescription()"></i>
+                  </span>
+                </p>
+
+                <!-- Submit button for type order -->
+                <!-- add btn -->
+                <div id="addBtnDiv" *ngIf="kcData.label == 'Add' && dataService.showAddOptionOfKc" [ngClass]="{
+              'add-btn': 'kcData.label == State Name || kcData.label == District Name'
+            }">
+                  <button *ngSwitchCase="'button'" [disabled]="" [ngClass]="{
+                'add-order-btn': 'kcData.label == State Name || kcData.label == District Name',
+                'add-btn-charleft': dataService.charLeft
+              }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="kcData.label" [type]="kcData.type"
+                    (click)="addNewStateORDistrictName(dataService.selectedMenuLists.listOfQuestionModel)">{{kcData.label}}</button>
+                </div>
+                <!-- add call for edit btn -->
+                <div *ngIf="dataService.showEditCallOptionOfKc &&  kcData.label != 'Reset' && kcData.label !='Publish' && kcData.label !='Edit'"
+                  [ngClass]="{
+              'add-btn': 'kcData.label == State Name || kcData.label == District Name'
+            }">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                'add-order-btn': 'kcData.label == State Name || kcData.label == District Name'
+              }"
+                    class="btn btn-default proceed-btn cms-submit-btn" value="Add" type="buttone" (click)="editNewStateOrDistrictName(dataService.selectedMenuLists.listOfQuestionModel)">Save</button>
+                </div>
+
+                <!-- edit button -->
+                <div *ngIf="kcData.label == 'Edit' && dataService.showEditOptionOfKc" [ngClass]="{
+              'add-btn': 'kcData.label == State Name || kcData.label == District Name'
+            }">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                'add-order-btn': 'kcData.label == State Name || kcData.label == District Name'
+              }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="kcData.label" [type]="kcData.type"
+                    (click)="editNameOfStateOrDistrict(dataService.selectedMenuLists.listOfQuestionModel)">{{kcData.label}}
+                  </button>
+                </div>
+
+                <!-- publish button -->
+                <div *ngIf="kcData.label != 'Add' && kcData.label != 'Edit' && kcData.label != 'Reset'">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                'cms-submit-btn-in-row' : 'kcData.label == Publish'
+              }"
+                    id="publish-button-kc" class="btn btn-default proceed-btn cms-submit-btn" [value]="kcData.label"
+                    [type]="kcData.type" (click)="submitKeyContactsDetails(dataService.selectedMenuLists.listOfQuestionModel)">{{kcData.label}}</button>
+                </div>
+
+                <!-- cancel button -->
+                <div *ngIf="kcData.label != 'Add' && kcData.label != 'Edit' && kcData.label == 'Reset'">
+                  <button *ngSwitchCase="'button'" [ngClass]="{
+                'cms-cancel-btn-in-row' : 'kcData.label == Reset'
+              }"
+                    class="btn btn-default proceed-btn cms-submit-btn" [value]="kcData.label" [type]="kcData.type"
+                    (click)="resetData(dataService.selectedMenuLists.listOfQuestionModel, '')">{{kcData.label}}</button>
+                </div>
+
+                <!--key contact Input dropdown for selecting level-->
+                <span *ngIf="kcData.label == 'Select Level' && kcData.label != 'Select State'">
+                  <div class="btn-group" style="padding-left: 3px;
+                width: 100%;margin-bottom: 1rem"
+                    dropdown *ngSwitchCase="'dropdown'" [ngClass]="{'kcdata-dropDown': dataService.showEditCallOptionOfKc &&  kcData.label != 'Reset' && kcData.label !='Publish' && kcData.label !='Edit'}">
+                    <input type="text" class="dropdown-input" [id]="kcData.columnName" style="padding: 10px;" readonly
+                      [placeholder]="''" [(ngModel)]="kcData.value" name="{{kcData.columnName}}">
+                    <button type="button" style="padding: 0" dropdownToggle data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                      mdbRippleRadius></button>
+                    <div class="dropdown-menu drp-list cms-dropdown-lists">
+                      <a class="dropdown-item" style="font-size: 13px;" *ngFor="let opt of kcData.options; let kc=index"
+                        (click)="selectDropdown(opt, kc,dataService.selectedMenuLists.listOfQuestionModel, dataService.selectedMenuLists.listOfCmsDataDto )">{{opt.value}}</a>
+                    </div>
+                  </div>
+                </span>
+
+                <!-- dropdown for selecting state -->
+                <span *ngIf="kcData.label != 'Select Level' && kcData.label == 'Select State'">
+                  <div class="btn-group" style="padding-left: 3px;
+              width: 100%;margin-bottom: 1rem"
+                    dropdown *ngSwitchCase="'dropdown'" [ngClass]="{'kcdata-dropDown': dataService.showEditCallOptionOfKc &&  kcData.label != 'Reset' && kcData.label !='Publish' && kcData.label !='Edit'}">
+                    <input type="text" class="dropdown-input" [id]="kcData.columnName" style="padding: 10px;" readonly
+                      [placeholder]="'Select State'" [(ngModel)]="kcData.value" name="{{kcData.columnName}}">
+                    <button type="button" style="padding: 0" dropdownToggle data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown"
+                      mdbRippleRadius></button>
+                    <div class="dropdown-menu drp-list cms-dropdown-lists">
+                      <a class="dropdown-item" style="font-size: 13px;" *ngFor="let opts of dataService.stateLevelLists; let kc=index"
+                        (click)="selectStateItem(opts, kc,dataService.selectedMenuLists.listOfQuestionModel, dataService.selectedMenuLists.listOfCmsDataDto )">{{opts.section}}</a>
+                    </div>
+                  </div>
+                </span>
+
+                <!-- Tbale data for national level -->
+                <div *ngSwitchCase="'table'" class="table-container table-responsive" id="keyContactsNational" [hidden]="dataService.selectLevelDropdownVal != 'National Level' && kcData.dependentCondition[0] != '' && dataService.showNationalLevelData == false">
+                  <div class="col-md-12" *ngIf="kcData.controlType == 'table' && dataService.selectLevelDropdownVal == 'National Level' && kcData.dependentCondition[0] == '' && dataService.showNationalLevelData == true">
+                    <div class="col-md-4 searchData inner-addon right-addon">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <input type="text" [(ngModel)]="dataService.searchTextsOfNational" class="form-control"
+                        placeholder="Search" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                  </div>
+                  <span id="selectedRowKCDataInTablenational"></span>
+                  <table class="cms-table-fetched" *ngIf="kcData.dependentCondition[0] == '' && dataService.showNationalLevelData">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <th>Sl No.</th>
+                        <th class="cms-table-column" [hidden]="dataService.selectLevelDropdownVal != 'National Level' && kcData.dependentCondition[0] != '' && dataService.showNationalLevelData == false"
+                          *ngFor="let col of dataService.getKeys(dataService.keyContactsdetailsOfNationLevel[0])">{{col}}</th>
+                        <th class="cms-table-column">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="kcData.dependentCondition[0] == '' && dataService.showNationalLevelData">
+                      <tr *ngFor="let row of dataService.keyContactsdetailsOfNationLevel | searchText: dataService.searchTextsOfNational | removeTableColum: dataService.removeColumnList | paginate: { itemsPerPage: 6, currentPage: dataService.nl, id: 'national-l' }; let a = index;">
+                        <td>{{((dataService.nl-1)*6)+a+1}}</td>
+                        <td class="overflow-ellipsis-kc" *ngFor="let col of dataService.getKeys(this.dataService.keyContactsdetailsOfNationLevel[0]) |
+                     removeTableColum: dataService.removeColumnList; let k=index"
+                          title="{{row[col]}}">{{row[col]}}
+                        </td>
+                        <td>
+                          <button (click)="editRowOfContactDetails(row,((dataService.nl-1)*6)+a,dataService.selectedMenuLists.listOfQuestionModel)"
+                            class="edit-btn" title="Edit">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfContactDetails(row,((dataService.nl-1)*6)+a)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <!-- end table  -->
+                  </table>
+                  <pagination-controls class="pagination" id="national-l" (pageChange)="dataService.nl = $event" *ngIf="dataService.keyContactsdetailsOfNationLevel.length > 6  && kcData.dependentCondition[0] == ''"></pagination-controls>
+                </div>
+
+                <!-- state table (list of states only) -->
+                <div *ngSwitchCase="'table'" class="table-container table-responsive" id="keyContactsState" [hidden]="dataService.selectLevelDropdownVal == 'National Level' && dataService.selectLevelDropdownVal == 'District Level' && kcData.dependentCondition[0] == '' && dataService.showStateLevelData == false">
+                  <div class="col-md-12" *ngIf="kcData.controlType == 'table' && dataService.selectLevelDropdownVal == 'State Level' && kcData.dependentCondition[0] == 'isState'">
+                    <div class="col-md-4 searchData inner-addon right-addon">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <input type="text" [(ngModel)]="dataService.searchTextsOfStateLists" class="form-control"
+                        placeholder="Search" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                  </div>
+                  <span id="selectedRowKCDataInTableState"></span>
+                  <table class="cms-table-fetched" [ngClass]="{'kcdata-table': dataService.showEditCallOptionOfKc &&  kcData.label != 'Reset' && kcData.label !='Publish' && kcData.label !='Edit'}"
+                    *ngIf="kcData.dependentCondition[0] != '' && dataService.showStateLevelData">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <th>Sl No.</th>
+                        <th class="cms-table-column" [hidden]="kcData.dependentCondition[0] == '' && dataService.showStateLevelData == false"
+                          *ngFor="let col of dataService.getKeys(dataService.stateLevelLists[0]) | removeTableColum: ['keyContacts']">State
+                          Name</th>
+                        <th class="cms-table-column">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="kcData.dependentCondition[0] != '' && dataService.showStateLevelData">
+                      <tr *ngFor="let row of dataService.stateLevelLists | searchText: dataService.searchTextsOfStateLists | removeTableColum: dataService.removeColumnList | paginate: { itemsPerPage: 6, currentPage: dataService.s, id: 'first-kc' }; let a = index;">
+                        <td>{{((dataService.s-1)*6)+a+1}}</td>
+                        <td class="overflow-ellipsis-kc" *ngFor="let col of dataService.getKeys(dataService.stateLevelLists[0]) |
+                removeTableColum: ['keyContacts']; let k=index"
+                          title="{{row[col]}}">{{row[col]}}
+                        </td>
+                        <td>
+                          <button (click)="editRowOfState(row.section,((dataService.s-1)*6)+a,dataService.selectedMenuLists.listOfQuestionModel)"
+                            class="edit-btn" title="Edit">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfStateOrDistrictName(row,((dataService.s-1)*6)+a)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <!-- end table  -->
+                  </table>
+                  <pagination-controls class="pagination first-pagination" id="first-kc" (pageChange)="dataService.s = $event"
+                    *ngIf="dataService.stateLevelLists.length > 6 && kcData.dependentCondition[0] == 'isState'"></pagination-controls>
+                </div>
+
+
+                <!-- list of contacts details of state  -->
+                
+               
+                <div *ngSwitchCase="'table'" id="contact-details-state" class="table-responsive selectedrowData"
+                  [hidden]="!dataService.keyContactsInfoDetailsOfState.length">
+                  <p class="text-center selectedTableInfo">{{dataService.selectedRowOfStateOrDistrict}}</p>
+                  <div class="col-md-12" *ngIf="kcData.controlType == 'table' && dataService.selectLevelDropdownVal == 'State Level'
+                && dataService.keyContactsInfoDetailsOfState.length > 0 && dataService.getKeys(dataService.keyContactsInfoDetailsOfState[0]).length != 0">
+                 <div class="col-md-4 searchData inner-addon right-addon">
+                   <i class="fa fa-search" aria-hidden="true"></i>
+                   <input type="text" [(ngModel)]="dataService.searchTextsOfStateListsContacts" class="form-control"
+                     placeholder="Search" [ngModelOptions]="{standalone: true}" />
+                 </div>
+               </div>
+                  <span id="selectedRowDataInTableState"></span>
+                  <table class="cms-table-fetched state-level-contact-lists" *ngIf="dataService.keyContactsInfoDetailsOfState.length > 0 && dataService.getKeys(dataService.keyContactsInfoDetailsOfState[0]).length != 0">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <th>Sl No.</th>
+                        <th class="cms-table-column" *ngFor="let col of dataService.getKeys(dataService.keyContactsInfoDetailsOfState[0]) | 
+                removeTableColum: ['designation', 'keyContacts'] ; let i=index">{{col}}</th>
+                        <th class="cms-table-column">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let row of dataService.keyContactsInfoDetailsOfState | searchText: dataService.searchTextsOfStateListsContacts  | paginate: { itemsPerPage: 6, currentPage: dataService.sc, id: 'four-state-kc' } ; let j=index">
+                        <td>{{((dataService.sc-1)*6)+j+1}}</td>
+                        <td class="overflow-ellipsis-kc" *ngFor="let coll of dataService.getKeys(dataService.keyContactsInfoDetailsOfState[0]) |
+                removeTableColum: ['designation', 'keyContacts']; let k=index"
+                          title="{{row[coll]}}">{{row[coll]}}
+                        </td>
+                        <td>
+                          <button class="edit-btn" title="Edit" (click)="editRowOfContactDetails(row,((dataService.sc-1)*6)+j,dataService.selectedMenuLists.listOfQuestionModel)">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfContactDetails(row,((dataService.sc-1)*6)+j)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls id="four-state-kc" class="pagination" (pageChange)="dataService.sc = $event"
+                    *ngIf="dataService.keyContactsInfoDetailsOfState.length > 0 && dataService.getKeys(dataService.keyContactsInfoDetailsOfState[0]).length != 0 && dataService.keyContactsInfoDetailsOfState.length > 6"></pagination-controls>
+                </div>
+
+
+                <!-- districts table (list of districts only)-->
+                <div *ngSwitchCase="'table'" class="table-container table-responsive" id="keyContactsDistrict" [hidden]="dataService.selectLevelDropdownVal == 'National Level' && dataService.selectLevelDropdownVal == 'State Level' && kcData.dependentCondition[0] == '' && kcData.dependentCondition[0] == 'isState'
+                          && dataService.showDistrictLevelData == false 
+                          && dataService.getKeys(dataService.districtLevelLists[0]).length === 0 && dataService.districtLevelLists.length == 0 ">
+                  <div class="col-md-12" *ngIf="kcData.controlType == 'table' && dataService.selectLevelDropdownVal == 'District Level'
+                          && kcData.dependentCondition[0] == 'isDistrict'">
+                    <div class="col-md-4 searchData inner-addon right-addon">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <input type="text" [(ngModel)]="dataService.searchTextsOfDistrict" class="form-control"
+                        placeholder="Search" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                  </div>
+                  <span id="selectedRowKCDataInTableDistrict"></span>
+                  <table class="cms-table-fetched" *ngIf="kcData.dependentCondition[0] != '' && dataService.showDistrictLevelData">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <th>Sl No.</th>
+                        <th class="cms-table-column" [hidden]="kcData.dependentCondition[0] == '' && dataService.showDistrictLevelData == false"
+                          *ngFor="let col of dataService.getKeys(dataService.districtLevelLists[0]) | removeTableColum: ['keyContacts']">District
+                          Name</th>
+                        <th class="cms-table-column">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="kcData.dependentCondition[0] != '' && dataService.showDistrictLevelData">
+                      <tr *ngFor="let row of dataService.districtLevelLists | searchText: dataService.searchTextsOfDistrict | removeTableColum: dataService.removeColumnList | paginate: { itemsPerPage: 6, currentPage: dataService.d, id: 'second-kc' }; let a = index;">
+                        <td>{{((dataService.d-1)*6)+a+1}}</td>
+                        <td class="overflow-ellipsis-kc" *ngFor="let col of dataService.getKeys(dataService.districtLevelLists[0]) |
+                removeTableColum: ['keyContacts']; let k=index"
+                          title="{{row[col]}}">{{row[col]}}
+                        </td>
+                        <td>
+                          <button (click)="editRowOfDistrict(row.section,((dataService.d-1)*6)+a,dataService.selectedMenuLists.listOfQuestionModel)"
+                            class="edit-btn" title="Edit">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfStateOrDistrictName(row,((dataService.d-1)*6)+a)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls class="pagination" id="second-kc" (pageChange)="dataService.d = $event" *ngIf="dataService.districtLevelLists.length > 6 && kcData.dependentCondition[0] == 'isDistrict'"></pagination-controls>
+                </div>
+                <!-- end district list table  -->
+
+
+                <!-- list of contacts details of district  -->
+               
+                <div *ngSwitchCase="'table'" id="contact-details-district" class="table-responsive selectedrowData"
+                  [hidden]="dataService.keyContactsInfoDetailsOfDistrict.length == 0 && dataService.selectLevelDropdownVal != 'District Level'">
+
+                  <p class="text-center selectedTableInfo">{{dataService.selectedRowOfStateOrDistrict}}</p>
+                  <div class="col-md-12" *ngIf="kcData.controlType == 'table' && dataService.selectLevelDropdownVal == 'District Level'
+                  && dataService.keyContactsInfoDetailsOfDistrict.length > 0 && dataService.getKeys(dataService.keyContactsInfoDetailsOfDistrict[0]).length != 0">
+                    <div class="col-md-4 searchData inner-addon right-addon">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <input type="text" [(ngModel)]="dataService.searchTextsOfDistrictContacts" class="form-control"
+                        placeholder="Search" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                  </div>
+                  <span id="selectedRowDataInTableOfDistrict"></span>
+                  <table class="cms-table-fetched state-level-contact-lists" *ngIf="dataService.keyContactsInfoDetailsOfDistrict.length > 0 && dataService.getKeys(dataService.keyContactsInfoDetailsOfDistrict[0]).length != 0">
+                    <thead>
+                      <tr class="cms-table-header">
+                        <th>Sl No.</th>
+                        <th class="cms-table-column" *ngFor="let col of dataService.getKeys(dataService.keyContactsInfoDetailsOfDistrict[0]) | 
+                  removeTableColum: dataService.removeColumnList ; let i=index">{{col}}</th>
+                        <th class="cms-table-column">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let row of dataService.keyContactsInfoDetailsOfDistrict | searchText: dataService.searchTextsOfDistrictContacts | paginate: { itemsPerPage: 6, currentPage: dataService.dc, id: 'district-kc' } ; let j=index">
+                        <td>{{((dataService.dc-1)*6)+j+1}}</td>
+                        <td class="overflow-ellipsis-kc" *ngFor="let coll of dataService.getKeys(dataService.keyContactsInfoDetailsOfDistrict[0]) |
+                  removeTableColum: dataService.removeColumnList; let k=index"
+                          title="{{row[coll]}}">{{row[coll]}}
+                        </td>
+                        <td>
+                          <button class="edit-btn" title="Edit" (click)="editRowOfContactDetails(row,((dataService.dc-1)*6)+j,dataService.selectedMenuLists.listOfQuestionModel)">
+                            <i class="fa fa-edit action-icons" style="font-size:18px"></i>
+                          </button>
+                          <button class="delete-btn" title="Delete" (click)="deleteRowOfContactDetails(row,((dataService.dc-1)*6)+j)">
+                            <i class="fa fa-trash-o action-icons" style="font-size:18px"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls id="district-kc" class="pagination" (pageChange)="dataService.dc = $event" *ngIf="dataService.keyContactsInfoDetailsOfDistrict.length > 6 && dataService.getKeys(dataService.keyContactsInfoDetailsOfDistrict[0]).length != 0"></pagination-controls>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="form-group row">
+          <div class="col-md-12 text-center">
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <pagination-controls id="third" class="pagination" (pageChange)="dataService.a = $event" *ngIf="dataService.tableData.length > 6 && !dataService.selectedMenuLists.listOfQuestionModel.dependecy"></pagination-controls>
+            </div>
+          </div>
+        </div> -->
+            <div class="col-md-12" *ngIf="dataService.noDataFound">
+              <h4 class="text-center no-data-found">No Data Found</h4>
+            </div>
+            <div class="col-md-12" [hidden]="((dataService.keyContactsdetailsOfNationLevel | searchText : dataService.searchTextsOfNational).length != 0)
+              || ((dataService.stateLevelLists | searchText : dataService.searchTextsOfStateLists).length != 0)
+              || ((dataService.keyContactsInfoDetailsOfState | searchText : dataService.searchTextsOfStateListsContacts).length != 0)
+              || ((dataService.districtLevelLists | searchText : dataService.searchTextsOfDistrict).length != 0)
+              || ((dataService.keyContactsInfoDetailsOfDistrict | searchText : dataService.searchTextsOfDistrictContacts).length != 0)">
+              <h4 class="text-center no-data-found">No Data Found</h4>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class=" blank-height">
+    </div>
+  </div>
+  <div class="blank-height">
+  </div>
+  <div class=" blank-height">
+  </div>
+</div>
+<!-- modal for deleting row data of dependency table -->
+<div id="confirmRejectModal" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="infohead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp; INFO</div>
+        <div class="warnbody">{{warningMsg}}</div>
+        <button type="button" class="btn errorOk" data-dismiss="modal" (click)="deleteSelectedRowData()">Yes</button>
+        <button type="button" class="btn errorOk" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+<!-- modal for deleting row data of KC table -->
+<div id="confirmRejectModalofKC" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static"
+  data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="infohead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp; INFO</div>
+        <div class="warnbody">{{warningMsg}}</div>
+        <button type="button" class="btn errorOk" data-dismiss="modal" (click)="deleteSelectedRowDataOfKC(dataService.selectedMenuLists.listOfQuestionModel)">Yes</button>
+        <button type="button" class="btn errorOk" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+
+<!-- modal for deleting row data of state name including its contact lists table -->
+<div id="confirmRejectModalofStateNameOrDistrictName" class="confrirmation-modal modal fade" role="dialog"
+  data-backdrop="static" data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="infohead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp; INFO</div>
+        <div class="warnbody">{{warningMsg}}</div>
+        <button type="button" class="btn errorOk" data-dismiss="modal" (click)="deleteSelectedRowDataOfStateNameOrDistrictName(dataService.selectedMenuLists.listOfQuestionModel)">Yes</button>
+        <button type="button" class="btn errorOk" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+<div id="confirmDeleteModal" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="infohead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp; INFO</div>
+        <div class="warnbody">{{warningMsg}}</div>
+        <button type="button" class="btn errorOk" data-dismiss="modal" (click)="deleteSelectedRowDataOfSection(dataService.selectedMenuLists.listOfQuestionModel)">Yes</button>
+        <button type="button" class="btn errorOk" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="pop" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshEditedData(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal for published keycontacts data successfully -->
+<div id="publishedSuccessfullyOfKc" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static"
+  data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshPublishedKCData(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal for adding new state  of keycontacts data -->
+<div id="addingSuccessfullyOfKc" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static"
+  data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshAddedKCData(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="withPreviewSubmission" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static"
+  data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="dataService.file=[];resetPreviewFetchedData(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="deleteRow" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">Data deleted successfully !</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshEditedData(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="deleteRowSectionOfFirstTable" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static"
+  data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshDeletedData()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="deleteRowSection" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshEditedData(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- deleting kc data (except state, district's 1st table) -->
+<div id="deleteRowOfKCdata" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshDataOfKC(dataService.selectedMenuLists.listOfQuestionModel)">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="addNewSection" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+  tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">{{dataService.successMsg}}</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshAddedData()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="pageDescriptionSuccess" class="confrirmation-modal modal fade" role="dialog" data-backdrop="static"
+  data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="successhead">
+          <img alt="" src="./assets/images/Messages_success_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          SUCCESS</div>
+        <div class="successbody">Page Description saved successfully !</div>
+        <button type="button" class="btn" data-dismiss="modal" (click)="refreshPageDescriptionData()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="error" class="error-modal modal fade" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="errorhead">
+          <img alt="" src="./assets/images/Messages_warning_caution_icon.svg" style="width: 25px;margin-top: -5px;">&nbsp;
+          ERROR</div>
+        <div class="successbody"><span>{{dataService.errorFound}}</span></div>
+        <button type="button" class="btn" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-width">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <!-- <h4 class="modal-title" id="myModalLabel">{{dataService.uploadedFile}}</h4> -->
+      </div>
+      <div class="modal-body">
+        <embed [src]="url" frameborder="0" width="100%" height="400px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- modal for preview image -->
+  <div class="modal fade" id="previewImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog image-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header image-modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body image-modal-body">
+          <img [src]="gateway +'downloadCmsDoc?fileName='+dataService.clickledImagePrview+'&inline='+true" frameborder="0" width="100%" height="520px">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div *ngIf="dataService.selectedTabMenuUrl == 'aboutus'" id="previewPage" class="modal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- dialog -->
+  <div class="modal-dialog previewPortalPage">
+    <!-- content -->
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header cms-header-info">
+        <h1 id="header-info-of-preview" class="modal-title">
+          {{dataService.headingTitle}}
+        </h1>
+      </div>
+      <!-- header -->
+      <!-- body -->
+      <div class="modal-body content-body">
+        <div class="row">
+          <p class="about-us-content">
+            <img class="about-us-image" 
+            [src]= "dataService.isImageSelected? dataService.imageUploadedFilepath : gateway +'downloadCmsDoc?fileName='+dataService.imageUploadedFilepath+'&inline='+true" 
+            
+             align="left">
+            <span [innerHTML]="dataService.contentVal"></span>
+          </p>
+        </div>
+        <div class="row" *ngIf="dataService.aboutSchemeFileTitle != undefined && dataService.aboutSchemeFileTitle != ''">
+          <h3 class="download-pdf-text">
+            <i class="fa fa-file-pdf-o"></i>
+            <a class="title-pdf-info">
+              {{dataService.aboutSchemeFileTitle}}
+            </a>
+          </h3>
+        </div>
+      </div>
+      <!-- body -->
+      <!-- footer -->
+      <div class="modal-footer">
+        <button class="btn btn-secondary preview-publish-btn" (click)="publishDataOfPreviewpage()" data-dismiss="modal">
+          Publish</button>
+        <button class="btn btn-secondary preview-publish-btn" data-dismiss="modal"> Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

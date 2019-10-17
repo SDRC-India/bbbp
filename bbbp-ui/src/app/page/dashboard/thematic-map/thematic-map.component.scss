@@ -1,0 +1,59 @@
+#india {
+    fill: #008000;
+    opacity: .8;
+    stroke: #000000;
+    stroke-width: .7;
+}
+svg {
+    background: #eee;
+}
+#background{
+    position: absolute;
+    top: 60%;
+    letter-spacing: 3px;
+    font-size: 40px;
+    right: 12%;
+    z-index: 1;
+    font-weight: bold;
+    color: #CCC;
+    transform: rotate(-45DEG);
+}
+.map_popover_content{
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+}
+@media(max-width: 768px){
+    #background{
+        display: none;
+    }
+}
+// .thirdslices{
+//     fill: #F00;
+//     cursor: pointer;
+// }
+// .secondslices{
+//     fill: #FFC200;
+//     cursor: pointer;
+// }
+// .firstslices{
+//     fill: #3cb541;
+//     cursor: pointer;
+// }
+// .fourthslices{
+//     fill: #929da8;
+// }
+.map_popover {
+    background: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #4bbcd7;
+    color: #727272;
+    display: none;
+    font: italic 14px Georgia;
+    left: 0;
+    opacity: 0.6;
+    padding: 10px 20px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    z-index: 1000;
+}

@@ -1,0 +1,388 @@
+{
+"aboutus": [
+{
+"key": 1,
+"label": "Enter about us",
+"aggRole": null,
+"type": "text",
+"columnName": "a1",
+"dependecy": false,
+"dependentColumn": null,
+"dependentCondition": null,
+"frequency": null,
+"roleId": 1,
+"options": null,
+"typeId": null,
+"controlType": "textbox",
+"value": null,
+"fileValue": null,
+"isOthersSelected": null,
+"othersValue": null,
+"filesByType": null
+},
+{
+"key": 2,
+"label": "Select file",
+"aggRole": null,
+"type": "file",
+"columnName": "a2",
+"dependecy": false,
+"dependentColumn": null,
+"dependentCondition": null,
+"frequency": null,
+"roleId": 2,
+"options": null,
+"typeId": null,
+"controlType": "textbox",
+"value": null,
+"fileValue": null,
+"isOthersSelected": null,
+"othersValue": null,
+"filesByType": null
+},
+{
+"key": 3,
+"label": "Enter file name",
+"aggRole": "isDependencyYes",
+"type": "text",
+"columnName": "a3",
+"dependecy": true,
+"dependentColumn": "a2",
+"dependentCondition": null,
+"frequency": null,
+"roleId": 3,
+"options": null,
+"typeId": null,
+"controlType": "textbox",
+"value": null,
+"fileValue": null,
+"isOthersSelected": null,
+"othersValue": null,
+"filesByType": null
+},
+{
+"key": 4,
+"label": "Select image",
+"aggRole": null,
+"type": "file",
+"columnName": "a4",
+"dependecy": false,
+"dependentColumn": null,
+"dependentCondition": null,
+"frequency": null,
+"roleId": 4,
+"options": null,
+"typeId": null,
+"controlType": "textbox",
+"value": null,
+"fileValue": null,
+"isOthersSelected": null,
+"othersValue": null,
+"filesByType": null
+},
+{
+"key": 4,
+"label": "Select image",
+"aggRole": null,
+"type": "",
+"columnName": "a4",
+"dependecy": false,
+"dependentColumn": null,
+"dependentCondition": null,
+"frequency": null,
+"roleId": 4,
+"options": null,
+"typeId": null,
+"controlType": "table",
+"value": {
+"hindi": [
+{
+"section": "सर्वोत्तम प्रथाएं",
+"data": [
+{
+"title": "Pledge against Child Marriage in Nayagarh, Orissa",
+"createdDate": "26-07-2018",
+"fileName": "best practices/Notarapalii village, Nayagarh, Orissa-Child Marriage Free.docx",
+"size": "501.02 kb",
+"isLive": true,
+"publishedDate": "30-07-2018"
+},
+{
+"title": "24X7 Control Room established by Jhunjhunu, Rajasthan to prevent child marriages",
+"createdDate": "21-07-2018",
+"fileName": "best practices/scan.PDF",
+"size": "842.94 kb",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Apna Bachcha Apna Vidyalaya''initiative to arrest drop out of school students, especially girls by Rajasthan''",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Jhunjhunu.pdf",
+"size": "146.38 kb",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Eighth vow against gender discrimination by Sri Ganganagar and Bharatpur districts of Rajasthan",
+"createdDate": "20-06-2018",
+"fileName": "best practices/Rajasthan_2.pdf",
+"size": "82.39 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+},
+{
+"title": "Gomati District Administration operationalized Crche for Children of Women Officers Employees",
+"createdDate": "26-07-2018",
+"fileName": "best practices/CRECHEOFGOMATIDISTRICT.pdf",
+"size": "215.1 kb",
+"isLive": true,
+"publishedDate": "30-07-2018"
+},
+{
+"title": "Meri Laadli A Mandi (H.P.) District Administration initiative to Save the Girl Child (Eng)",
+"createdDate": "21-07-2018",
+"fileName": "best practices/Meri Ladli - A Report.pdf",
+"size": "3.08 MB",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Meri Laadli A Mandi (H.P.) District Administration initiative to Save the Girl Child(Hindi)",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Meri Ladli Hindi.pdf",
+"size": "464.35 kb",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Best practices of Uttarakhand State under BBBP",
+"createdDate": "20-06-2018",
+"fileName": "best practices/Uttarakhand_1.pdf",
+"size": "421 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+},
+{
+"title": "Aapni Beti Yojana of Government of Rajasthan is a Best Pratice under Beti Bachao, Beti Padhao. Launched on 25th August, 2015 by District Administration Pali, Rajasthan motivates doctors to adopt under privileged girls. An inspiring way to motivate them",
+"createdDate": "26-07-2018",
+"fileName": "best practices/Aapni Beti Yojana Pali PPT.pdf",
+"size": "121.7 kb",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Udaipur Dedicated Park for Girl Child with 120 Plantations in the name of girl child",
+"createdDate": "21-07-2018",
+"fileName": "best practices/Udaipur24082015_1.pdf",
+"size": "187.18 kb",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Haryana Village initiates contest for Best Selfie with daughters  Beti Bachao Selfie Banao",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Udaipur24082015.pdf",
+"size": "5.06 MB",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Digital Guddi Gudda Board- ( a medium for advocacy) an innovation of District Jalgaon, Maharashtra",
+"createdDate": "20-06-2018",
+"fileName": "best practices/DigitalGuddiGuddaBoard.pdf",
+"size": "507.04 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+},
+{
+"title": "Haryana announces a cash reward of Rs 1 lakh for informers under PC&PNDT Act",
+"createdDate": "26-07-2018",
+"fileName": "best practices/AdvtNHMHaryana.jpg",
+"size": "120.49 kb",
+"isLive": true,
+"publishedDate": "29-07-2018"
+},
+{
+"title": "Piplantri: A Rajasthan village which celebrates the birth of every girl child with 111 trees",
+"createdDate": "21-07-2018",
+"fileName": "best practices/Piplantri.pdf",
+"size": "318.26 KB",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Beti Bachao Beti Padhao- Cuddlore shows the way",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Plan of Action Beti Bachao Beti Padhao SWABHIMAN.pdf",
+"size": "1.49 MB",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Convergent action plan of Kathua District, Jammu & Kashmir to involve multiple stakeholders",
+"createdDate": "20-06-2018",
+"fileName": "best practices/bestpracticecuddlore.pdf",
+"size": "389.63 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+}
+]
+}
+],
+"english": [
+{
+"section": "Best Practices",
+"data": [
+{
+"content": "Villagers of NOTARAPALLI, Odagaon Block, Nayagarh takes a mass resolution not to permit child marriage in their village. Vow “Not to give and take dowry”.Vow to provide “Equal opportunity of Education to both boys and girls”.",
+"title": "Pledge against Child Marriage in Nayagarh, Orissa",
+"createdDate": "26-07-2018",
+"fileName": "best practices/Notarapalii village, Nayagarh, Orissa-Child Marriage Free.docx",
+"size": "501.02 kb",
+"isLive": true,
+"publishedDate": "30-07-2018"
+},
+{
+"content": "The Union Ministry of Women and Child Development has adopted the ‘Digital Guddi-Gudda Board’ as a Best Practice under Beti Bachao Beti Padhao scheme on the occasion of Digital India Week being observed from 1st July to 7th July, 2015. The digital Board has been popularized in the district of Jalgaon, Maharashtra and works as a platform for dissemination of IEC Material on BBBP as well as updating monthly birth statistics.",
+"title": "Digital Guddi Gudda Board- ( a medium for advocacy) an innovation of District Jalgaon, Maharashtra",
+"createdDate": "20-06-2018",
+"fileName": "best practices/DigitalGuddiGuddaBoard.pdf",
+"size": "507.04 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+},
+{
+"content": "The President of India, Shri Pranab Mukherjee launched a mobile Application ‘Selfie with Daughter’ at Rashtrapati Bhavan today (June 9, 2017). Speaking on the occasion, the President congratulated Shri Sunil Jaglan on the launch of the mobile-app ‘Selfie-with-Daughter’. He said that Shri Jaglan’s efforts in initiating this campaign in Haryana are praiseworthy. Selfie-with-Daughter has become a world-wide movement against female foeticide and sex selection. He hoped that this would eventually help in dealing with the problems arising out of gender imbalance. He stated that the App is an innovative concept and an act of gentle persuasion. He urged people to take photographs with their daughters and upload on the App to make the campaign a success.The ‘Selfie with Daughter’ campaign was started by Shri Sunil Jaglan in June 2015 in village Bibipur, Jind, Haryana. A former Sarpanch, Shri Jaglan has been working in the field of women empowerment and village development. The aim of the campaign is to motivate society to feel proud to be parents of a girl child which will result in improving the child sex ratio.",
+"title": "President of India launches mobile app ''Selfie with Daughter''",
+"createdDate": "21-07-2018",
+"fileName": "",
+"size": "",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"content": "",
+"title": "24X7 Control Room established by Jhunjhunu, Rajasthan to prevent child marriages",
+"createdDate": "21-07-2018",
+"fileName": "best practices/scan.PDF",
+"size": "842.94 kb",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"content": "",
+"title": "Apna Bachcha Apna Vidyalaya''initiative to arrest drop out of school students, especially girls by Rajasthan''",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Jhunjhunu.pdf",
+"size": "146.38 kb",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Eighth vow against gender discrimination by Sri Ganganagar and Bharatpur districts of Rajasthan",
+"createdDate": "20-06-2018",
+"fileName": "best practices/Rajasthan_2.pdf",
+"size": "82.39 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+},
+{
+"title": "Gomati District Administration operationalized Crche for Children of Women Officers Employees",
+"createdDate": "26-07-2018",
+"fileName": "best practices/CRECHEOFGOMATIDISTRICT.pdf",
+"size": "215.1 kb",
+"isLive": true,
+"publishedDate": "30-07-2018"
+},
+{
+"title": "Meri Laadli A Mandi (H.P.) District Administration initiative to Save the Girl Child (Eng)",
+"createdDate": "21-07-2018",
+"fileName": "best practices/Meri Ladli - A Report.pdf",
+"size": "3.08 MB",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Meri Laadli A Mandi (H.P.) District Administration initiative to Save the Girl Child(Hindi)",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Meri Ladli Hindi.pdf",
+"size": "464.35 kb",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Best practices of Uttarakhand State under BBBP",
+"createdDate": "20-06-2018",
+"fileName": "best practices/Uttarakhand_1.pdf",
+"size": "421 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+},
+{
+"title": "Aapni Beti Yojana of Government of Rajasthan is a Best Pratice under Beti Bachao, Beti Padhao. Launched on 25th August, 2015 by District Administration Pali, Rajasthan motivates doctors to adopt under privileged girls. An inspiring way to motivate them",
+"createdDate": "26-07-2018",
+"fileName": "best practices/Aapni Beti Yojana Pali PPT.pdf",
+"size": "121.7 kb",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Udaipur Dedicated Park for Girl Child with 120 Plantations in the name of girl child",
+"createdDate": "21-07-2018",
+"fileName": "best practices/Udaipur24082015_1.pdf",
+"size": "187.18 kb",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Haryana Village initiates contest for Best Selfie with daughters  Beti Bachao Selfie Banao",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Udaipur24082015.pdf",
+"size": "5.06 MB",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Haryana announces a cash reward of Rs 1 lakh for informers under PC&PNDT Act",
+"createdDate": "26-07-2018",
+"fileName": "best practices/AdvtNHMHaryana.jpg",
+"size": "120.49 kb",
+"isLive": true,
+"publishedDate": "29-07-2018"
+},
+{
+"title": "Piplantri: A Rajasthan village which celebrates the birth of every girl child with 111 trees",
+"createdDate": "21-07-2018",
+"fileName": "best practices/Piplantri.pdf",
+"size": "318.26 KB",
+"isLive": true,
+"publishedDate": "22-07-2018"
+},
+{
+"title": "Beti Bachao Beti Padhao- Cuddlore shows the way",
+"createdDate": "23-07-2018",
+"fileName": "best practices/Plan of Action Beti Bachao Beti Padhao SWABHIMAN.pdf",
+"size": "1.49 MB",
+"isLive": true,
+"publishedDate": "26-07-2018"
+},
+{
+"title": "Convergent action plan of Kathua District, Jammu & Kashmir to involve multiple stakeholders",
+"createdDate": "20-06-2018",
+"fileName": "best practices/bestpracticecuddlore.pdf",
+"size": "389.63 kb",
+"isLive": true,
+"publishedDate": "28-07-2018"
+}
+]
+}
+]
+},
+"fileValue": null,
+"isOthersSelected": null,
+"othersValue": null,
+"filesByType": null
+}
+]
+}

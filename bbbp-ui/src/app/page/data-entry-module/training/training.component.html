@@ -1,0 +1,83 @@
+<div>
+  <div class="row question-row">
+      <div class="col-md-3 col-6 left-list display-cont hidden-xs-down">
+          <app-data-entry-head></app-data-entry-head>
+        </div>
+        <div class="col-12 hidden-sm-up">
+            <div class="btn-group">
+              <button class="btn btn-width" type="button" data-toggle="dropdown">
+                <!-- <span>Dat Entry Section</span> -->
+                <i class="fa fa-caret-down fa-caret fa-lg icon-drop"></i>
+              </button>
+              <div class="dropdown-menu data-head">
+                  <li class="mobile-anchor">
+                   <a routerLink="/data-entry">1.Inter-sectoral convergence/initiatives</a>    
+                </li>
+                <li class="mobile-anchor">
+                   <a routerLink="/data-entry-survival">2.Inter-sectoral initiatives for equal value of girl child</a>
+              </li>
+              <li class="mobile-anchor">
+                <a routerLink="/data-entry-training">3.Training and capacity-building </a>
+            </li>
+            <li class="mobile-anchor">
+              <a routerLink="/data-entry-awareness">4.Awareness/outreach activities </a>
+          </li>
+              </div>
+            </div>
+          </div>
+
+  <div class="col-md-9 content-sec">
+  <div class="col-md-10 tab-margin offset-md-1">
+      <div class="row timeperiodHeading report-data-info">
+          <div class="col-md-12">
+              <h3 class="blink-text">Report Data only for the Selected Quarter: {{selectedQuarter}}, {{selectedYear}}</h3>
+            </div>
+         </div>
+  <h2 class="list-heading">Training and capacity-building</h2>
+   <form>
+      <div *ngFor="let subsections of formSubSections">
+          <div *ngFor="let subsectionKeys of subsections | objIterate; let j=index">
+           <div class="row">
+               <div class="col-md-12 sub-headings"style="color: #1f4a7c; font-size: 16px; margin-bottom: 20px;">{{subsectionKeys.key}}</div>
+           </div> 
+             
+        <div *ngFor="let field of subsections[subsectionKeys.key]; let i = index;" [ngClass]="[field.controlType == 'textbox'?'form-group':'', field.dependentCondition[0] == 'isDependencyYes' && subsections[subsectionKeys.key][field.parentIndex[2]].value != 'Yes' ?'d-none':'']" class="row">
+      <div class="col-md-12"style="color: #31859c; font-size: 18px; margin-bottom: 20px;">{{field.keyHeading}}</div> 
+      <label [attr.for]="field.key" class="col-md-5">{{field.label}} :</label>
+       <div [ngSwitch]="field.controlType" class="col-md-6 input-holder">
+         <!-- input text box -->
+         <input *ngSwitchCase="'textbox'" name="{{field.key}}"  (keydown)="preventNegative($event)" (keypress)="field.type == 'number' ? formDataSave.limitNumbers($event,field.value) :''"
+                 [id]="field.key" [type]="field.type" [(ngModel)]="field.value" class="form-control" [ngClass]="{'no-spinners':field.type == 'number'}">
+      
+         <!-- Input dropdown-->
+         <div class="btn-group" style="padding-left: 3px;
+         width: 100%;margin-bottom: 1rem" dropdown *ngSwitchCase="'dropdown'">
+           <input type="text" class="dropdown-input" [id]="field.key" style="padding: 10px;" readonly
+           [placeholder]="" [(ngModel)]="field.value" name="{{field.key}}" >
+           <button type="button" dropdownToggle style="padding: 0"
+           class="btn btn-default dropdown-toggle dropdown-toggle-split px-3 waves-light select-dropdown" 
+            mdbRippleRadius></button>
+           <div class="dropdown-menu drp-list">
+               <a class="dropdown-item" style="font-size: 13px;"
+                *ngFor="let opt of field.options" [value]="opt.key" (click)="selectDropdown(opt, formFields, i)">{{opt.value}}</a>
+           </div>
+         </div> 
+       </div> 
+     </div>
+     </div>
+     </div>
+ 
+     <div class="form-group row">
+       <div class="col-md-10 offset-md-1 text-right" [ngClass]="{'d-none': !formSubSections}">               
+        <button class="btn btn-default back-btn" type="submit" (click)="previousSection()">Previous</button>
+        <button class="btn btn-default proceed-btn" type="submit" (click)="saveDataProceed()">Next</button>
+        <button class="btn btn-default back-btn button-save" type="submit" (click)="saveFormData()">Save</button>
+       </div>
+     </div>
+   </form>
+ </div>
+ </div>
+ </div>
+</div>
+ 
+<div class="toastsuccess"><i class="fa fa-check" aria-hidden="true"></i> Saved successfully</div> 

@@ -1,0 +1,27 @@
+.org-structure-img img{
+    height: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.blank-height {
+    height: 50px;
+}
+.site-main {
+  padding-top: 30px
+}
+
+@media (max-width: 608px) {
+   
+  .org-structure-img img{
+    height: 405px;
+  }
+  .blank-height {
+    height: 100px;
+  }
+  }
+
+  @media (max-width: 480px) {
+    .org-structure-img img{
+        height: 327px;
+    }
+  }

@@ -1,0 +1,53 @@
+<!-- @Swarna -->
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+  <div class="row">
+    <h4 (click)="redirectToGallrey()" class="sub-photo-gallery-head">
+      <img class="back-arrow" src="./assets/icons/back-arrow.png">Back to photo gallery
+      </h4>
+      <div class="col-md-7"></div>
+      <!-- <div *ngIf="imageLength != 0" class="col-md-3 searchData inner-addon right-addon">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+      </div> -->
+  </div>
+  <!-- <div class="gal_txt"><p title="{{staticService.section}}">{{staticService.section}}dvs</p></div> -->
+  <div id="wrapper">
+    <div class="content"> 
+      <div class="col-md-12">
+        <div class="tab-content">
+          <h5 class="album-name"><u>{{staticService.imageSection}}</u></h5>
+          <div id="photos" class="tab-pane in active photos_display">
+            <div class="row row_first">
+              <div [hidden]="imageLength == 0" *ngFor="let category of staticService.imageCategory | paginate: { itemsPerPage: 12, currentPage: p }; let i = index;"
+              class="col-lg-2 col-md-2 col-sm-2 col-xs-12 catagory animated" id="kp_day8"
+              (click)="this.isImageGalleryOpen=true;openModal(i) " >
+                  <div class="sub-category-image">
+                      <a >
+                          <img [src]= "gateway +'downloadCmsDoc?fileName='+category.imageName+'&inline='+true" class="photo-categories zoom" alt="{{category.title}}">
+                      </a>
+                  </div>
+                  <div class="gal_txt"><p class="max-height" title="{{category.title}}">{{category.title}}</p></div>
+              </div>
+            </div>
+            <pagination-controls class="pagination" (pageChange)="p = $event" *ngIf="staticService.imageCategory.length > 12"></pagination-controls>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12" [hidden]="(staticService.imageCategory).length != 0">
+          <h4 class="text-center no-data-found">No Image Found</h4>
+    </div>
+    <div class="col-md-12" *ngIf="imageLength == 0">
+        <h4 class="text-center no-data-found">No Image Found</h4>
+  </div>
+    </div>
+  </div>  
+  <div class="blank-height">
+    </div>
+
+ <ngx-image-gallery #ngxImageGallery [hidden]="!isImageGalleryOpen" id="ngxalbum"
+  [images]="images" [conf]="conf" (onOpen)="galleryOpened($event)" (onClose)="galleryClosed(); "
+  (onImageClicked)="openGallery($event)" (onImageChange)="galleryImageChanged($event)">
+  </ngx-image-gallery> 
+
+</div>

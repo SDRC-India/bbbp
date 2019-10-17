@@ -1,0 +1,266 @@
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+    <div class="row" *ngIf="keycontactNationalSection.length || stateSections.length || districtSections.length">
+      <div class="col-md-12 key-contacts-tab">
+        <h2 class="title-main">Key Contacts
+          <div class="col-md-3 search-data inner-addon right-addon">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+          </div>
+        </h2>
+      </div>
+      <!-- <div class="col-md-12 short-description margin-left-description">{{SanctionData.viewType}}</div>  -->
+      <div class="col-12 hidden-sm-up">
+        <div class="btn-group">
+          <button class="btn btn-color" type="button" data-toggle="dropdown">
+            <span *ngIf="showNational == true">National Level</span>
+            <span *ngIf="showState == true">State Level</span>
+            <span *ngIf="showDistrict == true">District Level</span>
+            <i class="fa fa-caret-down fa-caret fa-lg"></i>
+          </button>
+          <div class="dropdown-menu mobile-display">
+            <li class="sanction-head-list"  [ngClass]="{'active': showNational == true}" >
+              <a (click)="showNationalKeyContacts()" class="active">National Level</a>
+            </li>
+            <li class="sanction-head-list"  [ngClass]="{'active': showState == true}" >
+              <a (click)="showStateKeyContacts()" class="active">State Level</a>
+            </li>
+            <li class="sanction-head-list" [ngClass]="{'active': showDistrict == true}" >
+              <a (click)="showDistrictKeyContacts()" class="active">District Level</a>
+            </li>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 hidden-xs-down">
+        <div class="vertical-menu">
+          <li class="sanction-head-list"  [ngClass]="{'active': showNational == true}" >
+            <a (click)="showNationalKeyContacts()" class="active">National Level</a>
+          </li>
+          <li class="sanction-head-list"  [ngClass]="{'active': showState == true}" >
+            <a (click)="showStateKeyContacts()" class="active">State Level</a>
+          </li>
+          <li class="sanction-head-list" [ngClass]="{'active': showDistrict == true}" >
+            <a (click)="showDistrictKeyContacts()" class="active">District Level</a>
+          </li>
+        </div>
+      </div>
+
+      <div class="col-md-9 table-top" *ngIf="showNational">
+        <div class="col-md-12 ">
+            <div class="row">
+              <div class="table-responsive" [hidden]="(keycontactNationalSection | searchText : searchTexts).length == 0" >
+                <table class="table table-striped" [hidden]="keycontactNationalSection.length == 0">
+                  <thead>
+                    <tr>
+                      <th class="th-header width-col">Name</th>
+                      <th class="th-header width-col">Address</th>
+                      <th class="th-header width-col">Email</th>
+                      <th class="th-header width-col" >Phone Number</th>
+                      <th class="th-header width-col">Department</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let items of keycontactNationalSection | searchText : searchTexts">
+                      <td>{{items.name}}</td>
+                      <td class="title-td">{{items.address}}</td>
+                      <td>
+                        <span [hidden]="items.email == ''">{{items.email}}</span>
+                        <span [hidden]="items.email != ''">--</span>
+                      </td>
+                      <td>
+                        <span [hidden]="items.phoneNumber == ''">{{items.phoneNumber}}</span>
+                        <span [hidden]="items.phoneNumber != ''">--</span>
+                      </td>
+                      <td>
+                        <span [hidden]="items.act == ''">{{items.act}}</span>
+                        <span [hidden]="items.act != ''">--</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="blank-height">
+                  </div>
+              </div>
+              <div class="col-md-12" [hidden]="(keycontactNationalSection | searchText : searchTexts).length != 0" > 
+                  <h4 class="text-center no-data-found">No Data Found</h4>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-md-9 table-top" *ngIf="showState">
+        <div class="col-md-12">
+            <!-- <div class="row tab-view">
+              <h2 class="title-main">State Level</h2>
+            </div> -->
+            <div class="row">
+              <!-- <div class="col-md-2"></div> -->
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12 label-info"></div>
+                  <label class="col-md-4 label-right">Select State :</label>
+                  <div class="col-md-8 input-holder">
+                    <div class="form-group">
+                      <div class="input-holder">
+                        <div class="btn-group dropdown-menu-btn" dropdown>
+                          <input type="text" [(ngModel)]="stateType" [ngModelOptions]="{standalone: true}" class="dropdown-input input-tab" readonly placeholder="Select ">
+                          <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                            mdbRippleRadius></button>
+                          <div class="dropdown-menu drp-list">
+                            <a class="dropdown-item lists" style="font-size: 13px;" *ngFor="let type of keycontactStateDetails" (click)="selectType(type)">{{type.section}}</a>
+                          </div>
+                        </div>
+                        <p id="errorState" class="error"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-md-2"></div> -->
+            </div>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4"></div>
+              <div class="table-responsive mobile-view" id="showStateData">
+              <table class="table table-striped table-margin" [hidden]="(stateTableData | searchText : searchTexts).length == 0" >
+                <thead>
+                  <tr>
+                    <th class="th-header width-col">Name</th>
+                    <th class="th-header width-col">Address</th>
+                    <th class="th-header width-col">Email</th>
+                    <th class="th-header width-col">Phone Number</th>
+                    <th class="th-header width-col">Department</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let items of stateTableData | searchText : searchTexts">
+                    <td>{{items.name}}</td>
+                    <td class="title-td">
+                            <span [hidden]="items.address == ''">{{items.address}}</span>
+                            <span [hidden]="items.address != ''">--</span>
+                        </td>
+                    <td>
+                      <span [hidden]="items.email == ''">{{items.email}}</span>
+                      <span [hidden]="items.email != ''">--</span>
+                    </td>
+                    <td><span [hidden]="items.phoneNumber == ''">{{items.phoneNumber}}</span>
+                        <span [hidden]="items.phoneNumber != ''">--</span>
+                    </td>
+                    <td><span [hidden]="items.act == ''">{{items.act}}</span>
+                        <span [hidden]="items.act != ''">--</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <div class="col-md-12" [hidden]="(stateTableData | searchText : searchTexts).length != 0" > 
+                  <h4 class="text-center no-data-found">No Data Found</h4>
+                </div>
+                <div class="col-md-12 showStateNoData"> 
+                  <h4 class="text-center no-data-found">No Data Found</h4>
+                </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-md-9 table-top" *ngIf="showDistrict">
+        <div class="col-md-12">
+            <div class="row">
+                <!-- <div class="col-md-2"></div> -->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <label class="col-md-4 label-right">Select State :</label>
+                        <div class="col-md-8 input-holder">
+                            <div class="form-group">
+                                <div class="input-holder">
+                                    <div class="btn-group dropdown-menu-btn" dropdown>
+                                        <input type="text" [(ngModel)]="districtType" [ngModelOptions]="{standalone: true}" class="dropdown-input input-tab" readonly placeholder="Select ">
+                                        <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item lists" style="font-size: 13px;" *ngFor="let type of keycontactDistrictDetails" (click)="selectDistrictType(type)">{{type.section}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+            </div>
+            <div class="row" [hidden]="districtType == '' || districtType == undefined">
+                <!-- <div class="col-md-2"></div> -->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <label class="col-md-4 label-right">Select District :</label>
+                        <div class="col-md-8 input-holder">
+                            <div class="form-group">
+                                <div class="input-holder">
+                                    <div class="btn-group dropdown-menu-btn" dropdown>
+                                        <input type="text" [(ngModel)]="districtroleType" class="dropdown-input input-tab" readonly placeholder="Select">
+                                        <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown"
+                                            mdbRippleRadius></button>
+                                        <div class="dropdown-menu drp-list">
+                                            <a class="dropdown-item lists" style="font-size: 13px;" *ngFor="let type of keycontactDistrictSection" (click)="selectroleType(type.section)">{{type.section}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-2"></div> -->
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+           <div class="table-responsive mobile-view" id="showDistrict-id">
+                <table class="table table-striped table-margin" [hidden]="(districtTableData | searchText : searchTexts).length == 0">
+                    <thead>
+                        <tr>
+                            <th class="th-header width-col" >Name</th>
+                            <th class="th-header width-col">Designation</th>
+                            <th class="th-header width-col" >Address</th>
+                            <th class="th-header width-col">Email</th>
+                            <th class="th-header width-col">Phone Number</th>
+                            <th class="th-header width-col">Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let items of districtTableData | searchText : searchTexts">
+                            <td>{{items.name}}</td>
+                            <td>{{items.designation}}</td>
+                            <td class="title-td">{{items.address}}</td>
+                            <td>
+                                <span [hidden]="items.email == ''">{{items.email}}</span>
+                                <span [hidden]="items.email != ''">--</span>
+                            </td>
+                            <td><span [hidden]="items.phoneNumber == ''">{{items.phoneNumber}}</span>
+                                <span [hidden]="items.phoneNumber != ''">--</span>
+                            </td>
+                            <td><span [hidden]="items.act == ''">{{items.act}}</span>
+                                <span [hidden]="items.act != ''">--</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+              <div class="col-md-12" [hidden]="(districtTableData | searchText : searchTexts).length != 0" > 
+                  <h4 class="text-center no-data-found">No Data Found</h4>
+                </div>
+                <div class="col-md-12 showDistrictNoData"> 
+                  <h4 class="text-center no-data-found">No Data Found</h4>
+                </div>
+              </div>
+        </div>
+        <div class="blank-height">
+        </div>
+      </div>
+      <div class="row blank-height">
+      </div>
+    </div>
+   
+  </div>
+ 

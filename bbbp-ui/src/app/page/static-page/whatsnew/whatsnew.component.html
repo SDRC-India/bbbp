@@ -1,0 +1,25 @@
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <h2 class="title-main">What's New</h2>
+          <div class="col-md-3 searchData inner-addon right-addon">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+          </div>
+        </div>
+        <!-- <div class="col-md-12 short-description">{{staticService.contentData.viewType}}</div>  -->
+    <div class="col-md-12">
+      <div *ngFor="let item of staticService.contentList | searchText : searchTexts | paginate: { itemsPerPage: 4, currentPage: p } ; let i = index;">
+       <p>Published On: {{item.publishedDate}}</p>
+      <p class="whatsnew-anchor"><a (click)="getNewsContent(item)" target="_blank"><p>{{item.title}} 
+          <img *ngIf="item.isNew" src="assets/images/new.gif" width="70px;" height="20px;">
+      </a></p>
+      <p class="whatsnew-head-line"></p>
+      </div>
+      <pagination-controls class="pagination" (pageChange)="p = $event" *ngIf="staticService.contentList.length > 2"></pagination-controls>
+  </div>
+  </div>
+  <div class=" blank-height">
+  </div>

@@ -1,0 +1,11 @@
+.input-holder {
+    display: inline-block;
+}
+.dropdown-toggle::after{
+    margin-left: 0;
+}
+input[type=file] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+}

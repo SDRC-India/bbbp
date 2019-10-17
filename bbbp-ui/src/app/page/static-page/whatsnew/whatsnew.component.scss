@@ -1,0 +1,34 @@
+
+
+
+.whatsnew-head-line
+{
+    font-size: 24px;
+    font-weight: bold;
+    color: orange;
+    border-bottom: 1px solid;
+    width: 100%;
+}
+.read-more-btn {
+    background: #ddd0;
+    color: #000 !important;
+    box-shadow: none;
+    margin-left:-20px;
+    padding:6px;
+}
+.read-more-btn:hover {
+    background: #1f497b;
+    box-shadow: 0 0 3px 2px #d4d3d3;
+    color: #fff !important;
+}
+.whatsnew-anchor
+{
+    color: #0275d8;
+}
+.backBtn {
+    margin-bottom: -15px;
+}
+.searchData {
+    float: right;
+    margin-top: -75px;
+}

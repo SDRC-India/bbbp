@@ -1,0 +1,60 @@
+
+<div class="container" style="margin: 20px auto;">
+  <div class="row">
+   <div class="col-md-10 offset-md-1 change-pass-content">
+    <div class="col-md-10 offset-md-1 tabMode">   
+     <h2 class="user-heading">Raw Data Report</h2>  
+     <div class="update-sec">
+       <div class="row selection-container" *ngIf="reportService?.areas?.STATE">
+         <label class="col-md-4 col-sm-6 col-12 text-right">State<span style="color: red">*</span> :</label>
+         <div class="col-md-6 col-sm-6 col-12 input-holder">                    
+           <!-- Input dropdown-->
+           <div class="btn-group" style="margin-bottom: 1rem">
+            <input type="text" class="dropdown-input" id="sector" style="padding: 10px" readonly
+              [placeholder]="'Select State *'" [(ngModel)]="selectedStateName">
+            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" mdbRippleRadius></button>
+            <div class="dropdown-menu drp-list">
+              <a class="dropdown-item" style="font-size: 13px;" *ngIf="reportService?.areas?.STATE.length >  1"
+                (click)="selectState(allStates);">{{allStates.areaName}}</a>
+              <a class="dropdown-item" style="font-size: 13px;"
+                *ngFor="let opt of reportService?.areas?.STATE"
+                (click)="selectState(opt);">{{opt.areaName}}</a>
+            </div>
+          </div>
+        </div>         
+       </div>    
+       <div class="row selection-container" *ngIf="selectedState.areaId != 'All'">
+        <label class="col-md-4 col-sm-6 col-12 text-right">District<span style="color: red">*</span> :</label>
+        <div class="col-md-6 col-sm-6 col-12 input-holder">                    
+          <!-- Input dropdown-->
+          <div class="btn-group" style="margin-bottom: 1rem">
+            <input type="text" class="dropdown-input" id="sector" style="padding: 10px" readonly
+              [placeholder]="'Select District *'" [(ngModel)]="selectedDistrictName">
+            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" mdbRippleRadius></button>
+            <div class="dropdown-menu drp-list">
+                <a class="dropdown-item" style="font-size: 13px;"  
+                *ngIf="reportService?.areas?.DISTRICT.length >  1 && (!reportService?.areas?.STATE || (reportService?.areas?.STATE && selectedState.areaId))"
+                (click)="selectDistrict(allDistricts);">{{allDistricts.areaName}}</a>
+              <a class="dropdown-item" style="font-size: 13px;"
+                *ngFor="let opt of reportService.areas | areaFilter:3:reportService?.areas?.STATE? selectedState.areaId:'allowAll'"
+                (click)="selectDistrict(opt); areaLevel.id == 3 ? getSnapshotData(selectDistrict.areaLevelId, selectDistrict.areaId): ''">{{opt.areaName}}</a>
+            </div>
+          </div>
+       </div>         
+      </div>   
+      <!--  -->
+       <div class="row text-center">
+         <div class="col-md-12">
+           <button class="btn dwn-btn" type="submit" (click)="downloadReport()" [disabled]="(reportService?.areas?.STATE && !selectedState.areaId) || (selectedState.areaId != 'All' && !selectedDistrict.areaId)">Export</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div> 
+ </div>
+
+
+ 

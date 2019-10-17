@@ -1,0 +1,702 @@
+[
+  {
+    "sectorId": 2,
+    "sectorName": "Inter-sectoral convergence/initiatives",
+    "subSectors": [
+      {
+        "subSectorId": 5,
+        "subSectorName": "BBBP Institutional Mechanisms",
+        "indicators": null,
+        "kpiList": [
+          {
+            "key": "Number of DTF constituted in the state",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of DTF constituted in the state",
+            "isSelected": null,
+            "id": 16,
+            "keyValue": null,
+            "count": 11
+          },
+          {
+            "key": "Number of DTF where at least 1 meeting is held",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of DTF where at least 1 meeting is held",
+            "isSelected": null,
+            "id": 17,
+            "keyValue": null,
+            "count": 10
+          },
+          {
+            "key": "Number of blocks in which Block Task Force constituted",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of blocks in which BTF constituted",
+            "isSelected": null,
+            "id": 18,
+            "keyValue": null,
+            "count": 55
+          },
+          {
+            "key": "Number of BTF where at least 1 meeting is held",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of BTF where at least 1 meeting is held",
+            "isSelected": null,
+            "id": 19,
+            "keyValue": null,
+            "count": 36
+          }
+        ],
+        "groupedIndList": [
+          {
+            "groupedIndName": "Percentage of districts (reported)",
+            "indicatorName": null,
+            "chartsAvailable": [
+              "bar"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "DTF constituted ",
+                  "value": 78.6,
+                  "id": null,
+                  "key": "Percentage of districts (reported)",
+                  "colorCode": "#234a7c",
+                  "indicatorName": "Percentage of districts (reported) having District Task Force constituted "
+                },
+                {
+                  "axis": "DTF meetings held",
+                  "value": 57.1,
+                  "id": null,
+                  "key": "Percentage of districts (reported)",
+                  "colorCode": "#006ece",
+                  "indicatorName": "Percentage of Districts (reported) where District task force meetings held"
+                }
+              ]
+            ],
+            "legends": [
+              {
+                "colorCode": "#234a7c",
+                "value": "DTF constituted "
+              },
+              {
+                "colorCode": "#006ece",
+                "value": "DTF meetings held"
+              }
+            ]
+          },
+          {
+            "groupedIndName": "Percentage of Blocks",
+            "indicatorName": null,
+            "chartsAvailable": [
+              "bar"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "BTF constituted",
+                  "value": 52.4,
+                  "id": null,
+                  "key": "Percentage of Blocks",
+                  "colorCode": "#234a7c",
+                  "indicatorName": "Percentage of Blocks  having Block Task Force constituted"
+                },
+                {
+                  "axis": "BTF meetings held",
+                  "value": 65.5,
+                  "id": null,
+                  "key": "Percentage of Blocks",
+                  "colorCode": "#006ece",
+                  "indicatorName": "Percentage of Blocks where Block Task Force meetings held"
+                }
+              ]
+            ],
+            "legends": [
+              {
+                "colorCode": "#234a7c",
+                "value": "BTF constituted"
+              },
+              {
+                "colorCode": "#006ece",
+                "value": "BTF meetings held"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sectorId": 3,
+    "sectorName": "Inter-sectoral initiatives for equal value of girl child",
+    "subSectors": [
+      {
+        "subSectorId": 6,
+        "subSectorName": "Survival ",
+        "indicators": null,
+        "kpiList": [
+          {
+            "key": "Suggest: Number of districts where PC & PNDT cells have been established  (Hint: Districts replied PC PNDT cell established ? YES)",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of districts where PC & PNDT cells have been established",
+            "isSelected": null,
+            "id": 20,
+            "keyValue": null,
+            "count": 5
+          },
+          {
+            "key": "Total number of districts (reported)",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "Total number of districts (reported)",
+            "isSelected": null,
+            "id": 41,
+            "keyValue": null,
+            "count": 16
+          }
+        ],
+        "groupedIndList": [
+          {
+            "groupedIndName": "PC & PNDT cell established",
+            "indicatorName": "Percentage of districts with PC & PNDT cell established",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 75,
+                  "id": null,
+                  "key": "PC & PNDT cell established",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 66.7,
+                  "id": null,
+                  "key": "PC & PNDT cell established",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 82.4,
+                  "id": null,
+                  "key": "PC & PNDT cell established",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": 83.3,
+                  "id": null,
+                  "key": "PC & PNDT cell established",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          }
+        ]
+      },
+      {
+        "subSectorId": 7,
+        "subSectorName": "Protection ",
+        "indicators": null,
+        "kpiList": [
+          {
+            "key": "Number of cases registered (Girls) under POCSO Act",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of cases registered (Girls) under POCSO Act",
+            "isSelected": null,
+            "id": 21,
+            "keyValue": null,
+            "count": null
+          },
+          {
+            "key": "Number of DCPUs constituted ",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of DCPUs constituted ",
+            "isSelected": null,
+            "id": 22,
+            "keyValue": null,
+            "count": 1
+          },
+          {
+            "key": "Number of DCPCs constituted ",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of DCPCs constituted ",
+            "isSelected": null,
+            "id": 23,
+            "keyValue": null,
+            "count": 1
+          },
+          {
+            "key": "Number of blocks in which Child Protection Committee constituted in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of blocks in which CPC constituted in the district",
+            "isSelected": null,
+            "id": 24,
+            "keyValue": null,
+            "count": 15
+          },
+          {
+            "key": "Number of villages/panchayat in which child protection committee constituted in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of villages/panchayat in which CPC constituted in the district",
+            "isSelected": null,
+            "id": 25,
+            "keyValue": null,
+            "count": null
+          }
+        ],
+        "groupedIndList": [
+          {
+            "groupedIndName": "Cases registered under POCSO Act, where girls are victims",
+            "indicatorName": "Percentage of cases registered under POCSO Act, where girls are victims",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 17.8,
+                  "id": null,
+                  "key": "Cases registered under POCSO Act, where girls are victims",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 14,
+                  "id": null,
+                  "key": "Cases registered under POCSO Act, where girls are victims",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 14.6,
+                  "id": null,
+                  "key": "Cases registered under POCSO Act, where girls are victims",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": null,
+                  "id": null,
+                  "key": "Cases registered under POCSO Act, where girls are victims",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          },
+          {
+            "groupedIndName": "Districts (reported) where DCPU is constituted ",
+            "indicatorName": "Percentage of districts (reported) where District Child Protection Unit is constituted ",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 88.9,
+                  "id": null,
+                  "key": "Districts (reported) where DCPU is constituted ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 80,
+                  "id": null,
+                  "key": "Districts (reported) where DCPU is constituted ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 100,
+                  "id": null,
+                  "key": "Districts (reported) where DCPU is constituted ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": 50,
+                  "id": null,
+                  "key": "Districts (reported) where DCPU is constituted ",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          },
+          {
+            "groupedIndName": "Districts (reported) where CPC constituted",
+            "indicatorName": "Percentage of districts (reported) where Child Protection Committee constituted",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 87.5,
+                  "id": null,
+                  "key": "Districts (reported) where CPC constituted",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 100,
+                  "id": null,
+                  "key": "Districts (reported) where CPC constituted",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 90,
+                  "id": null,
+                  "key": "Districts (reported) where CPC constituted",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": 100,
+                  "id": null,
+                  "key": "Districts (reported) where CPC constituted",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          },
+          {
+            "groupedIndName": "Percentage of Blocks with Child Protection Committee",
+            "indicatorName": "Percentage of Blocks with Child Protection Committee",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 13.1,
+                  "id": null,
+                  "key": "Percentage of Blocks with Child Protection Committee",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 32,
+                  "id": null,
+                  "key": "Percentage of Blocks with Child Protection Committee",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 16.1,
+                  "id": null,
+                  "key": "Percentage of Blocks with Child Protection Committee",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": 14.3,
+                  "id": null,
+                  "key": "Percentage of Blocks with Child Protection Committee",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          },
+          {
+            "groupedIndName": "Villages/panchayat with child protection committee ",
+            "indicatorName": "Percentage of Villages/panchayat with child protection committee ",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 58,
+                  "id": null,
+                  "key": "Villages/panchayat with child protection committee ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 64.7,
+                  "id": null,
+                  "key": "Villages/panchayat with child protection committee ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 62.2,
+                  "id": null,
+                  "key": "Villages/panchayat with child protection committee ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": null,
+                  "id": null,
+                  "key": "Villages/panchayat with child protection committee ",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          }
+        ]
+      },
+      {
+        "subSectorId": 8,
+        "subSectorName": "Education ",
+        "indicators": null,
+        "kpiList": [
+          {
+            "key": "Number of girls dropped out of primary level schools in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of girls dropped out of primary level schools in the district",
+            "isSelected": null,
+            "id": 26,
+            "keyValue": null,
+            "count": null
+          },
+          {
+            "key": "Number of girls dropped out of upper-primary level schools in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of girls dropped out of upper-primary level schools in the district",
+            "isSelected": null,
+            "id": 27,
+            "keyValue": null,
+            "count": null
+          },
+          {
+            "key": "Number of girls dropped out of secondary level schools in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of girls dropped out of secondary level schools in the district",
+            "isSelected": null,
+            "id": 28,
+            "keyValue": null,
+            "count": null
+          },
+          {
+            "key": "Number of drop-out girls re-enrolled in schools in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of drop-out girls re-enrolled in schools in the district",
+            "isSelected": null,
+            "id": 29,
+            "keyValue": null,
+            "count": null
+          },
+          {
+            "key": "Number of Childrens mela organised in schools focusing on non-stereotypical sports in the district",
+            "value": null,
+            "description": null,
+            "groupName": null,
+            "shortNmae": "No. of Childrens mela organised in schools ( non-stereotypical sports) in the district",
+            "isSelected": null,
+            "id": 30,
+            "keyValue": null,
+            "count": null
+          }
+        ],
+        "groupedIndList": [
+          {
+            "groupedIndName": "Drop-out girls re-enrolled in schools",
+            "indicatorName": "Percentage of Drop-out girls re-enrolled in schools",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 636.4,
+                  "id": null,
+                  "key": "Drop-out girls re-enrolled in schools",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 0,
+                  "id": null,
+                  "key": "Drop-out girls re-enrolled in schools",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 1463,
+                  "id": null,
+                  "key": "Drop-out girls re-enrolled in schools",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": null,
+                  "id": null,
+                  "key": "Drop-out girls re-enrolled in schools",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          },
+          {
+            "groupedIndName": "Childrens mela organised in schools focusing on non-stereotypical sports ",
+            "indicatorName": "Percentage of Childrens mela organised in schools focusing on non-stereotypical sports ",
+            "chartsAvailable": [
+              "trend"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Apr-Jun '18",
+                  "value": 12,
+                  "id": null,
+                  "key": "Childrens mela organised in schools focusing on non-stereotypical sports ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jul-sep '18",
+                  "value": 0,
+                  "id": null,
+                  "key": "Childrens mela organised in schools focusing on non-stereotypical sports ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Oct-Dec '18",
+                  "value": 38,
+                  "id": null,
+                  "key": "Childrens mela organised in schools focusing on non-stereotypical sports ",
+                  "colorCode": null,
+                  "indicatorName": null
+                },
+                {
+                  "axis": "Jan-Mar '19",
+                  "value": null,
+                  "id": null,
+                  "key": "Childrens mela organised in schools focusing on non-stereotypical sports ",
+                  "colorCode": null,
+                  "indicatorName": null
+                }
+              ]
+            ],
+            "legends": null
+          },
+          {
+            "groupedIndName": "Percentage of girls dropped out",
+            "indicatorName": null,
+            "chartsAvailable": [
+              "pie",
+              "bar"
+            ],
+            "chartData": [
+              [
+                {
+                  "axis": "Primary schools",
+                  "value": null,
+                  "id": null,
+                  "key": "Percentage of girls dropped out",
+                  "colorCode": "#234a7c",
+                  "indicatorName": "Percentage of girls dropped out of primary schools"
+                },
+                {
+                  "axis": "Upper-primary schools ",
+                  "value": null,
+                  "id": null,
+                  "key": "Percentage of girls dropped out",
+                  "colorCode": "#006ece",
+                  "indicatorName": "Percentage of girls dropped out of upper-primary schools "
+                },
+                {
+                  "axis": "Secondary schools",
+                  "value": null,
+                  "id": null,
+                  "key": "Percentage of girls dropped out",
+                  "colorCode": "#6ab7f9",
+                  "indicatorName": "Percentage of girls dropped out of secondary schools"
+                }
+              ]
+            ],
+            "legends": [
+              {
+                "colorCode": "#234a7c",
+                "value": "Primary schools"
+              },
+              {
+                "colorCode": "#006ece",
+                "value": "Upper-primary schools "
+              },
+              {
+                "colorCode": "#6ab7f9",
+                "value": "Secondary schools"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

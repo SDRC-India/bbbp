@@ -1,0 +1,29 @@
+
+
+<div class="side-bar-container"> 
+  <ul class="menu-list" [dragula]='menuOrderList' [(dragulaModel)]='dataService.menus'>
+    <li class="menu" *ngFor="let menu of dataService.menus; let i=index" [hidden]="menu.section == 'MIS Login'">
+    <a> 
+        <input name="{{menu.section}}" [id]="menu.section" type="text" class="menu-input"
+         [(ngModel)]="menu.section" disabled > 
+       </a>
+      <span class="icons">
+          <!-- <i class="fa fa-pencil rename-btn" aria-hidden="true" (click)="renameMenu($event)"></i> -->
+          <i class="fa fa-plus" aria-hidden="true" (click)="setSubmenu($event)" [hidden]="menu.data.length == 0"></i>
+          <i class="fa fa-minus"  aria-hidden="true" (click)="setSubmenu($event)"></i>
+          <i class="fa fa-list-alt" [hidden]="!menu.data.length || menu.url==''" aria-hidden="true"
+           (click)="getPageContentData($event, menu)"></i>
+      </span>
+      <ul class="submenu-list" [dragula]='subMenuOrderList'>
+        <li *ngFor="let submenu of menu.data; let j=index" class="submenu-items"  (click)="getPageContentData($event, submenu)" style="cursor: pointer;">
+          <a>{{submenu.title}}</a>
+          <span class="icons">
+              <!-- <i class="fa fa-pencil" aria-hidden="true" (click)="renameMenu($event)"></i> -->
+              <i class="fa fa-list-alt" aria-hidden="true"></i>
+          </span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+

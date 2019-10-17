@@ -1,0 +1,1793 @@
+
+{
+    "INTER-SECTORAL CONVERGENCE /INITIATIVES": [
+      {
+        "BBBP INSTITUTIONAL MECHANISMS": [
+          {
+            "key": 1,
+            "label": "District Task Force Constituted : Yes/No",
+            "aggRole": "count(yes)",
+            "type": "option",
+            "columnName": "a01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes",
+                "order": 1
+              },
+              {
+                "key": 2,
+                "value": "NO",
+                "order": 2
+              }
+            ],
+            "typeId": 1,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 2,
+            "label": "Number of DTF Meetings held (at least one meeting in a quarter )",
+            "aggRole": "sum(col_value)",
+            "type": "number",
+            "columnName": "a02",
+            "dependecy": true,
+            "dependentColumn": "a01",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 3,
+            "label": "Number of blocks in the district",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "a03",
+            "dependecy": true,
+            "dependentColumn": "a01",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 4,
+            "label": "Number of Blocks in which Block Task Force Constituted ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "a04",
+            "dependecy": true,
+            "dependentColumn": "a02",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 5,
+            "label": "Number of BTF Meetings held (at least one meeting in a quarter ) ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "a05",
+            "dependecy": true,
+            "dependentColumn": "a03",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 6,
+            "label": "Means of Verification: Agenda/Minutes of the Meeting/Action Taken Reports",
+            "aggRole": "",
+            "type": "file",
+            "columnName": "a06",
+            "dependecy": true,
+            "dependentColumn": "a04",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Inter-departmental convergence ": [
+          {
+            "key": 7,
+            "label": "Number of meetings held",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "b01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 8,
+            "label": "Number of stakeholders reached out:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "b02",
+            "dependecy": true,
+            "dependentColumn": "b1",
+            "dependentCondition": [
+              "isDependencyGreaterthanzero"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 9,
+            "label": "Please mention the departments that participated in these meetings:",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "b03",
+            "dependecy": true,
+            "dependentColumn": "b1",
+            "dependentCondition": [
+              "isDependencyGreaterthanzero"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": [
+              {
+                "key": 3,
+                "value": "WCD",
+                "order": 1
+              },
+              {
+                "key": 4,
+                "value": "Education (HRD)",
+                "order": 2
+              },
+              {
+                "key": 5,
+                "value": "Health",
+                "order": 3
+              },
+              {
+                "key": 6,
+                "value": "PRI/RD",
+                "order": 4
+              }
+            ],
+            "typeId": 2,
+            "controlType": "dropdown"
+          }
+        ]
+      }
+    ],
+    "INTER-SECTORAL INITIATIVES  FOR EQUAL VALUE OF GIRL CHILD": [
+      {
+        "Survival of Girl Child - Implement PC&PNDT Act": [
+          {
+            "key": 10,
+            "label": "Functional PNDT cell established: Yes/No",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "c01 ",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes",
+                "order": 1
+              },
+              {
+                "key": 2,
+                "value": "NO",
+                "order": 2
+              }
+            ],
+            "typeId": 1,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 11,
+            "label": "Number of training programmes held on PC&PNDT Act: ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 12,
+            "label": "Number of functionaries trained:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 13,
+            "label": "Number of inspections/decoy undertaken;",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 14,
+            "label": "Number of cases /complaints filed;",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c05",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 15,
+            "label": "Number of medical licences cancelled;",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c06",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 16,
+            "label": "Number of rewards given to informers:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c07",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 17,
+            "label": "Number Of Convictions secured",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "c08",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Survival of Girl Child -  Promote Early Registration of Pregnancy": [
+          {
+            "key": 18,
+            "label": "Number of young couples counselled ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "d01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 19,
+            "label": "Number of women attended  ANC Check ups",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "d02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 20,
+            "label": "Number of women linked to PMVVY,",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "d03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 21,
+            "label": "Number of women linked to JSY",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "d04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 22,
+            "label": "Number of women linked to JSSK",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "d05",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Survival of Girl Child -  Promote institutional deliveries, birth-registration": [
+          {
+            "key": 23,
+            "label": "Number of women counselled on institutional deliveries",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "e01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 24,
+            "label": "Number of Institutional deliveries reported ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "e02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 25,
+            "label": "Number of births registered ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "e03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Protection of Girl Child - Child Marriage act": [
+          {
+            "key": 26,
+            "label": "Number of campaigns held",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "f01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 27,
+            "label": "Number of community members reached out",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "f02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 28,
+            "label": "Number of child marriages prevented",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "f03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Protection of Girl Child - POCSO Act": [
+          {
+            "key": 29,
+            "label": " Whether adequate infratstructure exists in district to deal with POCSO Act 2012 and Rules: Yes/NO",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "g01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes",
+                "order": 1
+              },
+              {
+                "key": 2,
+                "value": "NO",
+                "order": 2
+              }
+            ],
+            "typeId": 1,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 30,
+            "label": "Number of cases registered under POCSO Act 2012",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "g02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 31,
+            "label": "Number of Convictions secured",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "g03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Protection of Girl Child - Juvenile Justice act ": [
+          {
+            "key": 32,
+            "label": "District Child Protection Unit constituted: Yes/No",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "h01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes",
+                "order": 1
+              },
+              {
+                "key": 2,
+                "value": "NO",
+                "order": 2
+              }
+            ],
+            "typeId": 1,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 33,
+            "label": "Child Protection Committee constituted at district level:  Yes/No",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "h02",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes",
+                "order": 1
+              },
+              {
+                "key": 2,
+                "value": "NO",
+                "order": 2
+              }
+            ],
+            "typeId": 1,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 34,
+            "label": "Number of blocks in which Child Protection committee constituted",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "h03",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 35,
+            "label": "In your state, Village child protection committees are formed in Panchayat level or village level ?",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "h04",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 36,
+            "label": "Number of villages/Panchayats in the district ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "h05",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 37,
+            "label": "Number of villages/panchayat in which child protection committee constituted ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "h06",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 38,
+            "label": "Number of Child Protection Committee meetings held (at least one meeting a month)",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "h07",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 39,
+            "label": "Number of refferals to child line",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "h08",
+            "dependecy": true,
+            "dependentColumn": "h1",
+            "dependentCondition": [
+              "isDependencyYes"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Protection of Girl Child - Organise celebration of girl child, especially second and third born daughter. Establish linkage with Sukanya Samriddhi Accounts": [
+          {
+            "key": 40,
+            "label": "Number of Beti Janmotsav held",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "i01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 41,
+            "label": "Number of Sukanya Samriddhi accounts opened/linked",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "i02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child - Undertake campaigns/special drives on enrolment of girls in schools": [
+          {
+            "key": 42,
+            "label": "Number of campaigns undertaken for enrolment of girls in schools",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 43,
+            "label": "Number of girls enrolled in schools primary level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 44,
+            "label": "Number of girls enrolled in schools upper-primary level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 45,
+            "label": "Number of girls enrolled in schools secondary level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 46,
+            "label": "Number of girls dropped out of schools primary level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j05",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 47,
+            "label": "Number of girls dropped out of schools upper-primary level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j06",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 48,
+            "label": "Number of girls dropped out of schools secondary level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j07",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 49,
+            "label": "Number of drop-out girls re-enrolled in schools",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j08",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 50,
+            "label": " Number of girls linked to alternative or special learning/education programmes?",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "j09",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child - Ensure separate functional toilets for girls in schools": [
+          {
+            "key": 51,
+            "label": "Number of girls toilets constructed in schools",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "k01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 52,
+            "label": "Number of girls toilets constructed and that are made functional in schools",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "k02",
+            "dependecy": true,
+            "dependentColumn": "k1",
+            "dependentCondition": [
+              "isLessThanEqualToDependency"
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child - Ensure effective school health initiatives-weekly Iron Folic Acid, menstrual hygiene management, linkage with RBSK": [
+          {
+            "key": 53,
+            "label": "Number of girls reached through school health initiatives:  including availability of sanitary pads/ hygienic cloth for MHM related needs and disposal option in toilets ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "l01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "  Education of Girl Child - Institute school grants, incentives, rewards to encourage transition of girls from primary to secondary levels ": [
+          {
+            "key": 54,
+            "label": "Number of grants given to schools",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "l02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 55,
+            "label": "Number of girls benefitted from grants",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "l03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "  Education of Girl Child - Operationalise KGBVs and girls hostels": [
+          {
+            "key": 56,
+            "label": "Number of KGBV’s and girls’ hostels operational",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "m01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 57,
+            "label": "Number of girls in KGBV’s and girl’s hostels",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "m02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "  Education of Girl Child - Revitalize/Establish school based leadership platforms  to create the necessary enabling environment and build life skills": [
+          {
+            "key": 58,
+            "label": "Number of school based leadership plaforms (Meena manch, Bal Sansad, Raju Manch, Gender champions) established in schools",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "n01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child - Promote girls’ education and impart legal literacy to parents, utilising school events (National Girls Child Day, Anti Child Labour Day, Menstruation Day, and State Child Protection Day) ": [
+          {
+            "key": 59,
+            "label": "Number of schools in which posters and other awareness activities have been initiated  ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "o01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 60,
+            "label": "Number of school events organised/utilised to promote girls education and legal literacy to parents",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "o02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child - Encourage participation of girls in non-stereotypical sports in schools ": [
+          {
+            "key": 61,
+            "label": "Number of Childrens mela organised in schools focusing on non-stereotypical sports ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "p01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child - Information about career prospects through bi-annual mela through university, ITIs, civil society partners ": [
+          {
+            "key": 62,
+            "label": " Number of  career counselling mela organised ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "p01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 63,
+            "label": "Number of schools in which career counselling mela were organised ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "p02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Development/Empowerment of Girl Child -  Linkage with Adolescent Empowerment Programmes ": [
+          {
+            "key": 66,
+            "label": "Number of girls linked with active Sabla groups",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "r01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Development/Empowerment of Girl Child - Life skills inputs to girls through non-nutrition component of SABLA": [
+          {
+            "key": 67,
+            "label": "Number of girls linked to life skills education ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "s01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Development/Empowerment of Girl Child - Linkage with RKSK, SABLA, KSY to ensure health and nutrition focus for girls ": [
+          {
+            "key": 68,
+            "label": "Number of girls receiving health information and services",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "t01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Financial independence of girls and women -  Link girls with industrial training institutes/ skill training ": [
+          {
+            "key": 69,
+            "label": "Number of girls enrolled in SABLA ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "u01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 70,
+            "label": "Number of girls enrolled in kishori sakthi yojana",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "u02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 71,
+            "label": "number of girls enrolled in various initiatives of NABARD",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "u03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 72,
+            "label": "Number of girls enrolled in skills training through ongoing schemes such as SABLA, Kishori Sakthi Yojana, various initiatives of NABARD ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "u04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Development/Empowerment of Girl Child -  Financial literacy for girls - bank accounts, saving and banking products, access to credit (ability to invest in assets) taking advantage of Jan Dhan, Sukanya Yojana, other financial incentive schemes": [
+          {
+            "key": 73,
+            "label": "Number of girls enrolled in financial incentive state schemes for girls at the district level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "v01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Education of Girl Child -  Any other initiatives to enable girl child education": [
+          {
+            "key": 64,
+            "label": "Please specify initiatives, provide details, annex detailed report",
+            "aggRole": "",
+            "type": "file",
+            "columnName": "q01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ]
+      }
+    ],
+    "Awareness/ Outreach Activities": [
+      {
+        "Reward and Recognize stakeholders associated with BBBP": [
+          {
+            "key": 89,
+            "label": "Number of girls linked to schemes/programmes-such as Sukanya Samriddhi Yojana",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ac01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 90,
+            "label": "Number of best Panchayats felicitated:  ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ac02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 91,
+            "label": "Number of Frontline workers felicitated: ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ac03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 92,
+            "label": "Number of Local Champions felicitated:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ac04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Conduct awareness generation activities on value of girl child, girls’ education, prevention of child marriage, schemes and services for girl child, women & child related legislations  (PCPNDT Act 1994, PCMA 2006, RTE Act 2009, POCSO Act 2012, JJ Act 2015 etc.": [
+          {
+            "key": 79,
+            "label": "Number of outreach activities conducted:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "x01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 80,
+            "label": "Number of people reached out:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "x02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Hold Community based dialogue/meetings/ Special Gram Sabha/Mahila Sabha on CSR": [
+          {
+            "key": 81,
+            "label": "Number of community meetings held:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "y01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 82,
+            "label": "Number of Special Gram Sabhas/Mahila Sabhas held on Child Sex Ratio:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "y02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 83,
+            "label": "Number of community members reached out:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "y03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        " Identify local BBBP Champions & ensure their engagement at various platforms": [
+          {
+            "key": 84,
+            "label": "Number of local champions identified: ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "z01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 85,
+            "label": "Number of people reached out through local champions:",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "z02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Display of Guddi Gudda Boards (GGBs) in Gram Panchayats/public places": [
+          {
+            "key": 86,
+            "label": "Number of Guddi Gudda Boards installed in Gram Panchayats and public places",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "aa01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Observe special day for mass celebration of birth of girl children": [
+          {
+            "key": 87,
+            "label": "Number of Celebrations held ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ab01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 88,
+            "label": "Number of girls and mothers felicitated",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ab02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Any other innovative activity": [
+          {
+            "key": 93,
+            "label": "Number of innovative activities undertaken ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ad01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 94,
+            "label": "Provide details, reports, photographs, video clippings ",
+            "aggRole": "",
+            "type": "option",
+            "columnName": "ad02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "dropdown"
+          },
+          {
+            "key": 95,
+            "label": "",
+            "aggRole": "",
+            "type": "{\"report\":[\"pdf\",\"doc\"],\"photo\":[\"jpg\",\"png\"],\"video\":[\"mp4\",\"ogg\"]}",
+            "columnName": "ad03",
+            "dependecy": true,
+            "dependentColumn": "ad02",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "filetype"
+          },
+          {
+            "key": 96,
+            "label": " Number of media reports covering stories and voices of BBBP champions.",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ad04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 97,
+            "label": "Number of public platforms / discussions with presence of the BBBP champions",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "ad05",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ]
+      }
+    ],
+    "Training and Capacity-building": [
+      {
+        "Train a pool of master-trainers at district level": [
+          {
+            "key": 74,
+            "label": "Number of master trainers trained (at district level)",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "v02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ],
+        "Organize Training/orientation/sensitization at district, block, gram panchayat levels": [
+          {
+            "key": 75,
+            "label": "Number of trainings organized at district level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "w01",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 76,
+            "label": "Number of trainings organized at block level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "w02",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 77,
+            "label": "Number of trainings organized at gram panchayat level",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "w03",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          },
+          {
+            "key": 78,
+            "label": "Number of officials/functionaries/stakeholders sensitized ",
+            "aggRole": "",
+            "type": "number",
+            "columnName": "w04",
+            "dependecy": false,
+            "dependentColumn": "",
+            "dependentCondition": [
+              ""
+            ],
+            "frequency": "quaterly",
+            "roleId": 3,
+            "options": null,
+            "typeId": null,
+            "controlType": "textbox"
+          }
+        ]
+      }
+    ]
+  }

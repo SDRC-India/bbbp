@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- <groupId>org.sdrc</groupId> -->
+	<artifactId>bbbp-bootapp</artifactId>
+	<!-- <version>0.0.1-SNAPSHOT</version> -->
+
+
+	<description>This is module contains data entry section</description>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>org.sdrc</groupId>
+		<artifactId>bbbp-moduleapp</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+		<dependencies>
+<!-- ADD MODULE DEPENDENCY -->
+
+		<dependency>
+			<groupId>org.sdrc</groupId>
+			<artifactId>bbbp-cmsapp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.sdrc</groupId>
+			<artifactId>bbbp-dashboardapp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.sdrc</groupId>
+			<artifactId>bbbp-commonapp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>bbbp</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<spring.datasource.url>jdbc:postgresql://192.168.1.36:5432/bbbpdev</spring.datasource.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<spring.datasource.url>jdbc:postgresql://192.168.1.36:5432/bbbptest</spring.datasource.url>
+			</properties>
+		</profile>
+	</profiles>
+</project>

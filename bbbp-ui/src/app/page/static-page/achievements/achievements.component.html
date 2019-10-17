@@ -1,0 +1,63 @@
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12"> 
+          <h2 class="title-main">Achievement and Progress
+              <div class="col-md-3 searchData searchBoxInHeader">
+                  <input type="text" [(ngModel)]="searchTexts" class="form-control" placeholder="Search" />
+                </div>
+          </h2>
+        </div>
+        <div class="col-md-12 short-info">{{staticService.contentData.viewType}}</div>
+        <div class="col-md-12 table-margin">
+          <p class="bestpraticeshead-head-line"></p>
+      <div *ngFor="let items of staticService.contentList | searchText : searchTexts | paginate: { itemsPerPage: 4, currentPage: p }; let i = index;">
+       <p *ngIf="items.publishedDate">Published On: {{items.publishedDate}}</p>
+      <p style="font-weight:bold">{{items.title}}</p>
+      <p>{{items.content}}</p>
+      <div class="row" *ngIf="items.fileName != '' && items.fileName != undefined">
+        <h3 class="download-pdf-text">
+          <!-- <i class="fa fa-file-pdf-o"></i>
+          <a>
+            {{items.title}}
+          </a> -->
+          <img class="preview-icon" title="Preview file before download" src="./assets/icons/eye-solid.svg" (click)=openPDF(items.fileName)>
+      <a class="preview-text" title="Preview file before download" (click)=openPDF(items.fileName)>
+        Preview
+      </a>
+          <a class="preview-text" (click)="downloadFiles(items.fileName)" class="btn btn-info btn-lg pdf-btn">
+            <i title="Download pdf" class="fa fa-download" aria-hidden="true"></i> &nbsp; Download
+            <span class="download-txt"> </span>
+          </a>
+          <span class="text-center file-not-available" [hidden]="items.fileName != ''">File not available</span>
+          <span class="file-size-text">File Size: {{items.size}}</span>
+        </h3>
+      </div>
+      <p class="achievement-head-line"></p>
+      </div>
+      <pagination-controls class="pagination" (pageChange)="p = $event" *ngIf="staticService.contentList.length > 2"></pagination-controls>
+  </div>
+  </div>
+  </div>
+  <div class="blank-height">
+  </div>
+  <div class="col-md-12" [hidden]="(staticService.contentList | searchText : searchTexts).length != 0" > 
+    <h4 class="text-center no-data-found">No Data Found</h4>
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-width modal-width-preview">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">{{staticService.fileTitle}}</h4>
+          </div>
+          <div class="modal-body preview-file-body">
+            <embed [src]="url" frameborder="0" width="100%" height="530px">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default preview-btn" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

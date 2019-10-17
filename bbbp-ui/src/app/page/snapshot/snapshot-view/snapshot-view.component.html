@@ -1,0 +1,168 @@
+<div class="container-fluid">
+  <div class="col-md-12 selection-sec">
+    <div class="snapshot-selection">
+
+      <div class="form-group snapshot-selectbox">
+        <label>Area Level : </label>
+
+        <div class="input-holder">
+          <div class="btn-group" style="margin-bottom: 1rem">
+            <input type="text" class="dropdown-input" id="areaLevel" style="padding: 10px" readonly
+              [placeholder]="'select area level *'" [(ngModel)]="areaLevelName">
+            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" mdbRippleRadius></button>
+            <div class="dropdown-menu drp-list">
+              <a class="dropdown-item" style="font-size: 13px;"
+                *ngFor="let opt of snapshotService.areaLevels"
+                (click)="selectAreaLevel(opt); areaLevel.id == 1 ? getSnapshotData(1, 1): ''">{{opt.keyValue}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group snapshot-selectbox" *ngIf="areaLevel.id == 2 || areaLevel.id == 3">
+        <label>State : </label>
+
+        <div class="input-holder">
+          <div class="btn-group" style="margin-bottom: 1rem">
+            <input type="text" class="dropdown-input" id="sector" style="padding: 10px" readonly
+              [placeholder]="'select state *'" [(ngModel)]="selectedStateName">
+            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" mdbRippleRadius></button>
+            <div class="dropdown-menu drp-list">
+              <a class="dropdown-item" style="font-size: 13px;"
+                *ngFor="let opt of snapshotService?.areas?.STATE"
+                (click)="selectState(opt); areaLevel.id == 2 ? getSnapshotData(selectedState.areaLevelId, selectedState.areaId): ''">{{opt.areaName}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group snapshot-selectbox" *ngIf="areaLevel.id == 3">
+        <label>District : </label>
+
+        <div class="input-holder">
+          <div class="btn-group" style="margin-bottom: 1rem">
+            <input type="text" class="dropdown-input" id="sector" style="padding: 10px" readonly
+              [placeholder]="'select district *'" [(ngModel)]="selectedDistrictName">
+            <button type="button" style="padding: 0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              class="btn btn-default dropdown-toggle px-3 waves-light select-dropdown" mdbRippleRadius></button>
+            <div class="dropdown-menu drp-list">
+              <a class="dropdown-item" style="font-size: 13px;"
+                *ngFor="let opt of snapshotService.areas | areaFilter:3:selectedState.areaId"
+                (click)="selectDistrict(opt); areaLevel.id == 3 ? getSnapshotData(selectedDistrict.areaLevelId, selectedDistrict.areaId): ''">{{opt.areaName}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="download-section">
+        <i class="fa fa-file-pdf-o" aria-hidden="true" (click)="downloadAllChartsToPdfExcel('pdf')" 
+         title="Download PDF"></i>
+        <i class="fa fa-file-excel-o" aria-hidden="true" title="Download Excel"
+         (click)="downloadAllChartsToPdfExcel('excel')"></i>
+         <i class="fa fa-question-circle" aria-hidden="true" data-toggle="modal"  title="Help"
+         data-target="#myModal" data-backdrop="static" data-keyboard="false" ></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 snap-shot-sec">
+    <div class="time-period">{{snapshotTimeperiod}}</div>
+    <div class="snapshot-sector" *ngFor="let sector of snapshotData; let i=index;">
+      <h5 class="sector">{{sector.sectorName}}</h5>
+      <div class="snapshot-subsector" *ngFor="let subsector of sector.subSectors; let i=index">
+        <h6 class="subsector">{{subsector.subSectorName}}</h6>
+        <div class="row">
+          <div class="col-md-4  snapshot-repeat" 
+            [attr.subsector]="subsector.subSectorName"
+            [attr.grpId]="subsector.kpiList[kpiIndex * 2].description"
+           [attr.sector]="sector.sectorName" *ngFor="let kpiIndex of getKpiIndexList(subsector.kpiList.length); let i=index"
+           id="{{'download-chat-img' + removeWhiteSpace(subsector.kpiList[kpiIndex * 2].key)}}">
+            <div class="cards card-up">
+              <div class="value-sec">
+                {{subsector.kpiList[kpiIndex * 2].count ? subsector.kpiList[kpiIndex * 2].count: subsector.kpiList[kpiIndex * 2].keyValue?subsector.kpiList[kpiIndex * 2].keyValue:  'NA'}}
+              </div>
+              <div class="kpi-sec">
+                {{subsector.kpiList[kpiIndex * 2].key}}
+              </div>
+              <!-- <div class="india-sec">
+                {{subsector.kpiList[kpiIndex * 2].indiaValue}}
+              </div> -->
+            </div>
+            <div class="cards card-down" *ngIf="kpiIndex * 2 + 1 <= subsector.kpiList.length - 1">
+              <div class="value-sec">
+                {{subsector.kpiList[kpiIndex * 2 + 1].count ? subsector.kpiList[kpiIndex * 2 + 1].count: subsector.kpiList[kpiIndex * 2 + 1].keyValue?subsector.kpiList[kpiIndex * 2 + 1].keyValue:'NA'}}
+              </div>
+              <div class="kpi-sec">
+                {{subsector.kpiList[kpiIndex * 2 + 1].key}}
+              </div>
+              <!-- <div class="india-sec">
+                {{subsector.kpiList[kpiIndex * 2 + 1].indiaValue}}
+              </div> -->
+            </div>
+
+          </div>
+          <div class="col-md-4 snapshot-repeat" [attr.subsector]="subsector.subSectorName"
+          [attr.grpId]="chart.indicatorGroup" 
+          [attr.sector]="sector.sectorName" *ngFor="let chart of subsector.groupedIndList" id="{{'download-chat-img' + removeWhiteSpace(chart.groupedIndName)}}">
+            <div class="charts">
+              <div class="chart-head">
+                  <div class="download-chart"
+                  >
+                  <i class="fa fa-bar-chart"  aria-hidden="true" 
+                  *ngIf="((!chart.selectedChart && chart.chartsAvailable[0] != 'bar') || (chart.selectedChart && chart.selectedChart != 'bar')) && isAvailable(chart.chartsAvailable, 'bar')" 
+                  (click)="selectChart(chart, 'bar')"
+                  ></i>
+                  <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="((!chart.selectedChart && chart.chartsAvailable[0] != 'pie') || (chart.selectedChart && chart.selectedChart != 'pie')) && isAvailable(chart.chartsAvailable, 'pie')" (click)="selectChart(chart, 'pie')"></i>
+                  <i class="fa fa-picture-o" aria-hidden="true" 
+                  (click)="downloadChartToImage($event,'download-chat-img' +
+                  removeWhiteSpace(chart.groupedIndName), chart.groupedIndName)"
+                  data-toggle="tooltip" title="Download Image"></i>
+                  </div>
+                <div class="ind-group">{{chart.groupedIndName}}</div>
+
+                <div class="legend-selection" *ngIf = "((!chart.selectedChart && chart.chartsAvailable[0] == 'pie') || (chart.selectedChart && chart.selectedChart == 'pie'))">
+                    <section class="legends" *ngIf="chart.legends">
+                        <ul>
+                          <li *ngFor="let legends of chart.legends"
+                            class="legend_list">
+                            <div class="legnedblock" [ngStyle]="{ backgroundColor: legends.colorCode }"> </div>
+                            <span class="legend_key">{{legends.value}}</span>
+                          </li>
+                        </ul>
+                      </section>
+                </div>
+              </div>
+              <sdrc-bar-chart
+                *ngIf="chart.chartData && ((!chart.selectedChart && chart.chartsAvailable[0] == 'bar') || chart.selectedChart == 'bar' )"
+                [data]="removeReference(chart.chartData)">
+              </sdrc-bar-chart>
+              <sdrc-pie-chart
+                *ngIf="chart.chartData && ((!chart.selectedChart && chart.chartsAvailable[0] == 'pie') || chart.selectedChart == 'pie' )"
+                [data]="removeReference(chart.chartData[0])">
+              </sdrc-pie-chart>
+              <app-stacked-bar-chart *ngIf="chart.chartData && ((!chart.selectedChart && chart.chartsAvailable[0] == 'stack') || chart.selectedChart == 'stack' )"
+              [data]="removeReference(chart.chartData[0])" [keys]="getStackKeys(chart.chartData[0])"></app-stacked-bar-chart>
+              <sdrc-line-chart *ngIf="chart.chartData && ((!chart.selectedChart && chart.chartsAvailable[0] == 'trend') || chart.selectedChart == 'trend' )"
+              [data]="convertToLineChartFormat(chart.chartData[0])"></sdrc-line-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div  class="modal-dialog" style="max-width: 850px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Indicator Meta Data</h4>
+      </div>
+      <div class="modal-body preview-file-body">
+        <embed src="assets/pdfs/BBBP-Indicator Meta Data.pdf" frameborder="0" width="100%" height="530px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default preview-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

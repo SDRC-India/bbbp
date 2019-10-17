@@ -1,0 +1,58 @@
+
+.downloaded-icon {
+    padding: 5px;
+}
+.whatsnew-head-line
+{
+    font-size: 24px;
+    font-weight: bold;
+    color: orange;
+    border-bottom: 1px solid;
+    width: 100%;
+}
+.read-more-btn {
+    background: #ddd0;
+    color: #000 !important;
+    box-shadow: none;
+    margin-left:-20px;
+    padding:6px;
+}
+
+.modal-content .close, .modal-content .close:hover {
+    color: #3a393f;
+}
+.image-modal-body { height: 550px;}
+.modal .image-modal-header{
+    background-color: #ffffff !important;
+    height: 35px;
+}
+.image-modal-dialog {
+    max-width: 1200px;
+}
+.read-more-btn:hover {
+    background: #1f497b;
+    box-shadow: 0 0 3px 2px #d4d3d3;
+    color: #fff !important;
+}
+.pdf-icon-border {
+    margin-left: 10px;
+}
+.pdf-title {
+    cursor: default;
+    color: #1f497b !important;
+}
+.sub-photo-gallery-head {
+    margin-left: 6px;
+}
+.pdf-title, .file-title-block
+ { 
+    text-decoration: none !important;
+    cursor: default;
+ }
+ .news-link-add-image {
+    width: 5%;
+    height: 44px;
+    margin-bottom: 30px;
+    cursor: pointer;
+ }
+ .imageTumbnail { cursor: pointer;}

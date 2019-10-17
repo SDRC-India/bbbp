@@ -1,0 +1,54 @@
+{
+  "dataCollection": [
+    [
+      {
+        "axis": "B. Basic Services",
+        "value": "49.1"
+      },
+      {
+        "axis": "D. Infrastructure of CHC",
+        "value": "65.4"
+      },
+      {
+        "axis": "E. Ideal Labour room gap analysis checklist",
+        "value": "56.9"
+      },
+      {
+        "axis": "F. New Born Care Corner",
+        "value": "54.8"
+      },
+      {
+        "axis": "G. Post natal ward (PNC)",
+        "value": "60.1"
+      },
+      {
+        "axis": "H. Operation Theatre",
+        "value": "38.3"
+      },
+      {
+        "axis": "I. Blood Storage",
+        "value": "7.9"
+      },
+      {
+        "axis": "J. New born Care Stabilization Unit",
+        "value": "32.2"
+      },
+      {
+        "axis": "K. Laboratory Services",
+        "value": "63.6"
+      },
+      {
+        "axis": "L. Supplies and Commodities",
+        "value": "63.5"
+      },
+      {
+        "axis": "M. Availability of Vaccine and Equipment at cold chain point",
+        "value": "86.6"
+      },
+      {
+        "axis": "N. Services related to National Health Programme",
+        "value": "52.4"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,219 @@
+
+[{
+		"areaId" : "IND001",
+		"areaNid" : 2,
+		"areaName" : "Jammu & Kashmir",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND002",
+		"areaNid" : 26,
+		"areaName" : "Himachal Pradesh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND003",
+		"areaNid" : 39,
+		"areaName" : "Punjab",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND004",
+		"areaNid" : 60,
+		"areaName" : "Chandigarh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND005",
+		"areaNid" : 62,
+		"areaName" : "Uttarakhand",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND006",
+		"areaNid" : 76,
+		"areaName" : "Haryana",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND007",
+		"areaNid" : 98,
+		"areaName" : "NCT of Delhi",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND008",
+		"areaNid" : 108,
+		"areaName" : "Rajasthan",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND009",
+		"areaNid" : 142,
+		"areaName" : "Uttar Pradesh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND010",
+		"areaNid" : 218,
+		"areaName" : "Bihar",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND011",
+		"areaNid" : 257,
+		"areaName" : "Sikkim",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND012",
+		"areaNid" : 262,
+		"areaName" : "Arunachal Pradesh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND013",
+		"areaNid" : 279,
+		"areaName" : "Nagaland",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND014",
+		"areaNid" : 291,
+		"areaName" : "Manipur",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND015",
+		"areaNid" : 301,
+		"areaName" : "Mizoram",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND016",
+		"areaNid" : 310,
+		"areaName" : "Tripura",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND017",
+		"areaNid" : 315,
+		"areaName" : "Meghalaya",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND018",
+		"areaNid" : 323,
+		"areaName" : "Assam",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND019",
+		"areaNid" : 351,
+		"areaName" : "West Bengal",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND020",
+		"areaNid" : 372,
+		"areaName" : "Jharkhand",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND021",
+		"areaNid" : 397,
+		"areaName" : "Orissa",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND022",
+		"areaNid" : 428,
+		"areaName" : "Chhattisgarh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND023",
+		"areaNid" : 456,
+		"areaName" : "Madhya Pradesh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND024",
+		"areaNid" : 507,
+		"areaName" : "Gujarat",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND025",
+		"areaNid" : 536,
+		"areaName" : "Daman & Diu",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND026",
+		"areaNid" : 539,
+		"areaName" : "Dadra & Nagar Haveli",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND027",
+		"areaNid" : 541,
+		"areaName" : "Maharashtra",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND028",
+		"areaNid" : 577,
+		"areaName" : "Andhra Pradesh",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND029",
+		"areaNid" : 591,
+		"areaName" : "Karnataka",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND030",
+		"areaNid" : 622,
+		"areaName" : "Goa",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND031",
+		"areaNid" : 625,
+		"areaName" : "Lakshadweep",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND032",
+		"areaNid" : 627,
+		"areaName" : "Kerala",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND033",
+		"areaNid" : 642,
+		"areaName" : "Tamil Nadu",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND034",
+		"areaNid" : 675,
+		"areaName" : "Puducherry",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND035",
+		"areaNid" : 680,
+		"areaName" : "Andaman & Nicobar Islands",
+		"value" : null,
+		"cssClass" : null
+	}, {
+		"areaId" : "IND036",
+		"areaNid" : 685,
+		"areaName" : "Telengana",
+		"value" : null,
+		"cssClass" : null
+	}
+]

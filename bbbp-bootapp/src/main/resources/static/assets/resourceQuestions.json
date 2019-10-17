@@ -1,0 +1,35 @@
+[{
+  "key": 1,
+  "label": "Title: ",
+  "aggRole": "",
+  "type": "number",
+  "columnName": "c03",
+  "dependecy": false,
+  "dependentColumn": "",
+  "dependentCondition": [
+  ""
+  ],
+  "frequency": "quaterly",
+  "roleId": 3,
+  "options": null,
+  "typeId": null,
+  "controlType": "textbox"
+  },
+  {
+  "key": 2,
+  "label": "Upload :",
+  "aggRole": "",
+  "type": "number",
+  "columnName": "c03",
+  "dependecy": false,
+  "dependentColumn": "",
+  "dependentCondition": [
+  ""
+  ],
+  "frequency": "quaterly",
+  "roleId": 3,
+  "options": null,
+  "typeId": null,
+  "controlType": "textbox"
+  }
+]

@@ -1,0 +1,64 @@
+{
+    "dataCollection":[
+        {
+            "areaId": "IND018006",
+            "areaNid": 12,
+            "areaName": "Nagaon",
+            "value": 10.0,
+            "cssClass": "firstslices"
+        },
+        {
+            "areaId": "IND018007",
+            "areaNid": 13,
+            "areaName": "Odisha",
+            "value": 60.0,
+            "cssClass": "firstslices"
+        },
+        {
+            "areaId": "IND018008",
+            "areaNid": 14,
+            "areaName": "Chhatishgarh",
+            "value": 50.0,
+            "cssClass": "secondslices"
+        }
+    ],
+    "legends":[
+        {
+            "key":null,
+            "value":"firstslices",         
+            "keyValue":"0.0 - 60.0"          
+        },
+        {
+            "key":null,
+            "value":"secondslices",          
+            "keyValue":"60.0 - 80.0"           
+        },
+        {
+            "key":null,
+            "value":"thirdslices",           
+            "keyValue":"80.0 - 100.0"           
+        },
+        {
+            "key":null,
+            "value":"fourthslices",
+            "keyValue":"No Data Available"
+        }
+        ],
+        "areaHighLow":
+        {
+            "high":{
+                "key":12,
+                "value":"0.0",
+                "typeName":null,
+                "keyValue":"Nagaon",
+                "checked":false
+            },
+            "low":{
+                "key":12,
+                "value":"0.0",
+                "typeName":null,
+                "keyValue":"Nagaon",
+                "checked":false
+            }
+        }
+}

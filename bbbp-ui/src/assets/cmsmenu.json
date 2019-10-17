@@ -1,0 +1,172 @@
+{  
+   "hindi":[  
+
+   ],
+   "english":[  
+      {  
+         "url":"",
+         "data":[  
+            {  
+               "url":"",
+               "flag":true,
+               "order":1,
+               "title":""
+            },
+            {  
+               "url":" ",
+               "flag":true,
+               "order":2,
+               "title":""
+            }
+         ],
+         "order":1,
+         "section":"Home"
+      },
+      {  
+         "data":[  
+            {  
+               "url":"",
+               "order":1,
+               "title":"About Scheme"
+            },
+            {  
+               "url":"",
+               "order":2,
+               "title":"Organisation Structure"
+            },
+            {  
+               "url":"",
+               "order":3,
+               "title":"BBBP Guidelines"
+            },
+            {  
+               "url":"",
+               "order":4,
+               "title":"Key Contacts"
+            }
+         ],
+         "order":2,
+         "section":"About Us"
+      },
+      {  
+         "data":[  
+            {  
+               "url":"",
+               "order":1,
+               "title":"Best Practices"
+            },
+            {  
+               "url":"",
+               "order":2,
+               "title":"Key Learning"
+            },
+            {  
+               "url":"",
+               "order":3,
+               "title":"Documents"
+            },
+            {  
+               "url":"",
+               "order":4,
+               "title":"Training Material"
+            },
+            {  
+               "url":"",
+               "order":5,
+               "title":"Discussions"
+            }
+         ],
+         "order":3,
+         "section":"E-knowledge"
+      },
+      {  
+         "data":[  
+            {  
+               "url":"",
+               "order":1,
+               "title":"Brochures"
+            },
+            {  
+               "url":"",
+               "order":2,
+               "title":"Handouts"
+            },
+            {  
+               "url":"",
+               "order":3,
+               "title":"Panels"
+            },
+            {  
+               "url":"",
+               "order":4,
+               "title":"Posters"
+            },
+            {  
+               "url":"",
+               "order":5,
+               "title":"Blog"
+            }
+         ],
+         "order":4,
+         "section":"Creative Corner"
+      },
+      {  
+         "data":[  
+            {  
+               "url":"",
+               "order":1,
+               "title":"Consultations"
+            },
+            {  
+               "url":"",
+               "order":2,
+               "title":"Exposure Visits"
+            },
+            {  
+               "url":"",
+               "order":3,
+               "title":"Meetings"
+            }
+         ],
+         "order":5,
+         "section":"Events & Activities"
+      },
+      {  
+         "data":[  
+            {  
+               "url":"",
+               "order":1,
+               "title":"Photo Gallery"
+            },
+            {  
+               "url":"",
+               "order":2,
+               "title":"Video Gallery"
+            },
+            {  
+               "url":"",
+               "order":3,
+               "title":"Audio Gallery"
+            }
+         ],
+         "order":6,
+         "section":"Gallery"
+      },
+      {  
+         "data":[  
+            {  
+               "url":"",
+               "order":1,
+               "title":"Sanction Orders"
+            },
+            {  
+               "url":" ",
+               "order":2,
+               "title":"Revalidation Letters"
+            }
+         ],
+         "order":7,
+         "section":"Orders & Letters"
+      }
+   ]
+}

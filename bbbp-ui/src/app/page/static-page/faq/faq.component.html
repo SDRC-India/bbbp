@@ -1,0 +1,31 @@
+
+<app-breadcrumb-pagination></app-breadcrumb-pagination>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="title-main">FAQs</h2>
+    </div>
+    <div class="col-md-12">
+      <div class="side-bar-container">
+        <ul class="menu-list">
+          <li class="menu" *ngFor="let items of faqlineSection let i = index;" (click)="setSubmenu($event)">
+            <a>
+              {{i+1}}) {{items.title}}
+            </a>
+            <span class="icons">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </span>
+            <ul class="submenu-list">
+              <li id="{{'collapse'+i}}">
+                <a>{{items.content}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row blank-height">
+  </div>
+</div>
